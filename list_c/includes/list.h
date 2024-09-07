@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/07 14:04:57 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/07 14:09:28 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,9 @@ char	*at_lt(t_list_ptr list, int index);
 
 bool	diff_lt(char *word, char *to_cmp);
 
-void	copy_lt(t_list_ptr to_copy, t_list_ptr other);
+t_list_ptr	copy_lt(t_list_ptr other);
 
-void	copy_range_lt(t_list_ptr this, t_node *node,
-			t_node *end);
+t_list_ptr	copy_range_lt(t_node *node, t_node *end);
 
 int		value_counter_lt(t_list_ptr list, char *src);
 

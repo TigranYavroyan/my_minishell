@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insertions.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigpetro <tigpetro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:48 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/08/21 22:55:04 by tigpetro         ###   ########.fr       */
+/*   Updated: 2024/09/07 14:10:11 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	move_back_lt(t_list_ptr left, t_list_ptr right)
 	if (empty_lt(right))
 		return ;
 	else if (empty_lt(left))
-		copy_lt(left, right);
+		left = copy_lt(right);
 	else
 	{
 		left->tail->next = right->head;
