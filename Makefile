@@ -33,7 +33,7 @@ NAME = minishell
 all : $(NAME)
 
 #
-$(NAME) : $(OBJS) $(BST) $(LIBFT) $(LIST)
+$(NAME) : $(OBJS) $(BST) $(LIST) $(LIBFT) 
 	@$(CC) $^ $(EXECFLAGS) $(LREADLINE) -o $@
 	@echo "$(GREEN) Executable file has been created $(RESET)"
 
@@ -80,6 +80,6 @@ config:
 	./readline_config.sh readline_local
 
 leaks:
-	valgrind --leak-check=full ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 .PHONY : all clean fclean re config push

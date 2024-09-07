@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   removing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigpetro <tigpetro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:46 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/08/22 16:01:50 by tigpetro         ###   ########.fr       */
+/*   Updated: 2024/09/07 14:04:39 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,16 +101,17 @@ void	pop_front_lt(t_list_ptr list)
 		printf("The list is empty\n");
 }
 
-void	clear_lt(t_list_ptr list)
+void	clear_lt(t_list_ptr* list)
 {
 	t_node	*curr;
 
-	curr = list->head;
+	curr = (*list)->head;
 	while (curr)
 	{
-		list->head = list->head->next;
+		(*list)->head = (*list)->head->next;
 		free_node(&curr);
-		curr = list->head;
+		curr = (*list)->head;
 	}
-	init_lt(list);
+	free(*list);
+	*list = NULL;
 }

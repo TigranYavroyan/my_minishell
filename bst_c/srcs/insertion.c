@@ -5,6 +5,7 @@ static void _update_old_value (t_TreeNode_ptr TreeNode, const value_type value);
 
 void insert_bst (t_BST_ptr bst, const key_type key, const value_type value) {
     bst->root = __insert (bst->root, key, value);
+    ++bst->size;
 }
 
 void update_bst (t_BST_ptr bst, const key_type key, const value_type value) {
@@ -26,6 +27,7 @@ void update_bst (t_BST_ptr bst, const key_type key, const value_type value) {
         y->right = _make_node(key, value, NULL, NULL);
     else
         y->left = _make_node(key, value, NULL, NULL);
+    ++bst->size;
 }
 
 static t_TreeNode_ptr __insert (t_TreeNode_ptr root, const key_type key, const value_type value) {

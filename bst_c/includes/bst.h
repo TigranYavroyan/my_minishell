@@ -39,6 +39,7 @@ struct s_BST {
 // init
 t_BST_ptr   init_bst ();
 t_BST_ptr   copy_bst (const t_BST_ptr bst);
+t_BST_ptr   matrix_to_bst (char** matrix, char delim);
 
 // insertion
 void        insert_bst (t_BST_ptr bst, const key_type key, const value_type value);
@@ -59,17 +60,18 @@ value_type  find_max_bst (t_BST_ptr bst);
 bool        find_bst (t_BST_ptr bst, const key_type key);
 
 // helpers
-t_TreeNode_ptr   _make_node (const key_type key, const value_type value, t_TreeNode_ptr left, t_TreeNode_ptr right) __attribute__((warn_unused_result, malloc));
 void            _free_node (t_TreeNode_ptr* root);
+t_TreeNode_ptr   _make_node (const key_type key, const value_type value, t_TreeNode_ptr left, t_TreeNode_ptr right) __attribute__((warn_unused_result, malloc));
+t_TreeNode_ptr   _make_node_move (key_type key, value_type value, t_TreeNode_ptr left, t_TreeNode_ptr right);
 t_TreeNode_ptr  _find_bst(t_TreeNode_ptr root, const key_type key);
 
 // traverse
 void traverse_bst (t_BST_ptr tree, t_travers_type travers_type, visitor fptr);
 
 // cmp
-bool _less (const key_type in_tree, const key_type to_cmp);
-bool _greater (const key_type in_tree, const key_type to_cmp);
-bool _equal (const key_type in_tree, const key_type to_cmp);
+bool _less (const char* in_tree, const char* to_cmp);
+bool _greater (const char* in_tree, const char* to_cmp);
+bool _equal (const char* in_tree, const char* to_cmp);
 
 
 #endif // BST_H

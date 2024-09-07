@@ -13,6 +13,8 @@ void clear_bst (t_BST_ptr* bst) {
 }
 
 void    remove_bst (t_BST_ptr bst, const key_type key) {
+    if (_find_bst(bst->root, key))
+        --bst->size;
     bst->root = _remove(bst->root, key);
 }
 

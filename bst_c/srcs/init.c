@@ -10,7 +10,6 @@ t_BST_ptr init_bst () {
     return tree;
 }
 
-
 t_BST_ptr copy_bst (const t_BST_ptr bst) {
     t_BST_ptr tree = init_bst();
 

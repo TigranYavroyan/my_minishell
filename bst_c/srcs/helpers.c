@@ -20,6 +20,15 @@ t_TreeNode_ptr _make_node (const key_type key, const value_type value, t_TreeNod
     return node;
 }
 
+t_TreeNode_ptr _make_node_move (key_type key, value_type value, t_TreeNode_ptr left, t_TreeNode_ptr right) {
+    t_TreeNode_ptr node = (t_TreeNode_ptr) wrapper_malloc (sizeof(t_TreeNode));
+    node->key = key;
+    node->value = value;
+    node->left = left;
+    node->right = right;
+    return node;
+}
+
 void _free_node (t_TreeNode_ptr* root) {
     free((*root)->key);
     free((*root)->value);

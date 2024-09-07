@@ -47,5 +47,5 @@ static void traverse_post (t_TreeNode_ptr root, visitor fptr) {
 }
 
 static void print_for_traverse_bst (key_type key, value_type value) {
-    printf("%s -> %s\n", key, value);
+    printf("%s=%s\n", key, value);
 }

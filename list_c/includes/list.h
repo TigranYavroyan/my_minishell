@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigpetro <tigpetro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/08/21 22:53:21 by tigpetro         ###   ########.fr       */
+/*   Updated: 2024/09/07 14:04:57 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ struct					s_list
 
 bool	empty_lt(t_list_ptr list);
 
-void	init_lt(t_list_ptr list);
+t_list_ptr	init_lt();
 
 void	push_back_lt(t_list_ptr list, char *const str);
 
@@ -63,7 +63,7 @@ void	pop_back_lt(t_list_ptr list);
 
 void	pop_front_lt(t_list_ptr list);
 
-void	clear_lt(t_list_ptr list);
+void	clear_lt(t_list_ptr* list);
 
 char	*at_lt(t_list_ptr list, int index);
 

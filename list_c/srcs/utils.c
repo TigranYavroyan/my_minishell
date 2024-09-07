@@ -3,20 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigpetro <tigpetro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:40:20 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/08/18 16:54:14 by tigpetro         ###   ########.fr       */
+/*   Updated: 2024/09/07 12:18:39 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <list.h>
 
-void	init_lt(t_list_ptr list)
+t_list_ptr	init_lt()
 {
+	t_list_ptr list = (t_list_ptr) wrapper_malloc(sizeof(t_list));
+
 	list->head = NULL;
 	list->tail = NULL;
 	list->size = 0;
+
+	return list;
 }
 
 bool	empty_lt(t_list_ptr list)
