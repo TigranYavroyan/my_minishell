@@ -69,9 +69,9 @@ t_TreeNode_ptr  _find_bst(t_TreeNode_ptr root, const key_type key);
 void traverse_bst (t_BST_ptr tree, t_travers_type travers_type, visitor fptr);
 
 // cmp
-bool _less (const char* in_tree, const char* to_cmp);
-bool _greater (const char* in_tree, const char* to_cmp);
-bool _equal (const char* in_tree, const char* to_cmp);
+bool _less (const char* op1, const char* op2);
+bool _greater (const char* op1, const char* op2);
+bool _equal (const char* op1, const char* op2);
 
 
 #endif // BST_H

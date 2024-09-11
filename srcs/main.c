@@ -1,18 +1,29 @@
 #include <minishell.h>
 
-int main (int argc, char** argv, char** env) {
+static void __ft_minishell__ (t_minishell_ptr minishell, char* input) {
+    tokenize(minishell, "<>| \'\"()&", input);
+}
+
+static void ft_minishell (t_minishell_ptr minishell) {
+    char* input;
+
+    while (true)
+    {
+        input = readline("Minishell>$ ");
+        __ft_minishell__(minishell, input);
+        clear_lt(minishell->line);
+        free(input);
+    }
+    free(input);
+}
+
+int main (int argc, char** argv, char** env)
+{
+    t_minishell_ptr minishell;
 
     if (argc != 1 && argv[0])
         _err("Too much arguments");
-
-    t_minishell_ptr minishell;
-
     minishell = init_minishell(env);
-
-    traverse_bst(minishell->env, INORDER, NULL);
-
-    // while (!_equal(minishell->line->head, "exit")) {
-        
-    // }
+    ft_minishell(minishell);
     clear_minishell(&minishell);
 }

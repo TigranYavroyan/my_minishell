@@ -1,34 +1,34 @@
 #include <bst.h>
 
-static int _strcmp_bst (const char* in_tree, const char* to_cmp);
-static int _key_cmp (const char* in_tree, const char* to_cmp);
+static int _strcmp_bst (const char* op1, const char* op2);
+static int _key_cmp (const char* op1, const char* op2);
 
-bool _less (const char* in_tree, const char* to_cmp) {
-    return (_key_cmp(in_tree, to_cmp) < 0);
+bool _less (const char* op1, const char* op2) {
+    return (_key_cmp(op1, op2) < 0);
 }
 
-bool _greater (const char* in_tree, const char* to_cmp) {
-    return (_key_cmp(in_tree, to_cmp) > 0);
+bool _greater (const char* op1, const char* op2) {
+    return (_key_cmp(op1, op2) > 0);
 }
 
-bool _equal (const char* in_tree, const char* to_cmp) {
-    return (_key_cmp(in_tree, to_cmp) == 0);
+bool _equal (const char* op1, const char* op2) {
+    return (_key_cmp(op1, op2) == 0);
 }
 
-static int _strcmp_bst (const char* in_tree, const char* to_cmp) {
+static int _strcmp_bst (const char* op1, const char* op2) {
     int i;
 
     i = 0;
-    while (in_tree[i] && to_cmp[i])
+    while (op1[i] && op2[i])
     {
-        if (in_tree[i] != to_cmp[i])
-            return (in_tree[i] - to_cmp[i]);
+        if (op1[i] != op2[i])
+            return (op1[i] - op2[i]);
         ++i;
     }
 
-    return (in_tree[i] - to_cmp[i]);
+    return (op1[i] - op2[i]);
 }
 
-static int _key_cmp (const char* in_tree, const char* to_cmp) {
-    return _strcmp_bst(in_tree, to_cmp);
+static int _key_cmp (const char* op1, const char* op2) {
+    return _strcmp_bst(op1, op2);
 }

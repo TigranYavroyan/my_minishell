@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigpetro <tigpetro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:50 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/08/18 16:56:45 by tigpetro         ###   ########.fr       */
+/*   Updated: 2024/09/11 19:26:23 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,19 @@ t_node	*make_node(char *str)
 	while (str[++i])
 		node->val[i] = str[i];
 	node->val[i] = '\0';
+	node->next = NULL;
+	node->prev = NULL;
+	return (node);
+}
+
+
+t_node	*make_node_move(char *str)
+{
+	int		i;
+	t_node	*node;
+
+	node = (t_node *)malloc(sizeof(t_node));
+	node->val = str;
 	node->next = NULL;
 	node->prev = NULL;
 	return (node);

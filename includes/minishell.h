@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/07 14:01:07 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/11 18:46:20 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ struct s_minishell {
 
 t_minishell_ptr init_minishell (char** env);
 void clear_minishell (t_minishell_ptr* minishell);
+
+// tokenizing
+void tokenize (t_minishell_ptr minishell, char* delim, char* input);
 
 
 #endif // MINISHELL_H

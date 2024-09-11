@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:48 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/07 14:10:11 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/11 19:26:04 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,25 @@ void	push_back_lt(t_list_ptr list, char *str)
 	else
 	{
 		curr = make_node(str);
+		list->tail->next = curr;
+		curr->prev = list->tail;
+		list->tail = curr;
+	}
+	++(list->size);
+}
+
+void	push_back_move_lt(t_list_ptr list, char *str)
+{
+	t_node	*curr;
+
+	if (list->head == NULL)
+	{
+		list->head = make_node_move(str);
+		list->tail = list->head;
+	}
+	else
+	{
+		curr = make_node_move(str);
 		list->tail->next = curr;
 		curr->prev = list->tail;
 		list->tail = curr;

@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/07 14:09:28 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/11 19:26:32 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ t_list_ptr	init_lt();
 
 void	push_back_lt(t_list_ptr list, char *const str);
 
+void	push_back_move_lt(t_list_ptr list, char *const str);
+
 void	move_back_lt(t_list_ptr left, t_list_ptr right);
 
 void	push_front_lt(t_list_ptr list, char *const str);
@@ -63,7 +65,7 @@ void	pop_back_lt(t_list_ptr list);
 
 void	pop_front_lt(t_list_ptr list);
 
-void	clear_lt(t_list_ptr* list);
+void	clear_lt(t_list_ptr list);
 
 char	*at_lt(t_list_ptr list, int index);
 
@@ -86,5 +88,6 @@ char	**list_to_matrix_lt(t_list_ptr list);
 // helpers.c
 void	print_lt(t_list_ptr list);
 t_node	*make_node(char *str);
+t_node	*make_node_move(char *str);
 
 #endif // LIST_H
