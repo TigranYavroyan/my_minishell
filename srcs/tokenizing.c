@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tokenizing.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/12 18:41:16 by tigran            #+#    #+#             */
+/*   Updated: 2024/09/12 19:34:09 by tigran           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <minishell.h>
 
 static int _count (char* input, char* delim) {
@@ -21,7 +33,7 @@ static void ft_split_delim(t_list_ptr line, char* delim, char* input) { // check
 		push_back_move_lt(line, ft_substr(input + i, 0, len));
 		i += len;
 	}
-	print_lt(line);
+	// print_lt(line);
 }
 
 void tokenize (t_minishell_ptr minishell, char* delim, char* input) {

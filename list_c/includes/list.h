@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/11 19:26:32 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/12 18:52:36 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdlib.h>
 
 typedef struct s_node	t_node;
+typedef t_node			*t_node_ptr;
 typedef struct s_list	t_list;
 typedef t_list			*t_list_ptr;
 

@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:07:53 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/06 16:51:37 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/12 18:51:10 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int		ft_isalpha(int num);
 int		ft_isdigit(int num);
 int		ft_isalnum(int num);
 int		ft_isascii(int num);
+int		ft_isspace (int num);
 int		ft_toupper(int num);
 int		ft_tolower(int num);
 int		ft_isprint(int num);

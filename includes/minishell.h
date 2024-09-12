@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/11 18:46:20 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/12 19:49:12 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,19 @@
 
 typedef struct s_minishell	t_minishell;
 typedef t_minishell* 		t_minishell_ptr;
+typedef struct s_command	t_command;
+typedef t_command*			t_command_ptr;
 
 struct s_minishell {
 	t_list_ptr	line;
 	t_BST_ptr	env;
+};
+
+struct s_command {
+    t_minishell_ptr minishell;
+    char* name;
+    t_list args;
+    t_list options;
 };
 
 t_minishell_ptr init_minishell (char** env);
@@ -47,5 +56,11 @@ void clear_minishell (t_minishell_ptr* minishell);
 // tokenizing
 void tokenize (t_minishell_ptr minishell, char* delim, char* input);
 
+// quotes
+void ft_remove_quotes(t_list_ptr line);
+bool ft_quotes_check(t_list_ptr line);
+
+// helpers
+bool is_quote(char ch);
 
 #endif // MINISHELL_H
