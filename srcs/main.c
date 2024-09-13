@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/12 19:56:40 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/13 18:03:28 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void __ft_minishell__ (t_minishell_ptr minishell, char* input) {
     tokenize(minishell, "<>| \'\"()&", input);
     if (!ft_quotes_check(minishell->line))
         _err("Not all the quotes closed");
-    ft_remove_quotes(minishell->line);
+    ft_remove_spaces(minishell->line);
     add_history(input);
 }
 

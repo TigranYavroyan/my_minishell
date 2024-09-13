@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/12 19:49:12 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/13 18:16:08 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,19 @@ void clear_minishell (t_minishell_ptr* minishell);
 // tokenizing
 void tokenize (t_minishell_ptr minishell, char* delim, char* input);
 
-// quotes
-void ft_remove_quotes(t_list_ptr line);
+// quotes_check
 bool ft_quotes_check(t_list_ptr line);
+
+// remove_spaces
+void ft_remove_spaces(t_list_ptr line);
 
 // helpers
 bool is_quote(char ch);
+
+// append
+void ft_append (char** left, char* right);
+
+// check_builtin
+bool is_builtin (const char* val);
 
 #endif // MINISHELL_H
