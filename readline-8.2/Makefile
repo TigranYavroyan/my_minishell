@@ -31,7 +31,7 @@ PACKAGE_TARNAME = readline
 srcdir = .
 
 top_srcdir = .
-BUILD_DIR = /home/tigran/Programming/Erevan42/minishell/readline-8.2
+BUILD_DIR = /Users/tyavroya/Desktop/afterPiscine/my_minishell/readline-8.2
 
 INSTALL = /usr/bin/install -c
 INSTALL_PROGRAM = ${INSTALL}
@@ -48,7 +48,7 @@ MV = mv
 
 SHELL = /bin/sh
 
-prefix = /home/tigran/Programming/Erevan42/minishell/readline_local
+prefix = /Users/tyavroya/Desktop/afterPiscine/my_minishell
 exec_prefix = ${prefix}
 
 datarootdir = ${prefix}/share

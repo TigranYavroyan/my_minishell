@@ -297,13 +297,13 @@ as_fn_unset ()
 as_unset=as_fn_unset
 
 
-# as_fn_set_status_unsigned STATUS
+# as_fn_set_status STATUS
 # -----------------------
 # Set $? to STATUS, without forking.
-as_fn_set_status_unsigned ()
+as_fn_set_status ()
 {
   return $1
-} # as_fn_set_status_unsigned
+} # as_fn_set_status
 
 # as_fn_exit STATUS
 # -----------------
@@ -311,7 +311,7 @@ as_fn_set_status_unsigned ()
 as_fn_exit ()
 {
   set +e
-  as_fn_set_status_unsigned $1
+  as_fn_set_status $1
   exit $1
 } # as_fn_exit
 # as_fn_nop
@@ -1536,7 +1536,7 @@ sed 's/^/| /' conftest.$ac_ext >&5
 	ac_retval=1
 fi
   eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
-  as_fn_set_status_unsigned $ac_retval
+  as_fn_set_status $ac_retval
 
 } # ac_fn_c_try_compile
 
@@ -1607,7 +1607,7 @@ sed 's/^/| /' conftest.$ac_ext >&5
     ac_retval=1
 fi
   eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
-  as_fn_set_status_unsigned $ac_retval
+  as_fn_set_status $ac_retval
 
 } # ac_fn_c_try_cpp
 
@@ -1711,7 +1711,7 @@ fi
   # left behind by Apple's compiler.  We do this before executing the actions.
   rm -rf conftest.dSYM conftest_ipa8_conftest.oo
   eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
-  as_fn_set_status_unsigned $ac_retval
+  as_fn_set_status $ac_retval
 
 } # ac_fn_c_try_link
 
@@ -1816,7 +1816,7 @@ sed 's/^/| /' conftest.$ac_ext >&5
 fi
   rm -rf conftest.dSYM conftest_ipa8_conftest.oo
   eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
-  as_fn_set_status_unsigned $ac_retval
+  as_fn_set_status $ac_retval
 
 } # ac_fn_c_try_run
 
@@ -2117,7 +2117,7 @@ rm -f conftest.val
 
   fi
   eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
-  as_fn_set_status_unsigned $ac_retval
+  as_fn_set_status $ac_retval
 
 } # ac_fn_c_compute_int
 ac_configure_args_raw=
@@ -8179,13 +8179,13 @@ as_fn_error ()
 
 
 
-# as_fn_set_status_unsigned STATUS
+# as_fn_set_status STATUS
 # -----------------------
 # Set $? to STATUS, without forking.
-as_fn_set_status_unsigned ()
+as_fn_set_status ()
 {
   return $1
-} # as_fn_set_status_unsigned
+} # as_fn_set_status
 
 # as_fn_exit STATUS
 # -----------------
@@ -8193,7 +8193,7 @@ as_fn_set_status_unsigned ()
 as_fn_exit ()
 {
   set +e
-  as_fn_set_status_unsigned $1
+  as_fn_set_status $1
   exit $1
 } # as_fn_exit
 

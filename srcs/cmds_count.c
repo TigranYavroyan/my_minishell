@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   append.c                                           :+:      :+:    :+:   */
+/*   cmds_count.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 17:31:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/14 18:25:06 by tyavroya         ###   ########.fr       */
+/*   Created: 2024/09/14 18:23:31 by tyavroya          #+#    #+#             */
+/*   Updated: 2024/09/14 18:55:54 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void	ft_append(char **left, char *right)
+void	ft_count_cmds (t_minishell_ptr minishell)
 {
-	int l;
-	int r;
-	int i;
-	char *tmp;
+	t_node_ptr	curr;
 
-	if ((!left || !(*left)) && !right)
-		return ;
-	l = ft_strlen(*left);
-	r = ft_strlen(right);
-	tmp = wrapper_malloc(l + r + 1);
-	tmp[l + r] = '\0';
-	i = -1;
-	while (++i < l)
-		tmp[i] = (*left)[i];
-
-	i = -1;
-	while (++i < r)
-		tmp[l + i] = right[i];
-	free(*left);
-	*left = tmp;
+	curr = minishell->line->head;
+	if (curr)
+		++minishell->commands->size;
+	while (curr)
+	{
+		if (_equal(curr->val, "|"))
+			++minishell->commands->size;
+		curr = curr->next;
+	}
+	printf("cmds count: %d\n", minishell->commands->size);
 }
