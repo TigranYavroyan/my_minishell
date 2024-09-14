@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/14 21:10:17 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/14 21:46:57 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,4 @@ int main (int argc, char** argv, char** env)
     minishell = init_minishell(env);
     ft_minishell(minishell);
     clear_minishell(&minishell);
-	system("leaks minishell");
 }

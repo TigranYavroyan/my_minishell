@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 19:06:24 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/14 21:06:19 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/14 21:47:54 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	clear_cmds(t_cmd_matrix_ptr commands)
 	while (++i < commands->size)
 		free(commands->cmds[i]);
 	free(commands->cmds);
-	system("leaks minishell");
+	commands->size = 0;
+	commands->cmds = NULL;
 }
 
 void	get_cmds(t_minishell_ptr minishell)

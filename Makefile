@@ -15,8 +15,8 @@ SRCS = $(wildcard $(SRCSPATH)*.c)
 OBJS = $(patsubst $(SRCSPATH)%.c, $(SRCSPATH)%.o, $(SRCS))
 #
 CFLAGS = -g -Wall -Wextra -Werror $(foreach H, $(INCLPATH), -I$(H))
-EXECFLAGS = -lreadline -lncurses
-#-fsanitize=address
+EXECFLAGS = -lreadline -lncurses #-fsanitize=address
+
 UNAME = $(shell uname -s)
 ifeq ($(UNAME), Darwin)
 	LREADLINE =  -Lreadline_local/lib -lreadline
@@ -33,7 +33,7 @@ NAME = minishell
 all : $(NAME)
 
 #
-$(NAME) : $(OBJS) $(BST) $(LIST) $(LIBFT) 
+$(NAME) : $(OBJS) $(BST) $(LIST) $(LIBFT)
 	@$(CC) $^ $(EXECFLAGS) $(LREADLINE) -o $@
 	@echo "$(GREEN) Executable file has been created $(RESET)"
 

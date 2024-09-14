@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/14 19:53:13 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/14 21:46:30 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,19 @@ typedef t_command			*t_command_ptr;
 typedef struct s_cmd_matrix	t_cmd_matrix;
 typedef t_cmd_matrix		*t_cmd_matrix_ptr;
 
-struct						s_minishell
-{
-	t_list_ptr				line;
-	t_BST_ptr				env;
-	t_cmd_matrix_ptr		commands;
-};
-
 struct						s_command
 {
 	t_minishell_ptr			minishell;
 	char					*name;
 	t_list					args;
 	t_list					options;
+};
+
+struct						s_minishell
+{
+	t_list_ptr				line;
+	t_BST_ptr				env;
+	t_cmd_matrix_ptr		commands;
 };
 
 struct						s_cmd_matrix
