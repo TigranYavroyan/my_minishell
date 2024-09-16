@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:51:38 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/16 20:20:16 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/16 20:36:19 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,20 @@ static void	get_cmds_names(t_minishell_ptr minishell)
 }
 
 
-static void	get_cmds_args(t_minishell_ptr minishell)
-{
-	t_node_ptr	curr;
-	int			i;
+// static void	get_cmds_args(t_minishell_ptr minishell)
+// {
+// 	t_node_ptr	curr;
+// 	int			i;
 
-	curr = minishell->line->head;
-	i = 0;
-	while (curr)
-	{
-		if (curr && _equal(curr->val, "|"))
-			++i;
-		curr = curr->next;
-	}
-}
+// 	curr = minishell->line->head;
+// 	i = 0;
+// 	while (curr)
+// 	{
+// 		if (curr && _equal(curr->val, "|"))
+// 			++i;
+// 		curr = curr->next;
+// 	}
+// }
 
 static void get_cmds_options(t_minishell_ptr minishell)
 {
@@ -55,7 +55,7 @@ static void get_cmds_options(t_minishell_ptr minishell)
 
 	curr = minishell->line->head;
 	i = 0;
-	while (curr)
+	while (curr) // can find arguments after detecting options (can use bool for understanding is there at least one option or not)
 	{
 		while (curr && *curr->val == '-')
 		{
@@ -64,11 +64,12 @@ static void get_cmds_options(t_minishell_ptr minishell)
 			while (curr && ft_isspace(*curr->val))
 				curr = curr->next;
 		}
-		if (curr && _equal(curr->val, "|"))
+		if (curr && *curr->val == '|')
 			++i;
 		if (curr)
 			curr = curr->next;
 	}
+	print_lt(minishell->commands->cmds[i]->options);
 }
 
 void get_cmds(t_minishell_ptr minishell)
