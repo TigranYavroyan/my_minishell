@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmds_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 19:06:24 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/14 21:47:54 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/16 18:51:19 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,30 @@ t_cmd_matrix_ptr	init_cmds(t_minishell_ptr minishell)
 	return (commands);
 }
 
-static void	init_cmd(t_cmd_matrix_ptr cmds)
+void	init_cmd(t_cmd_matrix_ptr cmds)
 {
 	int	i;
 
 	i = -1;
-	cmds->cmds = (t_command_ptr*)wrapper_malloc(sizeof(t_command_ptr));
+	cmds->cmds = (t_command_ptr*)wrapper_malloc(sizeof(t_command_ptr) * cmds->size);
 	while (++i < cmds->size)
+	{
 		cmds->cmds[i] = (t_command_ptr)wrapper_malloc(sizeof(t_command));
+		cmds->cmds[i]->args = init_lt();
+		cmds->cmds[i]->options = init_lt();
+	}
+	
+}
+
+static void remove_cmd(t_command_ptr* command)
+{
+	clear_lt((*command)->args);
+	free((*command)->args);
+	clear_lt((*command)->options);
+	free((*command)->options);
+	free((*command)->name);
+	free(*command);
+	*command = NULL;
 }
 
 void	clear_cmds(t_cmd_matrix_ptr commands)
@@ -39,13 +55,8 @@ void	clear_cmds(t_cmd_matrix_ptr commands)
 
 	i = -1;
 	while (++i < commands->size)
-		free(commands->cmds[i]);
+		remove_cmd(commands->cmds + i);
 	free(commands->cmds);
 	commands->size = 0;
 	commands->cmds = NULL;
-}
-
-void	get_cmds(t_minishell_ptr minishell)
-{
-	init_cmd(minishell->commands);
 }

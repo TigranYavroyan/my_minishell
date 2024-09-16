@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:01:23 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/13 18:02:13 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/16 20:13:48 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ static void _remove_head_spaces(t_list_ptr line)
 	curr = line->head;
 	while (curr && ft_isspace(*curr->val))
 	{
-		remove_node_lt(line, curr);
-		curr = curr->next;
+		pop_front_lt(line);
+		curr = line->head;
 	}
 }
 

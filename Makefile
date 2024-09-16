@@ -80,6 +80,6 @@ config:
 	./readline_config.sh readline_local
 
 leaks:
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --suppressions=.vgignore ./$(NAME)
 
 .PHONY : all clean fclean re config push

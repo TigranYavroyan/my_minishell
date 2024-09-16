@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/14 21:46:30 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/16 18:58:40 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 # include <termios.h>
 # include <unistd.h>
 
+#define UNUSED __attribute__((unused));
+
 typedef struct s_minishell	t_minishell;
 typedef t_minishell			*t_minishell_ptr;
 typedef struct s_command	t_command;
@@ -44,8 +46,8 @@ struct						s_command
 {
 	t_minishell_ptr			minishell;
 	char					*name;
-	t_list					args;
-	t_list					options;
+	t_list_ptr				args;
+	t_list_ptr				options;
 };
 
 struct						s_minishell
@@ -90,6 +92,12 @@ void						ft_count_cmds (t_minishell_ptr minishell);
 // cmds_utils
 t_cmd_matrix_ptr			init_cmds(t_minishell_ptr minishell);
 void						clear_cmds(t_cmd_matrix_ptr commands);
+void						init_cmd(t_cmd_matrix_ptr cmds);
+
+// get_cmds
 void						get_cmds(t_minishell_ptr minishell);
+
+// pipe_check
+bool						pipe_check(t_list_ptr line);
 
 #endif // MINISHELL_H
