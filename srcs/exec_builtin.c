@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_builtin.c                                    :+:      :+:    :+:   */
+/*   exec_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 18:13:30 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/17 16:14:07 by tyavroya         ###   ########.fr       */
+/*   Created: 2024/09/17 16:00:49 by tyavroya          #+#    #+#             */
+/*   Updated: 2024/09/17 16:23:30 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-bool is_builtin (const char* val)
+void exec_builtin (t_command_ptr command)
 {
-	if (_equal(val, "echo"))
-		return (true);
-	if (_equal(val, "cd"))
-		return (true);
-	if (_equal(val, "pwd"))
-		return (true);
-	if (_equal(val, "export"))
-		return (true);
-	if (_equal(val, "unset"))
-		return (true);
+	const char* val;
+
+	val = command->name;
+	// if (_equal(val, "echo"))
+	// 	ft_echo(command);
+	// if (_equal(val, "cd"))
+	// 	ft_cd(command);
+	// if (_equal(val, "pwd"))
+	// 	ft_pwd(command);
+	// if (_equal(val, "export"))
+	// 	ft_export(command);
+	// if (_equal(val, "unset"))
+	// 	ft_unset(command);n
 	if (_equal(val, "env"))
-		return (true);
-	if (_equal(val, "exit"))
-		return (true);
-	return (false);
+		ft_env(command);
+	// if (_equal(val, "exit"))
+	// 	ft_exit(command);
 }

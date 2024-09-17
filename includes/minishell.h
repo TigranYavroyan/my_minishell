@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/16 18:58:40 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/17 16:23:10 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@
 # include <termios.h>
 # include <unistd.h>
 
-#define UNUSED __attribute__((unused));
+# define UNUSED __attribute__((unused))
+# define DTOR __attribute__((destructor))
 
 typedef struct s_minishell	t_minishell;
 typedef t_minishell			*t_minishell_ptr;
@@ -87,7 +88,7 @@ void						ft_append(char **left, char *right);
 bool						is_builtin(const char *val);
 
 // cmds_count
-void						ft_count_cmds (t_minishell_ptr minishell);
+void						ft_count_cmds(t_minishell_ptr minishell);
 
 // cmds_utils
 t_cmd_matrix_ptr			init_cmds(t_minishell_ptr minishell);
@@ -99,5 +100,14 @@ void						get_cmds(t_minishell_ptr minishell);
 
 // pipe_check
 bool						pipe_check(t_list_ptr line);
+
+// execute
+void						execute(t_minishell_ptr minishell);
+
+// exec_builtin
+void						exec_builtin(t_command_ptr command);
+
+// echo
+void						ft_env(t_command_ptr command);
 
 #endif // MINISHELL_H
