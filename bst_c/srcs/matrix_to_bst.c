@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_to_bst.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:42:04 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/12 18:42:04 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/17 20:30:52 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ static t_TreeNode_ptr _matrix_to_bst (char** matrix, char delim, int s, int e) {
     int mid;
 
     if (s > e)
-        return NULL;
-    
+        return (NULL);
+
     mid = s + (e - s) / 2;
     root = _init_root(matrix[mid], delim);
-    root->left = _matrix_to_bst(matrix, delim, s, mid - 1);
+    root->left = _matrix_to_bst(matrix, delim, s, mid - 1); 
     root->right = _matrix_to_bst(matrix, delim, mid + 1, e);
-    return root;
+    return (root);
 }

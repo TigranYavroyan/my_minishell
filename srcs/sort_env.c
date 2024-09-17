@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute.c                                          :+:      :+:    :+:   */
+/*   sort_env.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 15:50:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/17 20:15:33 by tyavroya         ###   ########.fr       */
+/*   Created: 2024/09/17 20:31:46 by tyavroya          #+#    #+#             */
+/*   Updated: 2024/09/17 20:34:16 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void execute (t_minishell_ptr minishell)
+void sort_env (char** env)
 {
 	int	i;
+	int	j;
+	int	size;
+
+	size = 0;
+	while (env[size])
+		++size;
 
 	i = -1;
-	while (++i < minishell->commands->size)
+	while (++i < size)
 	{
-		if (is_builtin(minishell->commands->cmds[i]->name))
-			exec_builtin(minishell->commands->cmds[i]);
-		access_cmd(minishell->commands->cmds[i]);
+		j = -1;
+		while (++j)
 	}
 }

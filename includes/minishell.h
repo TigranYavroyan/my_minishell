@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/17 18:49:15 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/17 20:32:17 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,5 +131,11 @@ void						ft_env(t_command_ptr command);
 
 // exit
 void						ft_exit(t_command_ptr command);
+
+// get_cmd_path
+bool						access_cmd(t_command_ptr command);
+
+// sort_env
+void						sort_env (char** env);
 
 #endif // MINISHELL_H
