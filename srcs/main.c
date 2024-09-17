@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/17 15:50:21 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/17 18:03:32 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@ static void __ft_minishell__ (t_minishell_ptr minishell, char* input) {
     tokenize(minishell, "<>| \'\"()&", input);
     ft_remove_spaces(minishell->line);
     if (!ft_quotes_check(minishell->line))
-        _err("Not all the quotes closed"); // have to add deallocation
+	{
+        ft_putstr_fd("The quotes error", ERR); // have to add deallocation
+		return ;
+	}
     if (!pipe_check(minishell->line))
     {
-        _err("Pipe error"); // have to add deallocation
+        ft_putstr_fd("Pipe error", ERR); // have to add deallocation
+		return ;
     }
 	ft_count_cmds(minishell);
     get_cmds(minishell);

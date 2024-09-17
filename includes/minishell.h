@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/17 16:23:10 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/17 18:49:15 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,13 @@
 # include <sys/wait.h>
 # include <termios.h>
 # include <unistd.h>
+#include <limits.h>
 
 # define UNUSED __attribute__((unused))
 # define DTOR __attribute__((destructor))
+# define IN 0
+# define OUT 1
+# define ERROR 2
 
 typedef struct s_minishell	t_minishell;
 typedef t_minishell			*t_minishell_ptr;
@@ -108,6 +112,24 @@ void						execute(t_minishell_ptr minishell);
 void						exec_builtin(t_command_ptr command);
 
 // echo
+void						ft_echo(t_command_ptr command);
+
+// echo
+void						ft_cd(t_command_ptr command);
+
+// echo
+void						ft_pwd(t_command_ptr command);
+
+// echo
+void						ft_export(t_command_ptr command);
+
+// echo
+void						ft_unset(t_command_ptr command);
+
+// env
 void						ft_env(t_command_ptr command);
+
+// exit
+void						ft_exit(t_command_ptr command);
 
 #endif // MINISHELL_H

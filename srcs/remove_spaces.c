@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   remove_spaces.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:01:23 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/16 21:28:40 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/17 18:45:06 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void ft_remove_spaces(t_list_ptr line)
 			curr = curr->next;
 		}
 	}
-	print_lt(line);
 }
 
 static void _update_quote_info (bool* open, char* opened_ch, t_node_ptr curr)

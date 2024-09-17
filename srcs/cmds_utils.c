@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmds_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 19:06:24 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/16 18:51:19 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/17 17:33:08 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ void	init_cmd(t_cmd_matrix_ptr cmds)
 		cmds->cmds[i] = (t_command_ptr)wrapper_malloc(sizeof(t_command));
 		cmds->cmds[i]->args = init_lt();
 		cmds->cmds[i]->options = init_lt();
+		cmds->cmds[i]->minishell = cmds->minishell;
 	}
-	
+
 }
 
 static void remove_cmd(t_command_ptr* command)
