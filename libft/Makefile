@@ -7,7 +7,7 @@ SKY		= \033[1;36m
 NAME = libft.a
 CC = cc
 # -Wall -Wextra -Werror
-CFLAGS = -g -Wall -Wextra -Werror -c 
+CFLAGS = -g -Wall -Wextra -Werror -c
 ROOT = ./
 
 MANDATORY		= ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_memchr.c ft_memcmp.c \
@@ -15,7 +15,8 @@ MANDATORY		= ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_memchr.c ft_memc
 				ft_strchr.c ft_strrchr.c ft_strncmp.c ft_strlcpy.c ft_strlcat.c ft_strnstr.c ft_putstr_fd.c \
 				ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c  \
 				ft_putendl_fd.c ft_putnbr_fd.c ft_striteri.c ft_strlen.c ft_itoa.c ft_strmapi.c ft_putchar_fd.c \
-				ft_safe_malloc.c ft_err.c ft_strstr.c ft_str_ends_with.c ft_str_contains.c ft_isspace.c
+				ft_safe_malloc.c ft_err.c ft_strstr.c ft_str_ends_with.c ft_str_contains.c ft_isspace.c \
+				ft_append.c
 
 OBJS = $(MANDATORY:.c=.o)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bst.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:35 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/12 18:41:36 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/19 15:44:55 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,10 @@ void traverse_bst (t_BST_ptr tree, t_travers_type travers_type, visitor fptr);
 bool _less (const char* op1, const char* op2);
 bool _greater (const char* op1, const char* op2);
 bool _equal (const char* op1, const char* op2);
+
+// bst_to_matrix
+char**	bst_to_matrix(t_BST_ptr tree);
+
 
 
 #endif // BST_H

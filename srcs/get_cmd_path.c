@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/19 15:12:35 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/19 15:52:11 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static char**	get_path (t_minishell_ptr minishell)
 static bool exec (char* full_path, t_command_ptr command)
 {
 	char		**args;
-	// char		**env;
+	char		**env;
 	pid_t		pid;
 
 	if (access(full_path, X_OK) == 0)
@@ -36,8 +36,9 @@ static bool exec (char* full_path, t_command_ptr command)
 		{
 			push_front_lt(command->options, command->name);
 			move_back_lt(command->options, command->args);
+			env = bst_to_matrix(command->minishell->env);
 			args = list_to_matrix_lt(command->options);
-			execve(full_path, args, NULL);
+			execve(full_path, args, env);
 		}
 		else if (pid > 0)
 			wait(NULL);

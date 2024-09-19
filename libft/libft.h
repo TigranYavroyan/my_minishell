@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 14:07:53 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/12 18:51:10 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/19 15:39:55 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ void	*wrapper_malloc(int bytes) __attribute__((warn_unused_result, malloc));
 void	_err(const char *msg);
 bool	ft_str_ends_with(char *haystack, char *needle);
 bool	ft_str_contains(char *haystack, char *needle);
+void	ft_append(char **left, char *right);
 
 #endif // LIBFT_H
