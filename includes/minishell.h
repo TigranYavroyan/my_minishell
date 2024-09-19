@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/17 20:32:17 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/19 13:55:23 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void						ft_remove_spaces(t_list_ptr line);
 
 // helpers
 bool						is_quote(char ch);
+void						remove_2d_str (char** str);
 
 // append
 void						ft_append(char **left, char *right);

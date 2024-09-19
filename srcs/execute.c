@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:50:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/17 20:15:33 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/19 13:52:55 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void execute (t_minishell_ptr minishell)
 	{
 		if (is_builtin(minishell->commands->cmds[i]->name))
 			exec_builtin(minishell->commands->cmds[i]);
-		access_cmd(minishell->commands->cmds[i]);
+		else
+			access_cmd(minishell->commands->cmds[i]);
 	}
 }

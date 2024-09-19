@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_cmp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:42:01 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/12 18:42:01 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/19 13:30:16 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ static int _strcmp_bst (const char* op1, const char* op2) {
     int i;
 
     i = 0;
+	if (!op1 && !op2)
+		return (0);
+	else if (!op1)
+		return (*op2);
+	else if (!op2)
+		return (*op1);
+
     while (op1[i] && op2[i])
     {
         if (op1[i] != op2[i])
