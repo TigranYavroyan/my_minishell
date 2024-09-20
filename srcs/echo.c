@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:23:51 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/20 20:37:42 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/20 20:40:08 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void ft_echo(t_command_ptr command)
 			s = s->next;
 		output = from_head_to_matrix_lt(s);
 		print_out(output);
-
 	}
 	else
 	{
