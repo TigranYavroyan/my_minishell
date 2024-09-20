@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/19 13:49:25 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/20 21:49:20 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ static void __ft_minishell__ (t_minishell_ptr minishell, char* input) {
 
 static void ft_minishell (t_minishell_ptr minishell) {
     char* input;
-
+    
+    log_header_in_file();
     while (true)
     {
         input = readline("Minishell>$ ");
+        log_in_file(input);
         __ft_minishell__(minishell, input);
         clear_lt(minishell->line);
 		clear_cmds(minishell->commands);

@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/20 19:39:19 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/20 21:49:08 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # include <sys/wait.h>
 # include <termios.h>
 # include <unistd.h>
-#include <limits.h>
+# include <limits.h>
 
 # define UNUSED __attribute__((unused))
 # define DTOR __attribute__((destructor))
@@ -59,6 +59,7 @@ struct						s_minishell
 {
 	t_list_ptr				line;
 	t_BST_ptr				env;
+	t_BST_ptr				export;
 	t_cmd_matrix_ptr		commands;
 };
 
@@ -138,5 +139,9 @@ bool						access_cmd(t_command_ptr command);
 
 // sort_env
 void						sort_env (char** env);
+
+// log_in_file
+void						log_in_file (char* input);
+void						log_header_in_file ();
 
 #endif // MINISHELL_H

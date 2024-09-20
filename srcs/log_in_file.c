@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_builtin.c                                     :+:      :+:    :+:   */
+/*   log_in_file.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 16:00:49 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/20 21:26:41 by tigran           ###   ########.fr       */
+/*   Created: 2024/09/20 21:36:29 by tigran            #+#    #+#             */
+/*   Updated: 2024/09/20 21:53:16 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void exec_builtin (t_command_ptr command)
+void log_header_in_file ()
 {
-	const char* val;
+	int fd = open("log.txt", O_CREAT | O_RDWR | O_APPEND);
+	const char* line = "-----------------------------------------------------------------------\n\n";
 
-	val = command->name;
-	if (_equal(val, "echo"))
-		ft_echo(command);
-	// if (_equal(val, "cd"))
-	// 	ft_cd(command);
-	if (_equal(val, "pwd"))
-		ft_pwd(command);
-	if (_equal(val, "export"))
-		ft_export(command);
-	if (_equal(val, "unset"))
-		ft_unset(command);
-	if (_equal(val, "env"))
-		ft_env(command);
-	// if (_equal(val, "exit"))
-	// 	ft_exit(command);
+	write(fd, line, ft_strlen(line));
+
+}
+
+void log_in_file (char* input)
+{
+	int fd = open("log.txt", O_CREAT | O_RDWR | O_APPEND);
+
+	write(fd, input, ft_strlen(input));
+	write(fd, "\n", 1);
+
+	close(fd);
 }

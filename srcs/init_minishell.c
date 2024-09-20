@@ -7,6 +7,7 @@ t_minishell_ptr init_minishell (char** env) {
 	minishell->line = init_lt();
 	sort_env(env);
 	minishell->env = matrix_to_bst(env, '=');
+	minishell->export = copy_bst(minishell->env);
 	minishell->commands = NULL;
 
 	return minishell;
