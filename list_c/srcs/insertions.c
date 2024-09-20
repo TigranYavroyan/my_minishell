@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:48 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/11 19:26:04 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/20 20:34:19 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,17 @@ void	insert_node_lt(t_list_ptr list, char *str, t_node *pos)
 	list->size++;
 }
 
-void	move_back_lt(t_list_ptr left, t_list_ptr right)
+void	move_back_lt(t_list_ptr* left, t_list_ptr right)
 {
 	if (empty_lt(right))
 		return ;
-	else if (empty_lt(left))
-		left = copy_lt(right);
+	else if (empty_lt(*left))
+		*left = copy_lt(right);
 	else
 	{
-		left->tail->next = right->head;
-		left->tail = right->tail;
-		left->size += right->size;
+		(*left)->tail->next = right->head;
+		(*left)->tail = right->tail;
+		(*left)->size += right->size;
 		right->tail = NULL;
 		right->head = NULL;
 		right->size = 0;

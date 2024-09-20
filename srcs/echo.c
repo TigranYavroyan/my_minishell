@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:23:51 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/20 20:08:23 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/20 20:37:42 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 static void	print_out (char** output)
 {
 	int	i;
+
+	if (!output || !(*output))
+		return ;
 
 	i = -1;
 	while (output[++i + 1])
@@ -28,8 +31,8 @@ void ft_echo(t_command_ptr command)
 	t_node_ptr	s;
 
 	output = NULL;
-	move_back_lt(command->options, command->args);
-	if (_equal(command->options->head->val, "-n"))
+	move_back_lt(&command->options, command->args);
+	if (!empty_lt(command->options) && _equal(command->options->head->val, "-n"))
 	{
 		s = command->options->head;
 		while (s && _equal(s->val, "-n"))

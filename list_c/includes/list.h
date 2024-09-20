@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/20 19:57:31 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/20 20:33:26 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	push_back_lt(t_list_ptr list, char *const str);
 
 void	push_back_move_lt(t_list_ptr list, char *const str);
 
-void	move_back_lt(t_list_ptr left, t_list_ptr right);
+void	move_back_lt(t_list_ptr* left, t_list_ptr right);
 
 void	push_front_lt(t_list_ptr list, char *const str);
 

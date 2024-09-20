@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 17:25:58 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/07 14:10:38 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/20 20:23:37 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_list_ptr	copy_lt(t_list_ptr other)
 		push_back_lt(this, curr->val);
 		curr = curr->next;
 	}
-	this->size = other->size;
 	return this;
 }
 
