@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:40:20 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/19 14:39:39 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/20 19:54:19 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,6 @@ char	*at_lt(t_list_ptr list, int index)
 	while (index--)
 		curr = curr->next;
 	return (curr->val);
-}
-
-char	**list_to_matrix_lt(t_list_ptr list)
-{
-	t_node	*tmp;
-	char	**res;
-	int		size;
-	int		i;
-
-	size = list->size;
-	res = wrapper_malloc(sizeof(char *) * (size + 1));
-	res[size] = NULL;
-	i = -1;
-	tmp = list->head;
-	while (++i < size && tmp)
-	{
-		res[i] = ft_strdup(tmp->val);
-		tmp = tmp->next;
-	}
-	return (res);
 }
 
 int	value_counter_lt(t_list_ptr list, char *src)

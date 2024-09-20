@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:00:49 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/17 19:10:35 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/20 19:43:45 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void exec_builtin (t_command_ptr command)
 	const char* val;
 
 	val = command->name;
-	// if (_equal(val, "echo"))
-	// 	ft_echo(command);
+	if (_equal(val, "echo"))
+		ft_echo(command);
 	// if (_equal(val, "cd"))
 	// 	ft_cd(command);
 	if (_equal(val, "pwd"))

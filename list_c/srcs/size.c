@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   export.c                                           :+:      :+:    :+:   */
+/*   size.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 18:24:22 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/20 19:33:50 by tigran           ###   ########.fr       */
+/*   Created: 2024/09/20 19:56:29 by tigran            #+#    #+#             */
+/*   Updated: 2024/09/20 19:58:26 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
+#include <list.h>
 
-static void print_for_export_bst (key_type key, value_type value) {
-    printf("declare -x %s=\"%s\"\n", key, value);
-}
-
-void	ft_export (t_command_ptr command)
+int size_from_head_lt (t_node_ptr head)
 {
-	// if (!empty_lt(command->options))
-	if (empty_lt(command->options) && empty_lt(command->args))
+	int	size;
+
+	size = 0;
+	while (head)
 	{
-		traverse_bst(command->minishell->env, INORDER, print_for_export_bst);
+		head = head->next;
+		++size;
 	}
+	return (size);
 }

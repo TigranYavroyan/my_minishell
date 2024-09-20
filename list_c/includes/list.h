@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/12 18:52:36 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/20 19:57:31 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,16 @@ t_node	*find_word_range_lt(t_node *curr, t_node *end, char *word);
 t_node	*find_word_if_lt(t_node *node, bool (*p)(char *));
 int		find_index_lt(t_list_ptr list, t_node *to_find);
 
-char	**list_to_matrix_lt(t_list_ptr list);
-
 // helpers.c
 void	print_lt(t_list_ptr list);
 t_node	*make_node(char *str);
 t_node	*make_node_move(char *str);
+
+// list_to_matrix
+char	**from_head_to_matrix_lt(t_node_ptr head);
+char	**list_to_matrix_lt(t_list_ptr list);
+
+// size
+int		size_from_head_lt (t_node_ptr head);
 
 #endif // LIST_H

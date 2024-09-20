@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/19 13:55:23 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/20 19:39:19 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,16 +115,16 @@ void						exec_builtin(t_command_ptr command);
 // echo
 void						ft_echo(t_command_ptr command);
 
-// echo
+// cd
 void						ft_cd(t_command_ptr command);
 
-// echo
+// pwd
 void						ft_pwd(t_command_ptr command);
 
-// echo
+// export
 void						ft_export(t_command_ptr command);
 
-// echo
+// unset
 void						ft_unset(t_command_ptr command);
 
 // env
