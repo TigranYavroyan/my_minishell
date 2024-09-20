@@ -70,9 +70,9 @@ fclean : clean
 re : fclean all
 
 push :
-	git add .
-	git commit -m "added something"
-	git push
+	@git add .
+	@git commit -m "added something"
+	@git push
 	@echo "$(SKY) Pushed! $(RESET)"
 
 config:
