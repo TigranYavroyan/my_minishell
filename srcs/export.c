@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:22 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/21 18:34:51 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/21 19:01:04 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_export (t_command_ptr command)
 		{
 			eq_sign = ft_strchr(curr->val, '=');
 			if (!is_var_name(curr->val, eq_sign))
-				printf("bash: export: `%s: not a valid identifier\n", curr->val);
+				printf("minishell: export: `%s': not a valid identifier\n", curr->val);
 			else
 				_add_variable(command->minishell, curr, eq_sign);
 			curr = curr->next;

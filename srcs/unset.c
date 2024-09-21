@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:40 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/20 21:35:00 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/21 19:01:54 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,13 @@ void ft_unset (t_command_ptr command)
 	curr = command->args->head;
 	while (curr)
 	{
-		remove_bst(command->minishell->env, curr->val);
-		remove_bst(command->minishell->export, curr->val);
+		if (!is_var_name(curr->val, NULL))
+			printf("minishell: unset: `%s': not a valid identifier\n", curr->val);
+		else
+		{
+			remove_bst(command->minishell->env, curr->val);
+			remove_bst(command->minishell->export, curr->val);
+		}
 		curr = curr->next;
 	}
 }

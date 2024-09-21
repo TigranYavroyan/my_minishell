@@ -6,11 +6,56 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/21 15:49:43 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/21 19:18:42 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+
+static char**	get_path (t_minishell_ptr minishell);
+static bool		_exec_util (char* full_path, t_command_ptr command);
+static bool		exec(t_command_ptr command, char **path, int i);
+
+static bool	exec(t_command_ptr command, char **path, int i)
+{
+	char*	full_path;
+
+	if (access(command->name, X_OK) != 0)
+	{
+		full_path = ft_strjoin(path[i], "/");
+		ft_append(&full_path, command->name);
+	}
+	else
+		full_path = ft_strdup(command->name);
+	if (_exec_util(full_path, command))
+	{
+		free(full_path);
+		return (true);
+	}
+	free(full_path);
+	return (false);
+}
+
+bool	access_cmd(t_command_ptr command)
+{
+	char	**path;
+	int		i;
+	bool	status;
+
+	path = get_path(command->minishell);
+	i = -1;
+	status = false;
+	while (path[++i] != NULL)
+	{
+		if (exec(command, path, i))
+		{
+			status = true;
+			break;
+		}
+	}
+	remove_2d_str(path);
+	return (status);
+}
 
 static char**	get_path (t_minishell_ptr minishell)
 {
@@ -22,7 +67,7 @@ static char**	get_path (t_minishell_ptr minishell)
 	return (res);
 }
 
-static bool exec (char* full_path, t_command_ptr command)
+static bool _exec_util (char* full_path, t_command_ptr command)
 {
 	char		**args;
 	char		**env;
@@ -47,27 +92,4 @@ static bool exec (char* full_path, t_command_ptr command)
 		return (true);
 	}
 	return (false);
-}
-
-bool	access_cmd(t_command_ptr command)
-{
-	char	**path;
-	char	*full_path;
-	int		i;
-
-	path = get_path(command->minishell);
-	i = -1;
-	while (path[++i] != NULL)
-	{
-		full_path = ft_strjoin(path[i], "/");
-		ft_append(&full_path, command->name);
-		if (exec(full_path, command))
-		{
-			free(full_path);
-			break;
-		}
-		free(full_path);
-	}
-	remove_2d_str(path);
-	return (true);
 }
