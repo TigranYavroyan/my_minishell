@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/20 21:49:08 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/21 17:15:34 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,9 @@ bool						access_cmd(t_command_ptr command);
 
 // sort_env
 void						sort_env (char** env);
+
+// is_var_name
+bool						is_var_name (char* s, char* e);
 
 // log_in_file
 void						log_in_file (char* input);

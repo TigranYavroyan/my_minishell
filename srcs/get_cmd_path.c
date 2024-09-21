@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmd_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/20 20:34:04 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/21 15:49:43 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ static bool exec (char* full_path, t_command_ptr command)
 			env = bst_to_matrix(command->minishell->env);
 			args = list_to_matrix_lt(command->options);
 			execve(full_path, args, env);
+			ft_putstr_fd("execve failure\n", ERROR);
 		}
-		else if (pid > 0)
-			wait(NULL);
+		else
+			waitpid(pid, NULL, 0); // check
 		remove_2d_str(args);
 		return (true);
 	}

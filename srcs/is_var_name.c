@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_minishell.c                                  :+:      :+:    :+:   */
+/*   is_var_name.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/12 18:41:26 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/21 12:57:37 by tyavroya         ###   ########.fr       */
+/*   Created: 2024/09/21 16:26:22 by tyavroya          #+#    #+#             */
+/*   Updated: 2024/09/21 17:26:25 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void clear_minishell(t_minishell_ptr* minishell)
+bool	is_var_name (char* s, char* e)
 {
-	clear_lt((*minishell)->line);
-	free((*minishell)->line);
-
-	clear_bst(&(*minishell)->env);
-	clear_bst(&(*minishell)->export);
-	free(*minishell);
-	*minishell = NULL;
+	if (!s)
+		return (false);
+	if (!ft_isalpha(*s) && *s != '_')
+		return (false);
+	if (!e)
+		e = s + ft_strlen(s);
+	++s;
+	while (s && s != e)
+	{
+		if (!ft_isalnum(*s) && *s != '_')
+			return (false);
+		++s;
+	}
+	return (true);
 }

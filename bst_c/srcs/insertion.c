@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insertion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:57 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/12 18:41:58 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/21 18:24:08 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ static t_TreeNode_ptr __insert (t_TreeNode_ptr root, const key_type key, const v
 static void _update_old_value (t_TreeNode_ptr TreeNode, const value_type value);
 
 void insert_bst (t_BST_ptr bst, const key_type key, const value_type value) {
-    bst->root = __insert (bst->root, key, value);
-    ++bst->size;
+	if (!find_bst(bst, key))
+	{
+		bst->root = __insert (bst->root, key, value);
+		++bst->size;
+	}
 }
 
 void update_bst (t_BST_ptr bst, const key_type key, const value_type value) {
