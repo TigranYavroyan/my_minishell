@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/21 19:18:42 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/23 20:28:07 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,12 @@ static bool _exec_util (char* full_path, t_command_ptr command)
 			move_back_lt(&command->options, command->args);
 			env = bst_to_matrix(command->minishell->env);
 			args = list_to_matrix_lt(command->options);
-			execve(full_path, args, env);
-			ft_putstr_fd("execve failure\n", ERROR);
+			execve(full_path, args, env)
+			__exit__()
 		}
 		else
-			waitpid(pid, NULL, 0); // check
+			// waitpid(pid, NULL, 0); // check
+			wait(NULL);
 		remove_2d_str(args);
 		return (true);
 	}

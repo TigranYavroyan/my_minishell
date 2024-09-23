@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/20 21:49:20 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/23 20:25:47 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void __ft_minishell__ (t_minishell_ptr minishell, char* input) {
 
 static void ft_minishell (t_minishell_ptr minishell) {
     char* input;
-    
+
     log_header_in_file();
     while (true)
     {
@@ -62,7 +62,7 @@ int main (int argc, char** argv, char** env)
     clear_minishell(&minishell);
 }
 
-void DTOR ___exit___ ()
-{
-	system("leaks minishell");
-}
+// void DTOR ___exit___ ()
+// {
+// 	system("leaks minishell");
+// }

@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 19:43:10 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/19 15:13:34 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/23 20:28:31 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,5 @@ bool is_quote(char ch)
 {
 	return (ch == '\'' || ch == '\"');
 }
+
+void __exit__(const char* name, const char* err)
