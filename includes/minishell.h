@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/21 17:15:34 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/23 22:00:06 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@
 
 # define UNUSED __attribute__((unused))
 # define DTOR __attribute__((destructor))
-# define IN 0
-# define OUT 1
-# define ERROR 2
+# define INV_OPTION 2
+# define INV_ARG 1
+# define CMD_NOT_FOUND 127
+# define DIR_ERROR 126
+# define SYNTAX_ERROR 258
 
 typedef struct s_minishell	t_minishell;
 typedef t_minishell			*t_minishell_ptr;
@@ -86,6 +88,8 @@ void						ft_remove_spaces(t_list_ptr line);
 // helpers
 bool						is_quote(char ch);
 void						remove_2d_str (char** str);
+void						ft_err_msg(char *msg);
+void						__exit__(const char* name, const char* err);
 
 // append
 void						ft_append(char **left, char *right);

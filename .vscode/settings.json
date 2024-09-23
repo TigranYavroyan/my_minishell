@@ -13,6 +13,7 @@
 		"unordered_map": "c",
 		"utility": "c",
 		"vector": "c",
-		"stat.h": "c"
+		"stat.h": "c",
+		"typeinfo": "c"
 	}
 }
