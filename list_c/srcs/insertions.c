@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insertions.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:48 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/21 13:17:46 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:37:44 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	move_back_lt(t_list_ptr* left, t_list_ptr right)
 	if (empty_lt(right))
 		return ;
 	else if (empty_lt(*left))
-		*left = copy_lt(right);
+		*left = copy_lt(right); // potential leaks
 	else
 	{
 		(*left)->tail->next = right->head;

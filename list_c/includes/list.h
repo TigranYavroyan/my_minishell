@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/20 20:33:26 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/24 17:39:02 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ bool	diff_lt(char *word, char *to_cmp);
 
 t_list_ptr	copy_lt(t_list_ptr other);
 
+t_list_ptr	move_lt(t_list_ptr* other);
+
 t_list_ptr	copy_range_lt(t_node *node, t_node *end);
 
 int		value_counter_lt(t_list_ptr list, char *src);
@@ -95,5 +97,6 @@ char	**list_to_matrix_lt(t_list_ptr list);
 
 // size
 int		size_from_head_lt (t_node_ptr head);
+int		get_size(t_list_ptr list);
 
 #endif // LIST_H

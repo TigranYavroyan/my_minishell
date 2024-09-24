@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:50 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/16 20:10:42 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/24 16:39:19 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 void	free_node(t_node **node)
 {
 	free((*node)->val);
-	(*node)->val = NULL;
-	(*node)->next = NULL;
-	(*node)->prev = NULL;
 	free(*node);
 }
 

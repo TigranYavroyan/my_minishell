@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmds_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 19:06:24 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/17 17:33:08 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:51:15 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static void remove_cmd(t_command_ptr* command)
 	clear_lt((*command)->options);
 	free((*command)->options);
 	free((*command)->name);
+	(*command)->minishell = NULL;
 	free(*command);
 	*command = NULL;
 }

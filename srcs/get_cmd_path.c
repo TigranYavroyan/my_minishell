@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmd_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/23 20:28:07 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:39:41 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ bool	access_cmd(t_command_ptr command)
 			break;
 		}
 	}
+	if (status == false)
+		__err_msg__(command->name, ": command not found", CMD_NOT_FOUND);
 	remove_2d_str(path);
 	return (status);
 }
@@ -83,8 +85,8 @@ static bool _exec_util (char* full_path, t_command_ptr command)
 			move_back_lt(&command->options, command->args);
 			env = bst_to_matrix(command->minishell->env);
 			args = list_to_matrix_lt(command->options);
-			execve(full_path, args, env)
-			__exit__()
+			execve(full_path, args, env);
+			exit(DIR_ERROR);
 		}
 		else
 			// waitpid(pid, NULL, 0); // check

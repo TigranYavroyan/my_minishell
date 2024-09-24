@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/23 22:00:06 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:05:31 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,14 @@ bool						ft_quotes_check(t_list_ptr line);
 void						ft_remove_spaces(t_list_ptr line);
 
 // helpers
-bool						is_quote(char ch);
 void						remove_2d_str (char** str);
 void						ft_err_msg(char *msg);
-void						__exit__(const char* name, const char* err);
+void						__err_msg__(char* name, char* err, int val);
+void						__err_msg_prmt__(char* name, char* err, int val);
+
+// check_helpers
+bool						is_num_str(const char* str);
+bool						is_quote(char ch);
 
 // append
 void						ft_append(char **left, char *right);
@@ -146,6 +150,11 @@ void						sort_env (char** env);
 
 // is_var_name
 bool						is_var_name (char* s, char* e);
+
+// status
+void						set_status_unsigned(int status);
+void						set_status_signed(int status);
+int							get_status ();
 
 // log_in_file
 void						log_in_file (char* input);

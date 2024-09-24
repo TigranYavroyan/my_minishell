@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/23 20:25:47 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:41:32 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ static void __ft_minishell__ (t_minishell_ptr minishell, char* input) {
     ft_remove_spaces(minishell->line);
     if (!ft_quotes_check(minishell->line))
 	{
-        ft_putstr_fd("The quotes error\n", ERROR); // have to add deallocation
+        __err_msg_prmt__(NULL, "Unclosed quotes", SYNTAX_ERROR);
 		return ;
 	}
     if (!pipe_check(minishell->line))
     {
-        ft_putstr_fd("Pipe error\n", ERROR); // have to add deallocation
+        __err_msg_prmt__(NULL, "syntax error near unexpected token `|\'", SYNTAX_ERROR);
 		return ;
     }
 	ft_count_cmds(minishell);
@@ -44,8 +44,6 @@ static void ft_minishell (t_minishell_ptr minishell) {
         clear_lt(minishell->line);
 		clear_cmds(minishell->commands);
 		free(minishell->commands);
-		if (_equal(input, "exit"))
-			break;
         free(input);
     }
     free(input);
@@ -62,7 +60,7 @@ int main (int argc, char** argv, char** env)
     clear_minishell(&minishell);
 }
 
-// void DTOR ___exit___ ()
+// void DTOR ___err___ ()
 // {
 // 	system("leaks minishell");
 // }

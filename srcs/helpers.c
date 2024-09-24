@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 19:43:10 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/23 21:52:51 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/24 15:30:37 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,6 @@ void remove_2d_str (char** str)
 	free(str);
 }
 
-bool is_quote(char ch)
-{
-	return (ch == '\'' || ch == '\"');
-}
-
 void	ft_err_msg(char *msg)
 {
 	ft_putstr_fd("minishell: ", STDERR_FILENO);
@@ -34,10 +29,15 @@ void	ft_err_msg(char *msg)
 		ft_putendl_fd(msg, STDERR_FILENO);
 }
 
-void __exit__(const char* name, const char* err, unsigned int val)
+void __err_msg__(char* name, char* err, int val)
 {
-	ft_err_msg(NULL);
 	ft_putstr_fd(name, STDERR_FILENO);
 	ft_putendl_fd(err, STDERR_FILENO);
 	set_status_unsigned(val);
+}
+
+void __err_msg_prmt__(char* name, char* err, int val)
+{
+	ft_err_msg(NULL);
+	__err_msg__(name, err, val);
 }

@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:00:49 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/20 21:26:41 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/24 17:27:54 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void exec_builtin (t_command_ptr command)
 		ft_echo(command);
 	// if (_equal(val, "cd"))
 	// 	ft_cd(command);
-	if (_equal(val, "pwd"))
+	else if (_equal(val, "pwd"))
 		ft_pwd(command);
-	if (_equal(val, "export"))
+	else if (_equal(val, "export"))
 		ft_export(command);
-	if (_equal(val, "unset"))
+	else if (_equal(val, "unset"))
 		ft_unset(command);
-	if (_equal(val, "env"))
+	else if (_equal(val, "env"))
 		ft_env(command);
-	// if (_equal(val, "exit"))
-	// 	ft_exit(command);
+	else if (_equal(val, "exit"))
+		ft_exit(command);
 }
