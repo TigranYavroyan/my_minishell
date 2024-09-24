@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:11 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/24 17:38:54 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/24 18:26:09 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 void ft_exit(t_command_ptr command)
 {
 	char*	arg;
+	int		sign;
 
 	move_back_lt(&command->options, command->args);
 	if (!empty_lt(command->options))
 	{
-		if (is_num_str(command->options->head->val))
+		if (is_num_str(command->options->head->val, &sign))
 		{
 			if (get_size(command->options) > 1)
 			{
@@ -27,7 +28,7 @@ void ft_exit(t_command_ptr command)
 				return ;
 			}
 			else
-				set_status_unsigned(ft_atoi(command->options->head->val));
+				set_status_unsigned(sign * ft_atoi(command->options->head->val + 1));
 		}
 		else
 		{

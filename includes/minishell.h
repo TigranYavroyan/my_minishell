@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/24 16:05:31 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/24 18:22:04 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define INV_ARG 1
 # define CMD_NOT_FOUND 127
 # define DIR_ERROR 126
+# define EXIT_ERROR 255
 # define SYNTAX_ERROR 258
 
 typedef struct s_minishell	t_minishell;
@@ -92,7 +93,7 @@ void						__err_msg__(char* name, char* err, int val);
 void						__err_msg_prmt__(char* name, char* err, int val);
 
 // check_helpers
-bool						is_num_str(const char* str);
+bool						is_num_str(const char* str, int* sign);
 bool						is_quote(char ch);
 
 // append
