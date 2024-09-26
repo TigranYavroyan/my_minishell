@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:22 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/21 19:01:04 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/26 14:37:54 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ static void _add_variable (t_minishell_ptr minishell, t_node_ptr curr, char* eq_
 void	ft_export (t_command_ptr command)
 {
 	char		*eq_sign;
+	char		*err;
 	t_node_ptr	curr;
 
+	err = ft_strdup("export: ");
 	if (!empty_lt(command->options))
 		printf("minishell: export: %s: invalid option\n", command->options->head->val);
 	else if (!empty_lt(command->args))
@@ -37,6 +39,7 @@ void	ft_export (t_command_ptr command)
 	}
 	else
 		traverse_bst(command->minishell->export, INORDER, print_for_export_bst);
+	free(err);
 }
 
 static void print_for_export_bst (key_type key, value_type value) {

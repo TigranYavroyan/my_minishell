@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/24 17:39:41 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/26 13:47:08 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,31 @@
 static char**	get_path (t_minishell_ptr minishell);
 static bool		_exec_util (char* full_path, t_command_ptr command);
 static bool		exec(t_command_ptr command, char **path, int i);
+
+bool	access_cmd(t_command_ptr command)
+{
+	char	**path;
+	int		i;
+	bool	status;
+
+	if (is_dir(command->name))
+		return (false);
+	path = get_path(command->minishell);
+	i = -1;
+	status = false;
+	while (path[++i] != NULL)
+	{
+		if (exec(command, path, i))
+		{
+			status = true;
+			break;
+		}
+	}
+	if (status == false)
+		__err_msg_prmt__(command->name, ": command not found", CMD_NOT_FOUND);
+	remove_2d_str(path);
+	return (status);
+}
 
 static bool	exec(t_command_ptr command, char **path, int i)
 {
@@ -34,29 +59,6 @@ static bool	exec(t_command_ptr command, char **path, int i)
 	}
 	free(full_path);
 	return (false);
-}
-
-bool	access_cmd(t_command_ptr command)
-{
-	char	**path;
-	int		i;
-	bool	status;
-
-	path = get_path(command->minishell);
-	i = -1;
-	status = false;
-	while (path[++i] != NULL)
-	{
-		if (exec(command, path, i))
-		{
-			status = true;
-			break;
-		}
-	}
-	if (status == false)
-		__err_msg__(command->name, ": command not found", CMD_NOT_FOUND);
-	remove_2d_str(path);
-	return (status);
 }
 
 static char**	get_path (t_minishell_ptr minishell)

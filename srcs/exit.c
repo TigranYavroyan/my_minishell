@@ -6,21 +6,20 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:11 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/24 18:26:09 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/26 13:08:27 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void ft_exit(t_command_ptr command)
+void ft_exit(t_command_ptr command) // have to quotes checking and passing
 {
 	char*	arg;
-	int		sign;
 
 	move_back_lt(&command->options, command->args);
 	if (!empty_lt(command->options))
 	{
-		if (is_num_str(command->options->head->val, &sign))
+		if (is_num_str(command->options->head->val))
 		{
 			if (get_size(command->options) > 1)
 			{
@@ -28,16 +27,17 @@ void ft_exit(t_command_ptr command)
 				return ;
 			}
 			else
-				set_status_unsigned(sign * ft_atoi(command->options->head->val + 1));
+				set_status_unsigned(ft_atoi(command->options->head->val));
 		}
 		else
 		{
 			arg = ft_strdup(command->options->head->val);
 			ft_append(&arg, ": numeric argument required");
-			__err_msg_prmt__("exit: ", arg, INV_OPTION);
+			__err_msg_prmt__("exit: ", arg, EXIT_ERROR);
 			free(arg);
 		}
 	}
 	clear_minishell(&command->minishell);
+	ft_putstr_fd("exit\n", STDOUT_FILENO);
 	exit(get_status());
 }

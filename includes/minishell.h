@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/24 18:22:04 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/26 13:46:49 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,9 @@ void						__err_msg__(char* name, char* err, int val);
 void						__err_msg_prmt__(char* name, char* err, int val);
 
 // check_helpers
-bool						is_num_str(const char* str, int* sign);
+bool						is_num_str(const char* str);
 bool						is_quote(char ch);
+bool						is_dir(char* name);
 
 // append
 void						ft_append(char **left, char *right);
