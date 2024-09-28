@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/28 16:22:13 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/28 20:56:53 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void ft_minishell (t_minishell_ptr minishell) {
         log_in_file(input);
         __ft_minishell__(minishell, input);
         clear_lt(minishell->line);
+		printf("asdfsdaf\n");
 		clear_cmds(minishell->commands);
 		free(minishell->commands);
         free(input);
@@ -60,7 +61,7 @@ int main (int argc, char** argv, char** env)
     clear_minishell(&minishell);
 }
 
-void DTOR ___err___ ()
-{
-	system("leaks minishell");
-}
+// void DTOR ___err___ ()
+// {
+// 	system("leaks minishell");
+// }

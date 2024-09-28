@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/28 17:05:25 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/28 20:50:53 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,8 @@ void						ft_env(t_command_ptr command);
 void						ft_exit(t_command_ptr command);
 
 // get_cmd_path
-void						access_cmd(t_command_ptr command);
+bool						access_cmd(t_command_ptr command);
+bool						_exec_util (char* full_path, t_command_ptr command);
 
 // sort_env
 void						sort_env (char** env);

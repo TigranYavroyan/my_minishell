@@ -6,17 +6,16 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/28 16:29:10 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/28 20:58:19 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static bool		_exec_util (char* full_path, t_command_ptr command);
 static char**	get_path (t_minishell_ptr minishell);
 static char*	get_path_exec(t_command_ptr command);
 
-void	access_cmd(t_command_ptr command)
+bool	access_cmd(t_command_ptr command)
 {
 	string	exec_path;
 
@@ -24,11 +23,13 @@ void	access_cmd(t_command_ptr command)
 	if (exec_path == NULL)
 	{
 		__err_msg_prmt__(command->name, ": command not found", CMD_NOT_FOUND);
-		return ;
+		return (false);
 	}
 	if (is_dir(exec_path))
-		return ;
-	_exec_util(exec_path, command);
+		return (false);
+	free(command->name);
+	command->name = exec_path;
+	return (true);
 }
 
 static char**	get_path (t_minishell_ptr minishell)
@@ -41,7 +42,7 @@ static char**	get_path (t_minishell_ptr minishell)
 	return (res);
 }
 
-static bool _exec_util (char* full_path, t_command_ptr command)
+bool	_exec_util (char* full_path, t_command_ptr command)
 {
 	char		**args;
 	char		**env;
@@ -51,13 +52,20 @@ static bool _exec_util (char* full_path, t_command_ptr command)
 	args = NULL;
 	if (pid == 0)
 	{
-		push_front_lt(command->options, command->name);
-		move_back_lt(&command->options, command->args);
-		env = bst_to_matrix(command->minishell->env);
-		args = list_to_matrix_lt(command->options);
-		execve(full_path, args, env);
+		// if (built_in) // for fork (have to get in this function bool built_in)
+		// {
+		// 	// call execute_built_in
+		// }
+		// else {
+			push_front_lt(command->options, command->name);
+			move_back_lt(&command->options, command->args);
+			env = bst_to_matrix(command->minishell->env);
+			args = list_to_matrix_lt(command->options);
+			execve(full_path, args, env);
+			set_status_unsigned(DIR_ERROR);
+		// }
 		// have to free memory;
-		exit(DIR_ERROR);
+		exit(get_status());
 	}
 	else
 		// waitpid(pid, NULL, 0); // check
