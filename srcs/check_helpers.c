@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:28:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/26 14:11:15 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/26 16:00:58 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,27 @@
 
 bool is_dir (char* name)
 {
-	// struct stat info;
+	struct stat info;
 
-	// if (stat(name, &info) == -1)
-	// 	_err("chlpik"); // check later
-	
-	
 	if (_equal(name, "."))
 	{
 		__err_msg_prmt__(".", ": filename argument required", INV_OPTION);
 		return (true);
 	}
+	if (stat(name, &info) == -1)
+	{
+		if (_equal(name + ft_strlen(name) - 1, "/"))
+			__err_msg_prmt__(name, ": Not a directory", INV_ARG);
+		else
+			__err_msg_prmt__(name, ": No such file or directory", CMD_NOT_FOUND);
+		return (true);
+	}
+	else if (S_ISDIR(info.st_mode))
+	{
+		__err_msg_prmt__(name, ": is a directory", DIR_ERROR);
+		return (true);
+	}
+
 	return (false);
 }
 
