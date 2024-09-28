@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/24 17:41:32 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/28 16:22:13 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int main (int argc, char** argv, char** env)
     clear_minishell(&minishell);
 }
 
-// void DTOR ___err___ ()
-// {
-// 	system("leaks minishell");
-// }
+void DTOR ___err___ ()
+{
+	system("leaks minishell");
+}

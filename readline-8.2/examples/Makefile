@@ -21,7 +21,7 @@ RL_LIBRARY_VERSION = 8.2
 SHELL = /bin/sh
 RM = rm -f
 
-prefix = /Users/tyavroya/Desktop/afterPiscine/my_minishell
+prefix = /Users/tyavroya/Desktop/afterPiscine/my_minishell/readline_local
 exec_prefix = ${prefix}
 
 datarootdir = ${prefix}/share

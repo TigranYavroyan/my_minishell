@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 19:43:10 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/24 15:30:37 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/28 16:27:13 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,11 @@ void __err_msg_prmt__(char* name, char* err, int val)
 {
 	ft_err_msg(NULL);
 	__err_msg__(name, err, val);
+}
+
+
+void auto_free(void **ptr)
+{
+	free(*ptr);
+	*ptr = NULL;
 }

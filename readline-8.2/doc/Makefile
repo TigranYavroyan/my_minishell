@@ -22,7 +22,7 @@ topdir = ..
 srcdir = .
 
 
-prefix = /Users/tyavroya/Desktop/afterPiscine/my_minishell
+prefix = /Users/tyavroya/Desktop/afterPiscine/my_minishell/readline_local
 
 datarootdir = ${prefix}/share
 

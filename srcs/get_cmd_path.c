@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmd_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/26 13:47:08 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/28 16:19:08 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,51 +14,21 @@
 
 static char**	get_path (t_minishell_ptr minishell);
 static bool		_exec_util (char* full_path, t_command_ptr command);
-static bool		exec(t_command_ptr command, char **path, int i);
+static char*	get_path_exec(t_command_ptr command);
 
-bool	access_cmd(t_command_ptr command)
+void	access_cmd(t_command_ptr command)
 {
-	char	**path;
-	int		i;
-	bool	status;
+	string	exec_path;
 
-	if (is_dir(command->name))
-		return (false);
-	path = get_path(command->minishell);
-	i = -1;
-	status = false;
-	while (path[++i] != NULL)
+	exec_path = get_path_exec(command);
+	if (exec_path == NULL)
 	{
-		if (exec(command, path, i))
-		{
-			status = true;
-			break;
-		}
-	}
-	if (status == false)
 		__err_msg_prmt__(command->name, ": command not found", CMD_NOT_FOUND);
-	remove_2d_str(path);
-	return (status);
-}
-
-static bool	exec(t_command_ptr command, char **path, int i)
-{
-	char*	full_path;
-
-	if (access(command->name, X_OK) != 0)
-	{
-		full_path = ft_strjoin(path[i], "/");
-		ft_append(&full_path, command->name);
+		return ;
 	}
-	else
-		full_path = ft_strdup(command->name);
-	if (_exec_util(full_path, command))
-	{
-		free(full_path);
-		return (true);
-	}
-	free(full_path);
-	return (false);
+	if (is_dir(exec_path))
+		return ;
+	_exec_util(exec_path, command);
 }
 
 static char**	get_path (t_minishell_ptr minishell)
@@ -77,24 +47,50 @@ static bool _exec_util (char* full_path, t_command_ptr command)
 	char		**env;
 	pid_t		pid;
 
-	if (access(full_path, X_OK) == 0)
+	pid = fork();
+	args = NULL;
+	if (pid == 0)
 	{
-		pid = fork();
-		args = NULL;
-		if (pid == 0)
-		{
-			push_front_lt(command->options, command->name);
-			move_back_lt(&command->options, command->args);
-			env = bst_to_matrix(command->minishell->env);
-			args = list_to_matrix_lt(command->options);
-			execve(full_path, args, env);
-			exit(DIR_ERROR);
-		}
-		else
-			// waitpid(pid, NULL, 0); // check
-			wait(NULL);
-		remove_2d_str(args);
-		return (true);
+		push_front_lt(command->options, command->name);
+		move_back_lt(&command->options, command->args);
+		env = bst_to_matrix(command->minishell->env);
+		args = list_to_matrix_lt(command->options);
+		execve(full_path, args, env);
+		// have to free memory;
+		exit(DIR_ERROR);
 	}
-	return (false);
+	else
+		// waitpid(pid, NULL, 0); // check
+		wait(NULL);
+	remove_2d_str(args);
+	return (true);
+}
+
+static char*	get_path_exec(t_command_ptr command)
+{
+	char	*tmp;
+	char	*cmd;
+	char	**path;
+	int		i;
+
+	i = -1;
+	cmd = ft_strdup(command->name);
+	if (!access(cmd, X_OK | F_OK))
+		return (cmd);
+	path = get_path(command->minishell);
+	while (path && path[++i])
+	{
+		free(cmd);
+		tmp = ft_strjoin(path[i], "/");
+		cmd = ft_strjoin(tmp, command->name);
+		free(tmp);
+		if (!access(cmd, X_OK | F_OK))
+		{
+			remove_2d_str(path);
+			return (cmd);
+		}
+	}
+	remove_2d_str(path);
+	free(cmd);
+	return (NULL);
 }

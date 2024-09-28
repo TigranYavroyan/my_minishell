@@ -14,6 +14,7 @@
 		"utility": "c",
 		"vector": "c",
 		"stat.h": "c",
-		"typeinfo": "c"
+		"typeinfo": "c",
+		"iosfwd": "c"
 	}
 }

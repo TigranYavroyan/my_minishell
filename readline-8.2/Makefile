@@ -48,7 +48,7 @@ MV = mv
 
 SHELL = /bin/sh
 
-prefix = /Users/tyavroya/Desktop/afterPiscine/my_minishell
+prefix = /Users/tyavroya/Desktop/afterPiscine/my_minishell/readline_local
 exec_prefix = ${prefix}
 
 datarootdir = ${prefix}/share
