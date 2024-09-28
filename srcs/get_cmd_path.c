@@ -6,14 +6,14 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/28 16:19:08 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/28 16:29:10 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static char**	get_path (t_minishell_ptr minishell);
 static bool		_exec_util (char* full_path, t_command_ptr command);
+static char**	get_path (t_minishell_ptr minishell);
 static char*	get_path_exec(t_command_ptr command);
 
 void	access_cmd(t_command_ptr command)

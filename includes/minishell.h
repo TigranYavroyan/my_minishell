@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/28 16:27:30 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/28 17:05:25 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,18 @@ typedef struct s_command	t_command;
 typedef t_command			*t_command_ptr;
 typedef struct s_cmd_matrix	t_cmd_matrix;
 typedef t_cmd_matrix		*t_cmd_matrix_ptr;
-#define string __attribute__((cleanup(auto_free))) char*
+typedef enum e_direct		t_direct;
+
+# define string __attribute__((cleanup(auto_free))) char*
+
+enum						e_direct
+{
+	in = 0,
+	out = 1,
+	redirect_in = 2,
+	redirect_out = 4,
+	redirect_heredoc = 8
+};
 
 struct						s_command
 {
@@ -92,7 +103,7 @@ void						remove_2d_str (char** str);
 void						ft_err_msg(char *msg);
 void						__err_msg__(char* name, char* err, int val);
 void						__err_msg_prmt__(char* name, char* err, int val);
-void						auto_free(void **ptr);
+void						auto_free(void *ptr);
 
 // check_helpers
 bool						is_num_str(const char* str);

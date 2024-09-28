@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_helpers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:28:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/26 16:00:58 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/28 18:00:56 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ bool is_dir (char* name)
 		__err_msg_prmt__(name, ": is a directory", DIR_ERROR);
 		return (true);
 	}
-
 	return (false);
 }
 

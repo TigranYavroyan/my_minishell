@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 19:43:10 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/28 16:27:13 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/28 17:15:37 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ void __err_msg_prmt__(char* name, char* err, int val)
 }
 
 
-void auto_free(void **ptr)
+void auto_free(void *ptr)
 {
-	free(*ptr);
-	*ptr = NULL;
+	free(*(void**)ptr);
 }
