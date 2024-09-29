@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/29 15:30:01 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/29 15:56:32 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@
 # define DIR_ERROR 126
 # define EXIT_ERROR 255
 # define SYNTAX_ERROR 258
+# define LEAKS true
+
+# define string __attribute__((cleanup(auto_free))) char*
 
 typedef struct s_minishell	t_minishell;
 typedef t_minishell			*t_minishell_ptr;
@@ -51,7 +54,6 @@ typedef struct s_cmd_matrix	t_cmd_matrix;
 typedef t_cmd_matrix		*t_cmd_matrix_ptr;
 typedef enum e_direct		t_direct;
 
-# define string __attribute__((cleanup(auto_free))) char*
 
 enum						e_direct
 {
