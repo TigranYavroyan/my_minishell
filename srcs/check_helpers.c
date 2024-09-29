@@ -6,15 +6,15 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:28:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/28 18:00:56 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/29 15:21:50 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-bool is_dir (char* name)
+bool	is_dir(char *name)
 {
-	struct stat info;
+	struct stat	info;
 
 	if (_equal(name, "."))
 	{
@@ -26,7 +26,8 @@ bool is_dir (char* name)
 		if (_equal(name + ft_strlen(name) - 1, "/"))
 			__err_msg_prmt__(name, ": Not a directory", INV_ARG);
 		else
-			__err_msg_prmt__(name, ": No such file or directory", CMD_NOT_FOUND);
+			__err_msg_prmt__(name, ": No such file or directory",
+				CMD_NOT_FOUND);
 		return (true);
 	}
 	else if (S_ISDIR(info.st_mode))
@@ -37,7 +38,7 @@ bool is_dir (char* name)
 	return (false);
 }
 
-bool is_num_str(const char* str)
+bool	is_num_str(const char *str)
 {
 	int	i;
 
@@ -55,7 +56,7 @@ bool is_num_str(const char* str)
 	return (true);
 }
 
-bool is_quote(char ch)
+bool	is_quote(char ch)
 {
 	return (ch == '\'' || ch == '\"');
 }

@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/28 17:05:25 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/29 15:30:01 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ struct						s_command
 struct						s_minishell
 {
 	t_list_ptr				line;
-	t_BST_ptr				env;
-	t_BST_ptr				export;
+	t_bst_ptr				env;
+	t_bst_ptr				export;
 	t_cmd_matrix_ptr		commands;
 };
 
@@ -103,7 +103,7 @@ void						remove_2d_str (char** str);
 void						ft_err_msg(char *msg);
 void						__err_msg__(char* name, char* err, int val);
 void						__err_msg_prmt__(char* name, char* err, int val);
-void						auto_free(void *ptr);
+void						auto_free(char **ptr);
 
 // check_helpers
 bool						is_num_str(const char* str);
@@ -158,7 +158,8 @@ void						ft_env(t_command_ptr command);
 void						ft_exit(t_command_ptr command);
 
 // get_cmd_path
-void						access_cmd(t_command_ptr command);
+bool						access_cmd(t_command_ptr command);
+bool						_exec_util (char* full_path, t_command_ptr command);
 
 // sort_env
 void						sort_env (char** env);

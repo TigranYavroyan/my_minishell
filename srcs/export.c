@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:22 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/26 14:37:54 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/29 15:30:01 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static void print_for_export_bst (key_type key, value_type value);
+static void print_for_export_bst (t_key_type key, t_value_type value);
 static void _add_variable (t_minishell_ptr minishell, t_node_ptr curr, char* eq_sign);
 
 void	ft_export (t_command_ptr command)
@@ -42,7 +42,7 @@ void	ft_export (t_command_ptr command)
 	free(err);
 }
 
-static void print_for_export_bst (key_type key, value_type value) {
+static void print_for_export_bst (t_key_type key, t_value_type value) {
     printf("declare -x %s", key);
 	if (value)
 	{
@@ -56,8 +56,8 @@ static void print_for_export_bst (key_type key, value_type value) {
 
 static void _add_variable (t_minishell_ptr minishell, t_node_ptr curr, char* eq_sign)
 {
-	key_type	key;
-	value_type	value;
+	t_key_type	key;
+	t_value_type	value;
 
 	key = ft_substr(curr->val, 0, (eq_sign - curr->val));
 	value = NULL;
