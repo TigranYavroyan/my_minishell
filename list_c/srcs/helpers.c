@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:50 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/24 16:39:19 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/29 15:25:14 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ t_node	*make_node(char *str)
 	node->prev = NULL;
 	return (node);
 }
-
 
 t_node	*make_node_move(char *str)
 {

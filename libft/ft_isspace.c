@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:49:34 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/12 18:51:27 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/29 15:23:39 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isspace (int num)
+int	ft_isspace(int num)
 {
-	return (num == ' ' || num == '\t' || num == '\n' || num == '\v' || num == '\f' || num == '\r');
+	return (num == ' ' || num == '\t' || num == '\n' || num == '\v'
+		|| num == '\f' || num == '\r');
 }

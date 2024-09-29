@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 15:39:32 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/19 15:39:45 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/29 15:23:23 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_append(char **left, char *right)
 {
-	int l;
-	int r;
-	int i;
-	char *tmp;
+	int		l;
+	int		r;
+	int		i;
+	char	*tmp;
 
 	if ((!left || !(*left)) && !right)
 		return ;
@@ -28,7 +28,6 @@ void	ft_append(char **left, char *right)
 	i = -1;
 	while (++i < l)
 		tmp[i] = (*left)[i];
-
 	i = -1;
 	while (++i < r)
 		tmp[l + i] = right[i];

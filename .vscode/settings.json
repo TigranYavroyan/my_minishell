@@ -15,6 +15,8 @@
 		"vector": "c",
 		"stat.h": "c",
 		"typeinfo": "c",
-		"iosfwd": "c"
+		"iosfwd": "c",
+		"__node_handle": "c",
+		"functional": "c"
 	}
 }

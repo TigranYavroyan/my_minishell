@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/28 20:58:19 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/29 15:30:01 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ bool	access_cmd(t_command_ptr command)
 		return (false);
 	free(command->name);
 	command->name = exec_path;
+	exec_path = NULL;
 	return (true);
 }
 

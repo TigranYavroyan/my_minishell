@@ -6,17 +6,17 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:43 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/21 13:34:19 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/29 15:36:42 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <bst.h>
 
-static void				_clear(t_TreeNode_ptr root);
-static void				_copy_bst(t_TreeNode_ptr to, t_TreeNode_ptr from);
-static t_TreeNode_ptr	_remove(t_TreeNode_ptr root, const key_type key);
+static void				_clear(t_treenode_ptr root);
+static void				_copy_bst(t_treenode_ptr to, t_treenode_ptr from);
+static t_treenode_ptr	_remove(t_treenode_ptr root, const t_key_type key);
 
-void	clear_bst(t_BST_ptr *bst)
+void	clear_bst(t_bst_ptr *bst)
 {
 	if (!bst || !(*bst))
 		return ;
@@ -25,14 +25,14 @@ void	clear_bst(t_BST_ptr *bst)
 	*bst = NULL;
 }
 
-void	remove_bst(t_BST_ptr bst, const key_type key)
+void	remove_bst(t_bst_ptr bst, const t_key_type key)
 {
 	if (_find_bst(bst->root, key))
 		--bst->size;
 	bst->root = _remove(bst->root, key);
 }
 
-static void	_clear(t_TreeNode_ptr root)
+static void	_clear(t_treenode_ptr root)
 {
 	if (!root)
 		return ;
@@ -41,7 +41,7 @@ static void	_clear(t_TreeNode_ptr root)
 	_free_node(&root);
 }
 
-static void	_copy_bst(t_TreeNode_ptr to, t_TreeNode_ptr from)
+static void	_copy_bst(t_treenode_ptr to, t_treenode_ptr from)
 {
 	free(to->key);
 	free(to->value);
@@ -49,9 +49,9 @@ static void	_copy_bst(t_TreeNode_ptr to, t_TreeNode_ptr from)
 	to->value = ft_strdup(from->value);
 }
 
-static t_TreeNode_ptr	_remove(t_TreeNode_ptr root, const key_type key)
+static t_treenode_ptr	_remove(t_treenode_ptr root, const t_key_type key)
 {
-	t_TreeNode_ptr	tmp;
+	t_treenode_ptr	tmp;
 
 	if (!root)
 		return (NULL);
@@ -62,23 +62,18 @@ static t_TreeNode_ptr	_remove(t_TreeNode_ptr root, const key_type key)
 	else
 	{
 		if (!root->left)
-		{
 			tmp = root->right;
-			_free_node(&root);
-			return (tmp);
-		}
 		else if (!root->right)
-		{
 			tmp = root->left;
-			_free_node(&root);
-			return (tmp);
-		}
 		else
 		{
 			tmp = _find_min_bst(root->right);
 			_copy_bst(root, tmp);
 			root->right = _remove(root->right, tmp->key);
+			return (root);
 		}
+		_free_node(&root);
+		return (tmp);
 	}
 	return (root);
 }
