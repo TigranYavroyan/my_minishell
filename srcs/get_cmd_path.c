@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/29 19:17:35 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/29 20:57:48 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ bool	_exec_util (char* full_path, t_command_ptr command, bool is_btin, int* fds 
 	args = NULL;
 	if (pid == 0)
 	{
+		close(fds[in]);
 		if (is_btin)
 			exec_builtin(command);
 		else {
-			close(fds[in]);
 			push_front_lt(command->options, command->name);
 			move_back_lt(&command->options, command->args);
 			env = bst_to_matrix(command->minishell->env);
@@ -67,9 +67,7 @@ bool	_exec_util (char* full_path, t_command_ptr command, bool is_btin, int* fds 
 		// have to free memory;
 		exit(get_status());
 	}
-	else
-		waitpid(pid, NULL, 0); // check
-		// wait(NULL);
+	waitpid(pid, NULL, 0); // check
 	remove_2d_str(args);
 	return (true);
 }

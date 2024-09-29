@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:50:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/29 19:08:01 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/09/29 21:00:27 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static void eval(t_cmd_matrix_ptr commands, int* fds UNUSED, int i)
 		exec_builtin(commands->cmds[i]);
 	else if (is_btin || access_cmd(commands->cmds[i])) {
 		_exec_util(commands->cmds[i]->name, commands->cmds[i], is_btin, fds);
+		dup2(fds[in], STDIN_FILENO);
 	}
-	dup2(fds[in], STDIN_FILENO);
 	dup2(commands->minishell->descriptors->stdout, STDOUT_FILENO);
 	close(fds[in]);
 	close(fds[out]);
@@ -42,4 +42,6 @@ void execute (t_minishell_ptr minishell)
 			return (ft_err_msg("fork: Resource temporarily unavailable"));
 		eval(minishell->commands, fds, i);
 	}
+	while (-1 != wait(NULL))
+		;
 }
