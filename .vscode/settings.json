@@ -17,6 +17,8 @@
 		"typeinfo": "c",
 		"iosfwd": "c",
 		"__node_handle": "c",
-		"functional": "c"
+		"functional": "c",
+		"__locale": "c",
+		"ios": "c"
 	}
 }

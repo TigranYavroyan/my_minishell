@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clear_minishell.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:26 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/24 15:59:17 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/29 19:09:02 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,9 @@ void clear_minishell(t_minishell_ptr* minishell)
 	clear_bst(&(*minishell)->export);
 	clear_cmds((*minishell)->commands);
 	free(tmp->commands);
+	// close((*minishell)->descriptors->stdin);
+	// close((*minishell)->descriptors->stdout);
+	// close((*minishell)->descriptors->stderr);
+	free((*minishell)->descriptors);
 	free(tmp);
 }
