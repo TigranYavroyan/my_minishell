@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:26 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/29 20:48:22 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/02 13:54:23 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void clear_minishell(t_minishell_ptr* minishell)
 	clear_bst(&(*minishell)->export);
 	clear_cmds((*minishell)->commands);
 	free(tmp->commands);
-	// close((*minishell)->descriptors->stdin);
-	// close((*minishell)->descriptors->stdout);
-	// close((*minishell)->descriptors->stderr);
-	free((*minishell)->descriptors);
+	close(tmp->descriptors->stdin);
+	close(tmp->descriptors->stdout);
+	close(tmp->descriptors->stderr);
+	free(tmp->descriptors);
 	free(tmp);
 }

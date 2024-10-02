@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:23:51 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/29 16:05:20 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/02 14:25:24 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void ft_echo(t_command_ptr command)
 		print_out(output);
 		printf("\n");
 	}
-	set_status_unsigned(0);
+	set_status_unsigned(VAL_CMD);
 	remove_2d_str(output);
 }

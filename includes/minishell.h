@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/29 19:07:12 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/02 14:25:01 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define DTOR __attribute__((destructor))
 # define INV_OPTION 2
 # define INV_ARG 1
+# define VAL_CMD 0
 # define CMD_NOT_FOUND 127
 # define DIR_ERROR 126
 # define EXIT_ERROR 255

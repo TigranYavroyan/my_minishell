@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/29 20:57:48 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/02 14:25:09 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ bool	_exec_util (char* full_path, t_command_ptr command, bool is_btin, int* fds 
 
 	pid = fork();
 	args = NULL;
+	set_status_unsigned(VAL_CMD);
 	if (pid == 0)
 	{
 		close(fds[in]);
