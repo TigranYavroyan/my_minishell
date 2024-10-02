@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clear_minishell.c                                  :+:      :+:    :+:   */
+/*   descriptors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/12 18:41:26 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/02 13:54:23 by tyavroya         ###   ########.fr       */
+/*   Created: 2024/09/29 19:01:36 by tyavroya          #+#    #+#             */
+/*   Updated: 2024/09/29 20:44:50 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void clear_minishell(t_minishell_ptr* minishell)
+t_descriptors_ptr	make_descriptors(void)
 {
-	t_minishell_ptr	tmp;
+	t_descriptors_ptr	dskt;
 
-	tmp = *minishell;
-	clear_lt((*minishell)->line);
-	free((*minishell)->line);
-
-	clear_bst(&(*minishell)->env);
-	clear_bst(&(*minishell)->export);
-	clear_cmds((*minishell)->commands);
-	free(tmp->commands);
-	close(tmp->descriptors->stdin);
-	close(tmp->descriptors->stdout);
-	close(tmp->descriptors->stderr);
-	free(tmp->descriptors);
-	free(tmp);
+	dskt = wrapper_malloc(sizeof(t_descriptors));
+	dskt->stdin = dup(STDIN_FILENO);
+	dskt->stdout = dup(STDOUT_FILENO);
+	dskt->stderr = dup(STDERR_FILENO);
+	return dskt;
 }

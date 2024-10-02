@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/29 15:30:01 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/02 14:25:09 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char**	get_path (t_minishell_ptr minishell)
 	return (res);
 }
 
-bool	_exec_util (char* full_path, t_command_ptr command)
+bool	_exec_util (char* full_path, t_command_ptr command, bool is_btin, int* fds UNUSED)
 {
 	char		**args;
 	char		**env;
@@ -51,26 +51,24 @@ bool	_exec_util (char* full_path, t_command_ptr command)
 
 	pid = fork();
 	args = NULL;
+	set_status_unsigned(VAL_CMD);
 	if (pid == 0)
 	{
-		// if (built_in) // for fork (have to get in this function bool built_in)
-		// {
-		// 	// call execute_built_in
-		// }
-		// else {
+		close(fds[in]);
+		if (is_btin)
+			exec_builtin(command);
+		else {
 			push_front_lt(command->options, command->name);
 			move_back_lt(&command->options, command->args);
 			env = bst_to_matrix(command->minishell->env);
 			args = list_to_matrix_lt(command->options);
 			execve(full_path, args, env);
 			set_status_unsigned(DIR_ERROR);
-		// }
+		}
 		// have to free memory;
 		exit(get_status());
 	}
-	else
-		// waitpid(pid, NULL, 0); // check
-		wait(NULL);
+	waitpid(pid, NULL, 0); // check
 	remove_2d_str(args);
 	return (true);
 }

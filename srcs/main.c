@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/29 15:55:10 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/02 13:55:42 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ static void	ft_minishell(t_minishell_ptr minishell)
 	while (true)
 	{
 		input = readline("Minishell>$ ");
+		if (!input) {
+			printf("empty line: readline err\n");
+			break;
+		}
 		log_in_file(input);
 		__ft_minishell__(minishell, input);
 		clear_lt(minishell->line);

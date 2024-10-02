@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:23:51 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/24 17:38:59 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/02 14:25:24 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	print_out (char** output)
 	printf("%s", output[i]);
 }
 
-void ft_echo(t_command_ptr command) // leaks in case echo [some text]
+void ft_echo(t_command_ptr command)
 {
 	char		**output;
 	t_node_ptr	s;
@@ -46,5 +46,6 @@ void ft_echo(t_command_ptr command) // leaks in case echo [some text]
 		print_out(output);
 		printf("\n");
 	}
+	set_status_unsigned(VAL_CMD);
 	remove_2d_str(output);
 }

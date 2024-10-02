@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:16 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/12 19:34:09 by tigran           ###   ########.fr       */
+/*   Updated: 2024/09/29 18:24:40 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int _count (char* input, char* delim) {
 	int res;
-	
+
 	res = 0;
 	while (input[res] != '\0' && !ft_strchr(delim, input[res]))
 		++res;

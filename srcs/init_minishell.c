@@ -9,6 +9,7 @@ t_minishell_ptr init_minishell (char** env) {
 	minishell->env = matrix_to_bst(env, '=');
 	minishell->export = copy_bst(minishell->env);
 	minishell->commands = NULL;
+	minishell->descriptors = make_descriptors();
 
 	return minishell;
 }

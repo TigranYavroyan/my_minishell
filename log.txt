@@ -1,368 +1,119 @@
 -----------------------------------------------------------------------
 
-asdf
-adfs
-adsf
-ds
-f
-sda
-f
-dsaf
-dsa
-f
-dsa
-f
-exit
------------------------------------------------------------------------
-
-asdf
-chlpik
 ls
-exit
------------------------------------------------------------------------
-
-export
-env
-env
-exit
 -----------------------------------------------------------------------
 
 ls
-export a
-env
-export
-exit
------------------------------------------------------------------------
-
-export a
-export a
-export
-export b=
-exoirt
-export
-export c
-export
-exit
------------------------------------------------------------------------
-
-export a=b=c
-export
-export d c s
-export
-unset
-unset
-exit
------------------------------------------------------------------------
-
-export a
-export
-export b=
-export
------------------------------------------------------------------------
-
-export a
-export
-export b=
-export
-exit
------------------------------------------------------------------------
-
-export a
-export
-export b=
-export
-exit
------------------------------------------------------------------------
-
-export a
-ls
-export
-env
-export b=
-export
-env
-clear
-exit
 -----------------------------------------------------------------------
 
 ls
-cat li
-exit
+ls | wc -l
 -----------------------------------------------------------------------
 
 ls
 pwd
-adsf
-dsaf
-ads
-f
-ads
-f
-sadf
-sda
-f
-dsaf
-sda
-
-adsfadsfsad
-exit
+ls
+ls | ls
+ls | ls | ls
+ls | cat -e
 -----------------------------------------------------------------------
-
-export 123 123 12 3
-export adsf as 2
-export
-clear
-export a b c
-export
-exit
------------------------------------------------------------------------
-
-export a b  c
-export
-export d
-export
-exit
------------------------------------------------------------------------
-
-export a
-export
-export b=
-export
-exit
------------------------------------------------------------------------
-
-export a
-export
-exit
------------------------------------------------------------------------
-
-export a
-export
-exit
------------------------------------------------------------------------
-
-export a
-export
------------------------------------------------------------------------
-
-export a b=
-export
-make
-exit
------------------------------------------------------------------------
-
-export a
-export
 
 ls
-make re
-exit
+ls | wc -l
 -----------------------------------------------------------------------
 
-export a
-export a
-export
-export a
-export
-clear
-exit
------------------------------------------------------------------------
-
-export a
-export
-export b c d e
-export
-export a=
-export
-env
-exit
------------------------------------------------------------------------
-
-export a b= c
-export
-env
-unset b
-export
 ls
-clear
-exit
 -----------------------------------------------------------------------
 
-export a=
-export
-export a
-export
-export b
-export
-exit
------------------------------------------------------------------------
-
-.
-exit
------------------------------------------------------------------------
-
-en
------------------------------------------------------------------------
-
-adsf
------------------------------------------------------------------------
-
-env
-export
-clear
------------------------------------------------------------------------
-
-env
-export
 ls
-clear
-exit
 -----------------------------------------------------------------------
 
-env
-export
-clear
------------------------------------------------------------------------
-
-export
-env
 ls
+-----------------------------------------------------------------------
+
+ls
+ls
+ls | ls | ls | ls
+pwd
+echo
+cat -e
+-----------------------------------------------------------------------
+
+asdf
+sdaf
+asdf
+ls | ls | ls | ls
 clear
-adsf
-exit
------------------------------------------------------------------------
-
-cat ./
-exit
------------------------------------------------------------------------
-
 make
 ./minishell 
 -----------------------------------------------------------------------
 
-exi
 exit
-echo $?
+exit
+-----------------------------------------------------------------------
+
+ls
+-----------------------------------------------------------------------
+
+ls
+-----------------------------------------------------------------------
+
+ls
+-----------------------------------------------------------------------
+
+ls
+clear
+exit
+-----------------------------------------------------------------------
+
+ls | ls
+ls | wc -l
+clear
+exit
+-----------------------------------------------------------------------
+
+ls
+-----------------------------------------------------------------------
+
+ls
+-----------------------------------------------------------------------
+
+ls
+clear
+exit
+-----------------------------------------------------------------------
+
+exit
+-----------------------------------------------------------------------
+
+exit
+-----------------------------------------------------------------------
+
 ls
 exit
 -----------------------------------------------------------------------
 
-cat log.txt 
-cat ./
-exit
+ls
 -----------------------------------------------------------------------
 
-./
-exit
+ls
 -----------------------------------------------------------------------
 
-.
-./../../../../
-clear
-.adsf
-exit
+ls
 -----------------------------------------------------------------------
 
-./../../asdf
-exit
+ls
 -----------------------------------------------------------------------
 
-make
-exit
------------------------------------------------------------------------
-
-export a b c d=
-export
+echo
+pwd
 env
-clear
-./../adsf
------------------------------------------------------------------------
-
-adsf
-exit
------------------------------------------------------------------------
-
-.
-./
-make
-exit
------------------------------------------------------------------------
-
-.
-exit
------------------------------------------------------------------------
-
-.
-exit
------------------------------------------------------------------------
-
-../
-exit
------------------------------------------------------------------------
-
-make
-exit
------------------------------------------------------------------------
-
-../a
-echo $?
-exit
------------------------------------------------------------------------
-
-../a
-make
-exit
------------------------------------------------------------------------
-
-../a
-exit
------------------------------------------------------------------------
-
-../a
-exit
------------------------------------------------------------------------
-
-../a
-exit
------------------------------------------------------------------------
-
-../a
-exit
------------------------------------------------------------------------
-
-../
-.
-./
-cd ./a
-cd ..
-ls
-ls
 exit
 -----------------------------------------------------------------------
 
 ls
-ls
-exit
 -----------------------------------------------------------------------
 
-ia
-helo
-.
-./
-ls
-exit
------------------------------------------------------------------------
-
-ls
-/bin/ls
-./
-/bin/./
-./
-exit
------------------------------------------------------------------------
-
-ls
-/bin/ls
 ls
 -----------------------------------------------------------------------
 
@@ -370,113 +121,9 @@ ls
 -----------------------------------------------------------------------
 
 ls
-ls
-make
-make
-exit
 -----------------------------------------------------------------------
 
 ls
-.
-./
-exit
------------------------------------------------------------------------
-
-ls
-make
-exit
------------------------------------------------------------------------
-
-ls
-./
-make
-exit
------------------------------------------------------------------------
-
-./
-./
------------------------------------------------------------------------
-
-ls
-./
------------------------------------------------------------------------
-
-./
------------------------------------------------------------------------
-
-./
------------------------------------------------------------------------
-
-./
-./
-ls
-exit
------------------------------------------------------------------------
-
-./
------------------------------------------------------------------------
-
-lls
-ls
-echlpi
-exit
------------------------------------------------------------------------
-
-./
------------------------------------------------------------------------
-
-ls
------------------------------------------------------------------------
-
-ls
-make
-exit
------------------------------------------------------------------------
-
-ls
-./
-exit
------------------------------------------------------------------------
-
-ls
-pwd
-ls ../
-chlpik
-exit
------------------------------------------------------------------------
-
-ls
-asdf
-pwd
-chlpik
-wc -l 
-clear
-exit
------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-clear
-exit
------------------------------------------------------------------------
-
-ls
-asdf
-vayaaa
-exit
 -----------------------------------------------------------------------
 
 ls
@@ -484,375 +131,108 @@ asdf
 exit
 -----------------------------------------------------------------------
 
-.
-./
-ls
-chlpik
-exit
------------------------------------------------------------------------
-
-/bin/ls
-exit
+ls | wc -l
+ls | wc -l
 -----------------------------------------------------------------------
 
 ls
-/bin/ls
-/bin/ls -a
-clear
-exit
------------------------------------------------------------------------
-
-ls
-exit
------------------------------------------------------------------------
-
-ls
-chlpik
-ieee
-exit
------------------------------------------------------------------------
-
-chlpik
-exit
------------------------------------------------------------------------
-
-.
-exit
------------------------------------------------------------------------
-
-./
-exit
------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-exit
------------------------------------------------------------------------
-
-ls
-exit
------------------------------------------------------------------------
-
-asdf
------------------------------------------------------------------------
-
-ls
-asdf
-asdf
-asdf
-a
-sdf
-asd
-f
-asdf
-asdf
-sd
-fa
-
-ls
-exit
------------------------------------------------------------------------
-
-ls
-ls
-ls
-exit
------------------------------------------------------------------------
-
-ls
------------------------------------------------------------------------
-
-ls
-ls
-s
-exit
------------------------------------------------------------------------
-
-ls
-chlpik
-exit
------------------------------------------------------------------------
-
-ls
-exit
------------------------------------------------------------------------
-
-asdasd
-f
-asdf
-as
-exit
------------------------------------------------------------------------
-
-ls
-vaaaa
-.
-./
-exit
------------------------------------------------------------------------
-
-ls
-./script.sh 
-make
-exit
------------------------------------------------------------------------
-
-./script.sh 
-bash script.sh 
-chlpik
-exit
------------------------------------------------------------------------
-
-ls
-ia
-asdfsad
-f
-sadf
-as
-exit
------------------------------------------------------------------------
-
-ls
-sdfas
-df
-asf
-exit
------------------------------------------------------------------------
-
-ls
-asdf
-ls | 
-ls | ls
-clear
-exit
------------------------------------------------------------------------
-
-clear
-exit
------------------------------------------------------------------------
-
-cat log.txt 
-ls | ls
-clear
-exit
------------------------------------------------------------------------
-
-asdfsadf
-exit
------------------------------------------------------------------------
-
-ls
-exit
------------------------------------------------------------------------
-
-asdf
-exit
------------------------------------------------------------------------
-
-ls
-.
-./
-cd ...
-exit
------------------------------------------------------------------------
-
-./
-cd 
-exit
------------------------------------------------------------------------
-
-clear
------------------------------------------------------------------------
-
-ls
------------------------------------------------------------------------
-
-ls
------------------------------------------------------------------------
-
-ls
------------------------------------------------------------------------
-
-ls
------------------------------------------------------------------------
-
-ls
------------------------------------------------------------------------
-
-ls
------------------------------------------------------------------------
-
-ls
------------------------------------------------------------------------
-
-ls
------------------------------------------------------------------------
-
-ls
-ls
-make
-make
-exit
------------------------------------------------------------------------
-
-ls
------------------------------------------------------------------------
-
-ls
------------------------------------------------------------------------
-
-ls
-vaya
-exit
------------------------------------------------------------------------
-
-ls
------------------------------------------------------------------------
-
-ls
------------------------------------------------------------------------
-
-ls
------------------------------------------------------------------------
-
-ls
------------------------------------------------------------------------
-
-ls
-chlpik
-exit
------------------------------------------------------------------------
-
-export
-ls
-export a=123
-export
-unset a
-export
-export a b c d e=123
-export
-unset a b c d e 
-export
-exit
------------------------------------------------------------------------
-
-exit
------------------------------------------------------------------------
-
-ls
-chlpik
-exit
------------------------------------------------------------------------
-
-ls
-chlpik
-export a b c d e=123
-unset a b c d  e
-exit
------------------------------------------------------------------------
-
-ls
-chlpik
-export a b c d e=123
-unset a b c d e
-
-
-
-
-
-
-
-
-
-
-
-
-
-exit
------------------------------------------------------------------------
-
-ls
-chlpik
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-exit
------------------------------------------------------------------------
-
-ls
-chlpik
-/bin/ls
-wc -l
-ls
+ls | wc -l
 waya
+ls | cat -e
+make
+exit
+-----------------------------------------------------------------------
+
+ls
+ls | wc -l
+ls | wc -l | cat -e
+ls | wc -l | cat -e | cat -e | wc -l | cat -e
+export a b c | ls
+export
+exit
+-----------------------------------------------------------------------
+
+ls
+ls | exit
+b
+exit
+-----------------------------------------------------------------------
+
+ls
+exit
+-----------------------------------------------------------------------
+
+ls
+exit | exit | exit
+b
+exit
+-----------------------------------------------------------------------
+
+exit | exit | exit
+bash
+exit 123 | exit a 123 | exit
+exit
+-----------------------------------------------------------------------
+
+ls
+exit
+-----------------------------------------------------------------------
+
+ls
+ls | ls
+ls | ls | ls | cat -e
+exit
+-----------------------------------------------------------------------
+
+ls
+cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | ls
+-----------------------------------------------------------------------
+
+ cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |
+ cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat |cat | cat | ls
+exit
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+
+ls | wc -l
 clear
-exit
------------------------------------------------------------------------
-
-./
-.
-cd ls
 ls
-clear
+clear | ls
+bash
+echo
 exit
 -----------------------------------------------------------------------
 
 ls
+lss
+ls | lss
+ls | lss | ls
+bash
+exit
+-----------------------------------------------------------------------
+
+ls | lss | ls
 exit
 -----------------------------------------------------------------------
 
 ls
-chlpik
+ls | lss | ls
 exit
 -----------------------------------------------------------------------
 
-ls
+ls | lss | ls
 exit
 -----------------------------------------------------------------------
 
-ls
+ls | lss | ls
+exit
+-----------------------------------------------------------------------
+
+bash
+ls | lss | lss
+exit
+-----------------------------------------------------------------------
+
+lss | pwd
 exit
