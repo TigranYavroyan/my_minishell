@@ -6,13 +6,13 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:50:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/02 14:15:09 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/02 15:23:14 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static void eval(t_cmd_matrix_ptr commands, int* fds UNUSED, int i)
+static void eval(t_cmd_matrix_ptr commands, int* fds, int i)
 {
 	bool	is_btin;
 
@@ -42,6 +42,6 @@ void execute (t_minishell_ptr minishell)
 		eval(minishell->commands, fds, i);
 	}
 	dup2(minishell->descriptors->stdin, STDIN_FILENO);
-	// while (-1 != wait(NULL))
-	// 	;
+	while (-1 != wait(NULL))
+		;
 }

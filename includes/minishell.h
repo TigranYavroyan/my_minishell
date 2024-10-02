@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/02 14:25:01 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/02 19:21:17 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,11 @@ void						tokenize(t_minishell_ptr minishell, char *delim,
 // quotes_check
 bool						ft_quotes_check(t_list_ptr line);
 
-// remove_spaces
-void						ft_remove_spaces(t_list_ptr line);
+// symbol_resolution
+void						ft_symbol_resolution(t_minishell_ptr minishell);
+
+// dollar_resolution
+void						ft_dollar_resolution(t_minishell_ptr minishell, t_node_ptr curr, char opened_ch);
 
 // helpers
 void						remove_2d_str(char **str);
@@ -191,8 +194,8 @@ int							get_status(void);
 void						log_in_file(char *input);
 void						log_header_in_file(void);
 
-//descriptors
+// descriptors
 t_descriptors_ptr			make_descriptors(void);
-;
+
 
 #endif // MINISHELL_H

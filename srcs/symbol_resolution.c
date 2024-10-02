@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   remove_spaces.c                                    :+:      :+:    :+:   */
+/*   symbol_resolution.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:01:23 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/17 18:45:06 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/02 19:25:03 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ static void _update_quote_info (bool* open, char* opened_ch, t_node_ptr curr);
 static void _remove_head_spaces(t_list_ptr line);
 static void _remove_spaces(t_list_ptr line, t_node_ptr* curr);
 
-
-void ft_remove_spaces(t_list_ptr line)
+void ft_symbol_resolution(t_minishell_ptr minishell)
 {
 	bool		open;
 	char		opened_ch;
@@ -25,12 +24,14 @@ void ft_remove_spaces(t_list_ptr line)
 
 	open = false;
 	opened_ch = 0;
-	_remove_head_spaces(line);
-	curr = line->head;
+	_remove_head_spaces(minishell->line);
+	curr = minishell->line->head;
 	while (curr)
 	{
 		if (!open && ft_isspace(*curr->val))
-			_remove_spaces(line, &curr);
+			_remove_spaces(minishell->line, &curr);
+		if (*curr->val == '$')
+			ft_dollar_resolution(minishell, curr, opened_ch);
 		if (curr)
 		{
 			_update_quote_info(&open, &opened_ch, curr);
