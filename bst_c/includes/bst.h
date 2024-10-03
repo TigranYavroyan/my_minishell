@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:35 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/29 15:39:42 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/03 14:51:27 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void						clear_bst(t_bst_ptr *bst);
 
 // access
 t_value_type				get_bst(t_bst_ptr bst, const t_key_type key);
+t_value_type				get_bst_range(t_bst_ptr bst, const t_key_type begin, const t_key_type end);
 
 // find
 t_treenode_ptr				_find_min_bst(t_treenode_ptr root);

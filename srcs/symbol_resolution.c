@@ -6,17 +6,17 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:01:23 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/02 19:37:58 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/03 16:41:28 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static void _update_quote_info (bool* open, char* opened_ch, t_node_ptr curr);
-static void _remove_head_spaces(t_list_ptr line);
-static void _remove_spaces(t_list_ptr line, t_node_ptr* curr);
+static void	_update_quote_info(bool *open, char *opened_ch, t_node_ptr curr);
+static void	_remove_head_spaces(t_list_ptr line);
+static void	_remove_spaces(t_list_ptr line, t_node_ptr *curr);
 
-void ft_symbol_resolution(t_minishell_ptr minishell)
+void	ft_symbol_resolution(t_minishell_ptr minishell)
 {
 	bool		open;
 	char		opened_ch;
@@ -30,8 +30,8 @@ void ft_symbol_resolution(t_minishell_ptr minishell)
 	{
 		if (!open && ft_isspace(*curr->val))
 			_remove_spaces(minishell->line, &curr);
-		if (*curr->val == '$')
-			ft_dollar_resolution(minishell, curr, opened_ch);
+		if (curr && *curr->val == '$')
+			ft_dollar_resolution(minishell, curr, curr->val + 1, opened_ch);
 		if (curr)
 		{
 			_update_quote_info(&open, &opened_ch, curr);
@@ -40,7 +40,7 @@ void ft_symbol_resolution(t_minishell_ptr minishell)
 	}
 }
 
-static void _update_quote_info (bool* open, char* opened_ch, t_node_ptr curr)
+static void	_update_quote_info(bool *open, char *opened_ch, t_node_ptr curr)
 {
 	if (is_quote(*curr->val))
 	{
@@ -57,7 +57,7 @@ static void _update_quote_info (bool* open, char* opened_ch, t_node_ptr curr)
 	}
 }
 
-static void _remove_head_spaces(t_list_ptr line)
+static void	_remove_head_spaces(t_list_ptr line)
 {
 	t_node_ptr	curr;
 
@@ -69,7 +69,7 @@ static void _remove_head_spaces(t_list_ptr line)
 	}
 }
 
-static void _remove_spaces(t_list_ptr line, t_node_ptr* curr)
+static void	_remove_spaces(t_list_ptr line, t_node_ptr *curr)
 {
 	t_node_ptr	tmp;
 

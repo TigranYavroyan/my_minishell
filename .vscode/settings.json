@@ -19,6 +19,8 @@
 		"__node_handle": "c",
 		"functional": "c",
 		"__locale": "c",
-		"ios": "c"
+		"ios": "c",
+		"__bit_reference": "c",
+		"iterator": "c"
 	}
 }
