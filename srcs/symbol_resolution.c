@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:01:23 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/03 16:41:28 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/03 19:44:01 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_symbol_resolution(t_minishell_ptr minishell)
 	{
 		if (!open && ft_isspace(*curr->val))
 			_remove_spaces(minishell->line, &curr);
-		if (curr && *curr->val == '$')
+		if (curr && *curr->val == '$') // e$boba hello
 			ft_dollar_resolution(minishell, curr, curr->val + 1, opened_ch);
 		if (curr)
 		{
