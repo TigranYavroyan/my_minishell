@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/03 16:10:24 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:31:09 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef t_cmd_matrix			*t_cmd_matrix_ptr;
 typedef enum e_direct			t_direct;
 typedef struct s_descriptors	t_descriptors;
 typedef t_descriptors			*t_descriptors_ptr;
+typedef struct s_dollar_info	t_dollar_info;
+typedef	t_dollar_info			*t_dollar_info_ptr;
 
 enum							e_direct
 {
@@ -64,6 +66,13 @@ enum							e_direct
 	redirect_in = 2,
 	redirect_out = 4,
 	redirect_heredoc = 8
+};
+
+struct							s_dollar_info
+{
+	t_value_type	end;
+	t_value_type	resolved;
+	t_value_type	res;
 };
 
 struct							s_descriptors

@@ -6,68 +6,85 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:22:15 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/03 19:44:19 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/05 21:32:22 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
 static t_value_type	_find_right_end(t_value_type begin);
-static t_value_type _till_dollar(t_value_type begin);
-
-static UNUSED void print_range (char* begin, char* end)
-{
-	printf("print_range: ");
-	while (begin != end)
-	{
-		write(1, begin, 1);
-		++begin;
-	}
-	write(1, "\n", 1);
-}
+static t_value_type	_till_dollar(t_value_type begin);
+static void			_resolve(t_dollar_info_ptr df, t_value_type begin,
+						t_minishell_ptr minishell);
+static void			_final_res(t_node_ptr curr, t_value_type begin,
+						t_dollar_info_ptr df);
 
 void	ft_dollar_resolution(t_minishell_ptr minishell, t_node_ptr curr,
 		t_value_type begin, char opened_ch) // not complete
 {
-	t_value_type	end;
-	t_value_type	resolved;
-	t_value_type	remainder;
-	t_value_type	res;
+	t_dollar_info	df;
+	t_value_type	tmp_begin;
 
-	res = NULL;
+	tmp_begin = begin; // for e$SMTH hello case
+	if (ft_strlen(begin - 1) == 1)
+		return ;
+	df.res = NULL;
 	if (opened_ch == '\'')
 		return ;
-	else // leaks here
+	else
 	{
-		end = _find_right_end(begin);
-		resolved = get_bst_range(minishell->env, begin, end);
-		remainder = ft_substr(end, 0, ft_strlen(end));
-		ft_append(&res, resolved);
-		begin = end;
-		end = _till_dollar(end);
-		// printf("begin: %s\n", begin);
-		// printf("end: %s\n", end);
-		ft_append(&res, ft_substr(begin, 0, ft_strlen_range(begin, end)));
-		// printf("begin: %s\n", begin);
-		// printf("end: %s\n", end);
-		while (*end != '\0')
+		_resolve(&df, begin, minishell);
+		while (*df.end != '\0')
 		{
-			begin = end + 1;
-			end = _find_right_end(begin);
-			// printf("begin: %s\n", begin);
-			// printf("end: %s\n", end);
-			// print_range(begin, end);
-			resolved = get_bst_range(minishell->env, begin, end);
-			remainder = ft_substr(end, 0, ft_strlen(end));
-			ft_append(&res, resolved);
-			begin = end;
-			end = _till_dollar(end);
-			// print_range(begin, end);
-			ft_append(&res, ft_substr(begin, 0, ft_strlen_range(begin, end)));
+			begin = df.end + 1;
+			_resolve(&df, begin, minishell);
 		}
-		free(curr->val);
-		curr->val = res;
+		_final_res(curr, tmp_begin, &df);
 	}
+}
+
+static void	_final_res(t_node_ptr curr, t_value_type begin,
+		t_dollar_info_ptr df)
+{
+	t_value_type	tmp;
+
+	if (curr->val == begin)
+	{
+		free(curr->val);
+		curr->val = df->res;
+	}
+	else
+	{
+		tmp = ft_substr(curr->val, 0, ft_strlen_range(curr->val, begin - 1));
+		free(curr->val);
+		curr->val = tmp;
+		ft_append(&curr->val, df->res);
+		free(df->res);
+	}
+}
+
+static void	_resolve(t_dollar_info_ptr df, t_value_type begin,
+		t_minishell_ptr minishell)
+{
+	t_value_type	val;
+
+	df->end = _find_right_end(begin);
+	if (*begin == '?')
+	{
+		df->resolved = ft_itoa(get_status());
+		ft_append(&df->res, df->resolved);
+		free(df->resolved);
+	}
+	else
+	{
+		df->resolved = get_bst_range(minishell->env, begin, df->end);
+		ft_append(&df->res, df->resolved);
+	}
+	begin = df->end;
+	df->end = _till_dollar(df->end);
+	val = ft_substr(begin, 0, ft_strlen_range(begin, df->end));
+	ft_append(&df->res, val);
+	free(val);
 }
 
 static t_value_type	_find_right_end(t_value_type begin)
@@ -80,7 +97,7 @@ static t_value_type	_find_right_end(t_value_type begin)
 	return (begin);
 }
 
-static t_value_type _till_dollar(t_value_type begin)
+static t_value_type	_till_dollar(t_value_type begin)
 {
 	while (begin && *begin != '$' && *begin != '\0')
 		++begin;

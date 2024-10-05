@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:01:23 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/03 19:44:01 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/05 21:46:50 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ static void	_remove_spaces(t_list_ptr line, t_node_ptr *curr);
 
 void	ft_symbol_resolution(t_minishell_ptr minishell)
 {
-	bool		open;
-	char		opened_ch;
-	t_node_ptr	curr;
+	bool			open;
+	char			opened_ch;
+	t_node_ptr		curr;
+	t_value_type	begin;
 
 	open = false;
 	opened_ch = 0;
@@ -30,10 +31,11 @@ void	ft_symbol_resolution(t_minishell_ptr minishell)
 	{
 		if (!open && ft_isspace(*curr->val))
 			_remove_spaces(minishell->line, &curr);
-		if (curr && *curr->val == '$') // e$boba hello
-			ft_dollar_resolution(minishell, curr, curr->val + 1, opened_ch);
 		if (curr)
 		{
+			begin = ft_strchr(curr->val, '$');
+			if (begin)
+				ft_dollar_resolution(minishell, curr, begin + 1, opened_ch);
 			_update_quote_info(&open, &opened_ch, curr);
 			curr = curr->next;
 		}
