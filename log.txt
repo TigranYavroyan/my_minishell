@@ -288,3 +288,14 @@ echo $PATH
 echo $PATH^123
 echo $?
 exit
+-----------------------------------------------------------------------
+
+echo $PATH
+export boba=cho
+e$boba hello
+echi e$boba hello
+echo e$boba hello
+ls
+make fclean
+ls
+exit
