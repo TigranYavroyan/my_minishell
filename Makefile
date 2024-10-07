@@ -9,7 +9,8 @@ SRCSPATH = ./srcs/
 LIBFTPATH = ./libft/
 LISTPATH = ./list_c/
 BSTPATH = ./bst_c/
-INCLPATH = ./includes/ $(LIBFTPATH) $(LISTPATH)includes/ $(BSTPATH)includes/ ./readline_local/include/
+SETPATH = ./set_c/
+INCLPATH = ./includes/ $(SETPATH)includes/ $(LIBFTPATH) $(LISTPATH)includes/ $(BSTPATH)includes/ ./readline_local/include/
 
 SRCS = $(wildcard $(SRCSPATH)*.c)
 OBJS = $(patsubst $(SRCSPATH)%.c, $(SRCSPATH)%.o, $(SRCS))
@@ -28,12 +29,13 @@ endif
 LIBFT = $(LIBFTPATH)libft.a
 LIST = $(LISTPATH)list.a
 BST = $(BSTPATH)bst.a
+SET = $(SETPATH)set.a
 NAME = minishell
 
 all : $(NAME)
 
 #
-$(NAME) : $(OBJS) $(BST) $(LIST) $(LIBFT)
+$(NAME) : $(OBJS) $(BST) $(LIST) $(LIBFT) $(SET)
 	@$(CC) $^ $(EXECFLAGS) $(LREADLINE) -o $@
 	@echo "$(GREEN) Executable file has been created $(RESET)"
 
@@ -49,6 +51,10 @@ $(LIST) :
 	@make -C $(LISTPATH) all
 	@echo "$(YELLOW) Lists object files have been created $(RESET)"
 
+$(SET) :
+	@make -C $(SETPATH) all
+	@echo "$(YELLOW) Sets object files have been created $(RESET)"
+
 $(SRCSPATH)%.o : $(SRCSPATH)%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(YELLOW) Object files have been created $(RESET)"
@@ -57,6 +63,7 @@ clean :
 	@make -C $(LIBFTPATH) clean
 	@make -C $(LISTPATH) clean
 	@make -C $(BSTPATH) clean
+	@make -C $(SETPATH) clean
 	@rm -f $(OBJS)
 	@echo "$(RED) Object files have been deleted $(RESET)"
 
@@ -64,6 +71,7 @@ fclean : clean
 	@make -C $(LIBFTPATH) fclean
 	@make -C $(LISTPATH) fclean
 	@make -C $(BSTPATH) fclean
+	@make -C $(SETPATH) fclean
 	@rm -f $(NAME)
 	@echo "$(RED) Executable file has been deleted $(RESET)"
 

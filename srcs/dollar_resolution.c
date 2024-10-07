@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:22:15 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/05 21:32:22 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/07 19:01:22 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_dollar_resolution(t_minishell_ptr minishell, t_node_ptr curr,
 	if (ft_strlen(begin - 1) == 1)
 		return ;
 	df.res = NULL;
+	df.end = NULL;
 	if (opened_ch == '\'')
 		return ;
 	else
@@ -68,6 +69,12 @@ static void	_resolve(t_dollar_info_ptr df, t_value_type begin,
 {
 	t_value_type	val;
 
+	if (df->end && *(df->end) == '$' && *(df->end + 1) == '\0')
+	{
+		ft_append(&df->res, "$");
+		++df->end;
+		return ;
+	}
 	df->end = _find_right_end(begin);
 	if (*begin == '?')
 	{
@@ -92,7 +99,7 @@ static t_value_type	_find_right_end(t_value_type begin)
 	if (!begin || (!ft_isalpha(*begin) && *begin != '_'))
 		return (begin + 1);
 	++begin;
-	while (begin && *begin != '\0' && ft_isalnum(*begin))
+	while (begin && *begin != '\0' && (ft_isalnum(*begin) || *begin == '_'))
 		++begin;
 	return (begin);
 }
