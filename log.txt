@@ -639,3 +639,96 @@ echo "$PATH "
 echo "$PATH a"
 echo "$PATH a"
 exit
+-----------------------------------------------------------------------
+
+echo "$PATH"
+echo "$PATH a"
+echo "$PATH aa"
+echo "$PATH aaa"
+echo "$PATH aa a"
+-----------------------------------------------------------------------
+
+echo "$PATH"
+echo "$PATH "
+-----------------------------------------------------------------------
+
+echo "$PATH a"
+echo "$PATH "
+-----------------------------------------------------------------------
+
+echo "$PATH a"
+echo "$PATH aa"
+echo "$PATH              "
+echo "$PATH "
+-----------------------------------------------------------------------
+
+echo "$PATH"
+echo "$PATH"
+make
+exit
+-----------------------------------------------------------------------
+
+echo "$PATH"
+echo "$PATH  "
+echo "$PATH              "
+echo "$PATH               "
+-----------------------------------------------------------------------
+
+echo "$PATH a"
+echo "$PATHa"
+bash
+echo "$PATH a"
+echo "$PATH a"
+echo "$PATH a"
+echo "$PATH "
+-----------------------------------------------------------------------
+
+echo "$PATH  "
+echo "$PATH   "
+-----------------------------------------------------------------------
+
+echo "$PATH"
+echo "$PATH "
+echo "$PATH " | cat -e
+-----------------------------------------------------------------------
+
+echo "$PATH a"
+echo "$PATH aa"
+echo "$PATH aaa"
+echo "$PATHaaa"
+echo "$PATHaaaaaaaaaaaaaaaa"
+echo "$PATH^aaaaaaaaaaaaaaaa"
+echo "$PATH^aaaaaaaaaaaaaaaa" | cat -e
+echo "$PATH^aaaaaaaaaaaaaaaaa" | cat -e
+echo "$PATH^aaaaaaaaaaaaaaaaaaaaaaaaa" | cat -e
+echo "$PATH^aaaaaaaaaaaaaaaaaaaaaaaaaa" | cat -e
+echo "$PATH^aaaaaaaaaaaaaaaaaaaaaaaaaa " | cat -e
+-----------------------------------------------------------------------
+
+echo "$PATH"
+echo "$PATH a"
+echo "$PATH a "
+echo "$PATH a " | cat -e
+-----------------------------------------------------------------------
+
+echo "$PATH" | cat -e
+echo "$PATH " | cat -e
+-----------------------------------------------------------------------
+
+echo "$PATH " | cat -e
+-----------------------------------------------------------------------
+
+echo "$PATH " | cat -e
+-----------------------------------------------------------------------
+
+ls
+echo $PATH
+echo "$PATH"
+-----------------------------------------------------------------------
+
+echo "$PATH"
+-----------------------------------------------------------------------
+
+echo "$PATH"
+echo "$PATH "
+echo "$PATH " | cat -e
