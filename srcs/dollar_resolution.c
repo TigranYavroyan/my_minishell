@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:22:15 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/07 19:01:22 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/07 20:23:58 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void			_final_res(t_node_ptr curr, t_value_type begin,
 						t_dollar_info_ptr df);
 
 void	ft_dollar_resolution(t_minishell_ptr minishell, t_node_ptr curr,
-		t_value_type begin, char opened_ch) // not complete
+		t_value_type begin, char opened_ch)
 {
 	t_dollar_info	df;
 	t_value_type	tmp_begin;

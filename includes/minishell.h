@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/07 18:36:08 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/07 22:01:39 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 # define DIR_ERROR 126
 # define EXIT_ERROR 255
 # define SYNTAX_ERROR 258
-# define LEAKS true
+# define LEAKS false
 
 # define string __attribute__((cleanup(auto_free))) char *
 
@@ -118,6 +118,7 @@ bool							ft_quotes_check(t_list_ptr line);
 
 // symbol_resolution
 void							ft_symbol_resolution(t_minishell_ptr minishell);
+void							_update_quote_info(bool *open, char *opened_ch, t_node_ptr curr);
 
 // dollar_resolution
 void							ft_dollar_resolution(t_minishell_ptr minishell,
@@ -207,5 +208,9 @@ void							log_header_in_file(void);
 
 // descriptors
 t_descriptors_ptr				make_descriptors(void);
+
+// merge_quotes
+void							ft_merge_quotes(t_minishell_ptr minishell);
+
 
 #endif // MINISHELL_H

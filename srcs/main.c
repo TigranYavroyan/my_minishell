@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/07 18:38:52 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/07 21:59:13 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	__ft_minishell__(t_minishell_ptr minishell, char *input)
 {
 	minishell->commands = init_cmds(minishell);
 	tokenize(minishell, "<>| \'\"()&", input);
+	ft_symbol_resolution(minishell);
 	if (!ft_quotes_check(minishell->line))
 	{
 		__err_msg_prmt__(NULL, "Unclosed quotes", SYNTAX_ERROR);
@@ -27,8 +28,7 @@ static void	__ft_minishell__(t_minishell_ptr minishell, char *input)
 			SYNTAX_ERROR);
 		return ;
 	}
-	ft_symbol_resolution(minishell);
-	// ft_merge_quotes(minishell);
+	ft_merge_quotes(minishell);
 	ft_count_cmds(minishell);
 	get_cmds(minishell);
 	execute(minishell);

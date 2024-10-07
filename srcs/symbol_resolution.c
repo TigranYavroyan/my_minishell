@@ -6,13 +6,12 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:01:23 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/05 21:46:50 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/07 20:31:49 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static void	_update_quote_info(bool *open, char *opened_ch, t_node_ptr curr);
 static void	_remove_head_spaces(t_list_ptr line);
 static void	_remove_spaces(t_list_ptr line, t_node_ptr *curr);
 
@@ -42,7 +41,7 @@ void	ft_symbol_resolution(t_minishell_ptr minishell)
 	}
 }
 
-static void	_update_quote_info(bool *open, char *opened_ch, t_node_ptr curr)
+void	_update_quote_info(bool *open, char *opened_ch, t_node_ptr curr)
 {
 	if (is_quote(*curr->val))
 	{

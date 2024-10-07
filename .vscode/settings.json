@@ -21,6 +21,7 @@
 		"__locale": "c",
 		"ios": "c",
 		"__bit_reference": "c",
-		"iterator": "c"
+		"iterator": "c",
+		"wait.h": "c"
 	}
 }
