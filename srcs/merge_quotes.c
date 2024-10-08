@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   merge_quotes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:37:48 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/07 22:55:29 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/08 13:54:38 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void	ft_merge_quotes(t_minishell_ptr minishell)
+void	ft_merge_quotes(t_minishell_ptr minishell) // echo "a"'b' case doesn't work
 {
 	char		opened_ch;
 	bool		open;
@@ -20,6 +20,8 @@ void	ft_merge_quotes(t_minishell_ptr minishell)
 	t_node_ptr	tmp;
 
 	curr = minishell->line->head;
+	open = false;
+	opened_ch = 0;
 	while (curr)
 	{
 		_update_quote_info(&open, &opened_ch, curr);
@@ -28,29 +30,16 @@ void	ft_merge_quotes(t_minishell_ptr minishell)
 			tmp = curr->next;
 			remove_node_lt(minishell->line, curr);
 			curr = tmp;
-			while (curr && curr->next && curr->next->val && *curr->next->val != opened_ch) // too much problem here
+			while (curr && curr->next && curr->next->val && *curr->next->val != opened_ch)
 			{
 				tmp = curr->next->next;
 				ft_append(&curr->val, curr->next->val);
 				remove_node_lt(minishell->line, curr->next);
-				curr = tmp;
-			}// check from here
-			if (curr->next)
-			{
-				tmp = curr->next->next;
-				printf("curr->next->val: %s\n", curr->next->val);
-				_update_quote_info(&open, &opened_ch, curr->next);
-				remove_node_lt(minishell->line, curr->next);
 			}
-			else
-			{
-				tmp = curr->next;
-				printf("curr->val: %s\n", curr->val);
-				_update_quote_info(&open, &opened_ch, curr);
-				remove_node_lt(minishell->line, curr);
-			}
+			tmp = curr->next->next;
+			_update_quote_info(&open, &opened_ch, curr->next);
+			remove_node_lt(minishell->line, curr->next);
 			curr = tmp;
-			// printf("the curr->val: %s\n", curr->val);
 		}
 		else
 			curr = curr->next;
