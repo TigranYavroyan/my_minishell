@@ -4,38 +4,56 @@ YELLOW	= \033[1;33m
 RESET	= \033[0;37m
 SKY		= \033[1;36m
 
-CC = gcc
-SRCSPATH = ./srcs/
-LIBFTPATH = ./libft/
-LISTPATH = ./list_c/
-BSTPATH = ./bst_c/
-INCLPATH = ./includes/ $(LIBFTPATH) $(LISTPATH)includes/ $(BSTPATH)includes/ ./readline_local/include/
+NAME = minishell
 
-SRCS = $(wildcard $(SRCSPATH)*.c)
-OBJS = $(patsubst $(SRCSPATH)%.c, $(SRCSPATH)%.o, $(SRCS))
-#
-CFLAGS = -g -Wall -Wextra -Werror $(foreach H, $(INCLPATH), -I$(H))
-EXECFLAGS = -lreadline -lncurses #-fsanitize=address
+SRC_DIR = srcs/
+OBJ_DIR = build/
+SUBDIRS = builtin/ others/
+
+LIBFTPATH = libft/
+LISTPATH = list_c/
+BSTPATH = bst_c/
+
+INCLPATH = includes/ $(LIBFTPATH) $(LISTPATH)includes/ $(BSTPATH)includes/ /opt/homebrew/Cellar/readline/8.2.13/include/readline
+
+SRCDIRS = $(addprefix $(SRC_DIR)/, $(SUBDIRS))
+SRCS = $(notdir $(foreach dir, $(SRCDIRS), $(wildcard $(dir)/*.c))) $(notdir $(SRC_DIR)/main.c)
+OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
+
+CFLAGS = -Wall -Wextra -Werror
+INCLUDES =
+DEBUG = -g -lncurses -fsanitize=address
+INCLUDES = $(foreach H, $(INCLPATH), -I $(H))
 
 UNAME = $(shell uname -s)
 ifeq ($(UNAME), Darwin)
-	LREADLINE =  -Lreadline_local/lib -lreadline
+	LREADLINE =  -L/opt/homebrew/Cellar/readline/8.2.13/lib -lreadline
 else
 	LREADLINE = -lreadline
 endif
 
-# -g
 LIBFT = $(LIBFTPATH)libft.a
-LIST = $(LISTPATH)list.a
-BST = $(BSTPATH)bst.a
-NAME = minishell
+LIST = $(LISTPATH)liblist.a
+BST = $(BSTPATH)libbst.a
+
+LIBFLAGS = -L$(LIBFTPATH) -lft -L$(LISTPATH) -llist -L$(BSTPATH) -lbst $(LREADLINE)
 
 all : $(NAME)
 
-#
-$(NAME) : $(OBJS) $(BST) $(LIST) $(LIBFT)
-	@$(CC) $^ $(EXECFLAGS) $(LREADLINE) -o $@
-	@echo "$(GREEN) lol Executable file has been created $(RESET)"
+$(OBJ_DIR): libs
+	@mkdir -p $(OBJ_DIR)
+
+libs: $(BST) $(LIST) $(LIBFT)
+
+$(NAME): $(OBJ_DIR) $(OBJ) Makefile
+	@$(CC) $(CFLAGS) $(INCLUDES) $(LIBFLAGS) $(OBJ) -o $(NAME)
+	@echo "$(GREEN) Executable file has been created$(RESET)"
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c Makefile
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/*/%.c Makefile
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(BST) :
 	@make -C $(BSTPATH) all
@@ -48,10 +66,6 @@ $(LIBFT) :
 $(LIST) :
 	@make -C $(LISTPATH) all
 	@echo "$(YELLOW) Lists object files have been created $(RESET)"
-
-$(SRCSPATH)%.o : $(SRCSPATH)%.c
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "$(YELLOW) Object files have been created $(RESET)"
 
 clean :
 	@make -C $(LIBFTPATH) clean
