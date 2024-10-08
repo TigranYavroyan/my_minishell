@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   height.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 18:17:34 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/08 14:26:34 by tigran           ###   ########.fr       */
+/*   Created: 2024/10/08 14:33:02 by tigran            #+#    #+#             */
+/*   Updated: 2024/10/08 14:37:51 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void	ft_env (t_command_ptr command)
+int	get_height_bst (t_bst_ptr tree)
 {
-	if (!empty_lt(command->options) || !empty_lt(command->args))
-		return ;
-	traverse_bst(command->minishell->env, INORDER, NULL);
+	if (!tree)
+		return (-1);
+	return __get_height_bst(tree->root);
+}
+
+int	__get_height_bst (t_treenode_ptr root)
+{
+	int	left;
+	int	right;
+	int	max;
+
+	if (!root)
+		return (-1);
+	left = __get_height_bst(root->left);
+	right = __get_height_bst(root->right);
+	if (left > right)
+		max = left + 1;
+	else
+		max = right + 1;
+	return (max);
 }

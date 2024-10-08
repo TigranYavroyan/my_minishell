@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bst.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:35 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/03 14:51:27 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/08 14:39:12 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,22 @@ struct						s_BST
 t_bst_ptr					init_bst(void);
 t_bst_ptr					copy_bst(const t_bst_ptr bst);
 t_bst_ptr					matrix_to_bst(char **matrix, char delim);
+t_bst_ptr					matrix_to_bst_none_sorted(char **matrix, char delim);
 
 // insertion
 void						insert_bst(t_bst_ptr bst, const t_key_type key,
 								const t_value_type value);
 void						update_bst(t_bst_ptr bst, const t_key_type key,
 								const t_value_type value);
+
+// height
+int							get_height_bst (t_bst_ptr tree);
+int							__get_height_bst (t_treenode_ptr root);
+
+// balance_utils
+t_treenode_ptr				_left_rotate (t_treenode_ptr x);
+t_treenode_ptr				_right_rotate (t_treenode_ptr x);
+int							get_bf (t_treenode_ptr curr);
 
 // deletion
 void						remove_bst(t_bst_ptr bst, const t_key_type key);

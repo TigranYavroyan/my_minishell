@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_to_bst.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:42:04 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/29 15:33:28 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/08 14:17:30 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,27 @@ t_bst_ptr	matrix_to_bst(char **matrix, char delim)
 		++size;
 	tree->root = _matrix_to_bst(matrix, delim, 0, size - 1);
 	tree->size = size;
+	return (tree);
+}
+
+t_bst_ptr	matrix_to_bst_none_sorted(char **matrix, char delim)
+{
+	t_bst_ptr		tree;
+	t_key_type		key;
+	t_value_type	value;
+	int				i;
+	
+	tree = init_bst();
+	i = 0;
+
+	while (matrix[i] != NULL)
+	{
+		value = ft_strchr(matrix[i], delim);
+		key = ft_substr(matrix[i], 0, ft_strlen(matrix[i] - ft_strlen(value)));
+		insert_bst(tree, key, value + 1);
+		free(key);
+		++i;
+	}
 	return (tree);
 }
 
