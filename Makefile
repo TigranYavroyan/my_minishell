@@ -35,7 +35,7 @@ all : $(NAME)
 #
 $(NAME) : $(OBJS) $(BST) $(LIST) $(LIBFT)
 	@$(CC) $^ $(EXECFLAGS) $(LREADLINE) -o $@
-	@echo "$(GREEN) Executable file has been created $(RESET)"
+	@echo "$(GREEN) lol Executable file has been created $(RESET)"
 
 $(BST) :
 	@make -C $(BSTPATH) all
