@@ -1166,3 +1166,21 @@ export
 unset tandz
 ls
 exit
+-----------------------------------------------------------------------
+
+tandz
+echo $tandz
+echo $tandz cat ls
+$tandz cat ls
+echo $tandz
+exit
+-----------------------------------------------------------------------
+
+export valod="echo hello | cat -e"
+export valod="echo hello"$PATH""
+export valod="echo hello"
+export valod=echo hello
+ls
+ecport
+export
+exit
