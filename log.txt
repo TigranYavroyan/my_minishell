@@ -994,3 +994,7 @@ echo "$PATH   a" | cat -e
 ls
 make fclean
 git add .
+git commit -m "makefile fixed (pushed from minishell)"
+ls
+git push
+exit
