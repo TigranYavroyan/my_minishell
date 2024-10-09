@@ -6,11 +6,11 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:33:02 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/08 14:37:51 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/08 21:30:51 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
+#include <bst.h>
 
 int	get_height_bst (t_bst_ptr tree)
 {

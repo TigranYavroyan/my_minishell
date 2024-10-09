@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:16 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/29 18:24:40 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:31:56 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void ft_split_delim(t_list_ptr line, char* delim, char* input) { // check
 		push_back_move_lt(line, ft_substr(input + i, 0, len));
 		i += len;
 	}
-	// print_lt(line);
 }
 
 void tokenize (t_minishell_ptr minishell, char* delim, char* input) {

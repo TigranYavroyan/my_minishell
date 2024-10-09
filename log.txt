@@ -945,3 +945,52 @@ env
 clear
 make fclean
 exit
+-----------------------------------------------------------------------
+
+ls
+curl parrot.live
+exit
+-----------------------------------------------------------------------
+
+ls
+cd
+ls
+export
+clear
+env
+clear
+ls
+pwd
+whatis pwd
+which pwd
+which echo
+which env
+exit
+-----------------------------------------------------------------------
+
+/bin/ls
+ls
+env
+clear
+sdafsdaf
+ls | cat -e
+ls | cat -e
+echo $PATH | cat -e | wc -l
+env
+clear
+echo $PATH$PATH$PATH$PATH
+echo $PATH1
+echo $PATH^123
+echo $PATH^123
+echo hello
+$PATH1
+echo $PATH
+echo $PATH1
+env
+exit
+-----------------------------------------------------------------------
+
+echo "$PATH   a" | cat -e
+ls
+make fclean
+git add .

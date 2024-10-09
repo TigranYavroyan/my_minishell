@@ -6,11 +6,11 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:27:23 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/08 14:40:19 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/08 21:30:38 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minishell.h>
+#include <bst.h>
 
 t_treenode_ptr	_left_rotate (t_treenode_ptr x)
 {
