@@ -4,8 +4,7 @@ YELLOW	= \033[1;33m
 RESET	= \033[0;37m
 SKY		= \033[1;36m
 
-CC = gcc
-SRCSPATH = ./srcs/
+SRCSPATH = srcs/
 LIBFTPATH = ../libft/
 
 INCLPATH = ./includes/ $(LIBFTPATH)
@@ -14,18 +13,14 @@ OBJS = $(patsubst $(SRCSPATH)%.c, $(SRCSPATH)%.o, $(SRCS))
 #-Wall -Wextra -Werror
 CFLAGS = -g -Wall -Wextra -Werror $(foreach H, $(INCLPATH), -I$(H))
 
-NAME = bst.a
+NAME = libbst.a
 LIBFT = $(LIBFTPATH)libft.a
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) $(LIBFT)
+$(NAME) : $(OBJS)
 	@ar -rcs $@ $^
 	@echo "$(GREEN) BST archive has been created $(RESET)"
-
-$(LIBFT) :
-	@make -C $(LIBFTPATH) all
-	@echo "$(YELLOW) Lists object files have been created $(RESET)"
 
 $(SRCSPATH)%.o : $(SRCSPATH)%.c
 	@$(CC) $(CFLAGS) -c $< -o $@

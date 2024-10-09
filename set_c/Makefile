@@ -7,7 +7,6 @@ SKY		= \033[1;36m
 GITHUB = git@github.com:TigranYavroyan/C_impl.git
 GITHUB_FOLDER_NAME = chlp
 
-CC = gcc
 SRCSPATH = ./srcs/
 INCLPATH = ./includes/ ../libft/ ../list_c/includes/
 SRCS = $(wildcard $(SRCSPATH)*.c)

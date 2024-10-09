@@ -7,14 +7,12 @@ SKY		= \033[1;36m
 GITHUB = git@github.com:TigranYavroyan/C_impl.git
 GITHUB_FOLDER_NAME = chlp
 
-CC = gcc
 SRCSPATH = ./srcs/
 INCLPATH = ./includes/ ../libft/
 SRCS = $(wildcard $(SRCSPATH)*.c)
 OBJS = $(patsubst $(SRCSPATH)%.c, $(SRCSPATH)%.o, $(SRCS))
-# -Wall -Wextra -Werror
 CFLAGS = -g $(foreach H, $(INCLPATH), -I$(H))
-NAME = list.a
+NAME = liblist.a
 
 all : $(NAME)
 
