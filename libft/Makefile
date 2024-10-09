@@ -6,7 +6,6 @@ SKY		= \033[1;36m
 
 NAME = libft.a
 CC = cc
-# -Wall -Wextra -Werror
 CFLAGS = -g -Wall -Wextra -Werror -c
 ROOT = ./
 

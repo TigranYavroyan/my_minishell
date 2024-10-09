@@ -4,40 +4,60 @@ YELLOW	= \033[1;33m
 RESET	= \033[0;37m
 SKY		= \033[1;36m
 
-CC = gcc
-SRCSPATH = ./srcs/
-LIBFTPATH = ./libft/
-LISTPATH = ./list_c/
-BSTPATH = ./bst_c/
-SETPATH = ./set_c/
-INCLPATH = ./includes/ $(SETPATH)includes/ $(LIBFTPATH) $(LISTPATH)includes/ $(BSTPATH)includes/ ./readline_local/include/
+NAME = minishell
+BRANCH = las
 
-SRCS = $(wildcard $(SRCSPATH)*.c)
-OBJS = $(patsubst $(SRCSPATH)%.c, $(SRCSPATH)%.o, $(SRCS))
-#
-CFLAGS = -g -Wall -Wextra -Werror $(foreach H, $(INCLPATH), -I$(H))
-# EXECFLAGS = -lreadline -lncurses #-fsanitize=address
+SRC_DIR = srcs/
+OBJ_DIR = build/
+SUBDIRS = builtin/ others/ signal/
+
+LIBFTPATH = libft/
+LISTPATH = list_c/
+BSTPATH = bst_c/
+
+INCLPATH = includes/ $(LIBFTPATH) $(LISTPATH)includes/ $(BSTPATH)includes/ /opt/homebrew/Cellar/readline/8.2.13/include/readline
+
+SRCDIRS = $(addprefix $(SRC_DIR)/, $(SUBDIRS))
+SRCS = $(notdir $(foreach dir, $(SRCDIRS), $(wildcard $(dir)/*.c))) $(notdir $(SRC_DIR)/main.c)
+OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
+
+CFLAGS = -Wall -Wextra -Werror
+INCLUDES =
+DEBUG = -g -lncurses -fsanitize=address
+INCLUDES = $(foreach H, $(INCLPATH), -I $(H))
 
 UNAME = $(shell uname -s)
+ARCH = $(shell uname -m)
 ifeq ($(UNAME), Darwin)
-	LREADLINE =  -Lreadline_local/lib -lreadline
+	ifeq ($(ARCH), arm64)
+	LREADLINE = -L/opt/homebrew/Cellar/readline/8.2.13/lib -l readline
+	else
+	LREADLINE =  -L/usr/lib -lreadline
+	endif
 else
 	LREADLINE = -lreadline
 endif
 
-# -g
 LIBFT = $(LIBFTPATH)libft.a
-LIST = $(LISTPATH)list.a
-BST = $(BSTPATH)bst.a
-SET = $(SETPATH)set.a
-NAME = minishell
+LIST = $(LISTPATH)liblist.a
+BST = $(BSTPATH)libbst.a
+
+LIBFLAGS = -L$(LIBFTPATH) -lft -L$(LISTPATH) -llist -L$(BSTPATH) -lbst $(LREADLINE)
 
 all : $(NAME)
 
-#
-$(NAME) : $(OBJS) $(BST) $(LIST) $(SET) $(LIBFT)
-	@$(CC) $^ $(EXECFLAGS) $(LREADLINE) -o $@
-	@echo "$(GREEN) Executable file has been created $(RESET)"
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+$(NAME): $(LIBFT) $(BST) $(LIST) $(OBJ_DIR) $(OBJ) Makefile
+	@$(CC) $(CFLAGS) $(INCLUDES) $(LIBFLAGS) $(OBJ) -o $(NAME)
+	@echo "$(GREEN) Executable file has been created$(RESET)"
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c Makefile
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/*/%.c Makefile
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(BST) :
 	@make -C $(BSTPATH) all
@@ -51,27 +71,18 @@ $(LIST) :
 	@make -C $(LISTPATH) all
 	@echo "$(YELLOW) Lists object files have been created $(RESET)"
 
-$(SET) :
-	@make -C $(SETPATH) all
-	@echo "$(YELLOW) Sets object files have been created $(RESET)"
-
-$(SRCSPATH)%.o : $(SRCSPATH)%.c
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "$(YELLOW) Object files have been created $(RESET)"
-
 clean :
 	@make -C $(LIBFTPATH) clean
 	@make -C $(LISTPATH) clean
 	@make -C $(BSTPATH) clean
-	@make -C $(SETPATH) clean
-	@rm -f $(OBJS)
+	@rm -f $(OBJ_DIR)/*.o
+	@rm -rf $(OBJ_DIR)
 	@echo "$(RED) Object files have been deleted $(RESET)"
 
 fclean : clean
 	@make -C $(LIBFTPATH) fclean
 	@make -C $(LISTPATH) fclean
 	@make -C $(BSTPATH) fclean
-	@make -C $(SETPATH) fclean
 	@rm -f $(NAME)
 	@echo "$(RED) Executable file has been deleted $(RESET)"
 
@@ -83,6 +94,12 @@ push :
 	@git push
 	@echo "$(SKY) Pushed! $(RESET)"
 
+git:
+	@read -p "Enter commit message: " msg; \
+	git add .; \
+	git commit -m "$$msg"; \
+	git push -u origin $(BRANCH)
+
 config:
 	mkdir -p readline_local
 	./readline_config.sh readline_local
@@ -90,4 +107,4 @@ config:
 leaks:
 	valgrind --leak-check=full --show-leak-kinds=all --suppressions=.vgignore ./$(NAME)
 
-.PHONY : all clean fclean re config push
+.PHONY : all clean fclean re config push git
