@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/02 19:26:01 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/09 16:11:22 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	__ft_minishell__(t_minishell_ptr minishell, char *input)
 {
-	minishell->commands = init_cmds(minishell);
 	tokenize(minishell, "<>| \'\"()&", input);
 	// printf("Before: ");
 	// print_lt(minishell->line);
@@ -35,7 +34,6 @@ static void	__ft_minishell__(t_minishell_ptr minishell, char *input)
 	ft_count_cmds(minishell);
 	get_cmds(minishell);
 	execute(minishell);
-	add_history(input);
 }
 
 static void	ft_minishell(t_minishell_ptr minishell)
@@ -43,14 +41,15 @@ static void	ft_minishell(t_minishell_ptr minishell)
 	char	*input;
 
 	log_header_in_file();
+	signal_handle();
 	while (true)
 	{
 		input = readline("Minishell>$ ");
+		minishell->commands = init_cmds(minishell);
 		if (!input)
-		{
-			printf("empty line: readline err\n");
 			break ;
-		}
+		if (input[0] != 0)
+			add_history(input);
 		log_in_file(input);
 		__ft_minishell__(minishell, input);
 		clear_lt(minishell->line);

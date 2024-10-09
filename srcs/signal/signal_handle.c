@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   size.c                                             :+:      :+:    :+:   */
+/*   signal_handle.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 19:56:29 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/09 12:34:49 by healeksa         ###   ########.fr       */
+/*   Created: 2024/10/09 15:54:49 by healeksa          #+#    #+#             */
+/*   Updated: 2024/10/09 15:55:14 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <list.h>
+#include <minishell.h>
 
-int	size_from_head_lt(t_node_ptr head)
+void	sig_quit(int sig)
 {
-	int	size;
-
-	size = 0;
-	while (head)
-	{
-		head = head->next;
-		++size;
-	}
-	return (size);
+	(void)sig;
+	rl_redisplay();
 }
 
-int	get_size(t_list_ptr list)
+void	sig_int(int sig)
 {
-	return (list->size);
+	(void)sig;
+	printf("\n");
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
+}
+
+void	signal_handle(void)
+{
+	signal(SIGQUIT, sig_quit);
+	signal(SIGINT, sig_int);
 }

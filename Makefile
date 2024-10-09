@@ -8,7 +8,7 @@ NAME = minishell
 
 SRC_DIR = srcs/
 OBJ_DIR = build/
-SUBDIRS = builtin/ others/
+SUBDIRS = builtin/ others/ signal/
 
 LIBFTPATH = libft/
 LISTPATH = list_c/
@@ -40,12 +40,11 @@ LIBFLAGS = -L$(LIBFTPATH) -lft -L$(LISTPATH) -llist -L$(BSTPATH) -lbst $(LREADLI
 
 all : $(NAME)
 
-$(OBJ_DIR): libs
+$(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-libs: $(BST) $(LIST) $(LIBFT)
 
-$(NAME): $(OBJ_DIR) $(OBJ) Makefile
+$(NAME): $(LIBFT) $(BST) $(LIST) $(OBJ_DIR) $(OBJ) Makefile
 	@$(CC) $(CFLAGS) $(INCLUDES) $(LIBFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(GREEN) Executable file has been created$(RESET)"
 
@@ -71,7 +70,7 @@ clean :
 	@make -C $(LIBFTPATH) clean
 	@make -C $(LISTPATH) clean
 	@make -C $(BSTPATH) clean
-	@rm -f $(OBJS)
+	@rm -rf $(OBJ_DIR)
 	@echo "$(RED) Object files have been deleted $(RESET)"
 
 fclean : clean
