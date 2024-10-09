@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:22 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/29 15:30:01 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/09 19:54:29 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ static void _add_variable (t_minishell_ptr minishell, t_node_ptr curr, char* eq_
 		value = ft_strdup(eq_sign + 1);
 	if (value)
 	{
-		update_bst(minishell->env, key, value);
-		update_bst(minishell->export, key, value);
+		insert_bst(minishell->env, key, value);
+		insert_bst(minishell->export, key, value);
 	}
 	else
 	{

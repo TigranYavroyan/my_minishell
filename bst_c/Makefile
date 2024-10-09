@@ -19,7 +19,7 @@ LIBFT = $(LIBFTPATH)libft.a
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJS) $(LIBFT)
 	@ar -rcs $@ $^
 	@echo "$(GREEN) BST archive has been created $(RESET)"
 

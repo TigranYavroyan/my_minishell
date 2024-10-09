@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmd_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/02 15:43:22 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/09 19:37:05 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	access_cmd(t_command_ptr command)
 		__err_msg_prmt__(command->name, ": command not found", CMD_NOT_FOUND);
 		return (false);
 	}
-	if (is_dir(exec_path))
+	if (is_dir(exec_path)) // fix later (./smth)
 		return (false);
 	free(command->name);
 	command->name = exec_path;

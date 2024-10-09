@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/07 21:59:13 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/09 19:02:11 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	__ft_minishell__(t_minishell_ptr minishell, char *input)
 		__err_msg_prmt__(NULL, "Unclosed quotes", SYNTAX_ERROR);
 		return ;
 	}
-	if (!pipe_check(minishell->line))
+	if (!pipe_check(minishell->line)) // if pipe in quotes ("|") it is can't be
 	{
 		__err_msg_prmt__(NULL, "syntax error near unexpected token `|\'",
 			SYNTAX_ERROR);
@@ -43,7 +43,7 @@ static void	ft_minishell(t_minishell_ptr minishell)
 	while (true)
 	{
 		input = readline("Minishell>$ ");
-		if (!input)
+		if (!input) // have to replace
 		{
 			printf("empty line: readline err\n");
 			break ;

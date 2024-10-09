@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deletion.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:43 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/29 15:36:42 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/09 19:57:00 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static void	_copy_bst(t_treenode_ptr to, t_treenode_ptr from)
 static t_treenode_ptr	_remove(t_treenode_ptr root, const t_key_type key)
 {
 	t_treenode_ptr	tmp;
+	int				bf;
 
 	if (!root)
 		return (NULL);
@@ -75,5 +76,20 @@ static t_treenode_ptr	_remove(t_treenode_ptr root, const t_key_type key)
 		_free_node(&root);
 		return (tmp);
 	}
+	bf = get_bf(root);
+	if (bf < -1 && get_bf(root->right) <= 0)
+		return _left_rotate(root);
+	if (bf > 1 && get_bf(root->left) < 0)
+    {
+        root->left = _left_rotate(root->left);
+        return _right_rotate(root);
+    }
+    if (bf < -1 && get_bf(root->right) <= 0)
+        return _left_rotate(root);
+    if (bf < -1 && get_bf(root->right) > 0)
+    {
+        root->right = _right_rotate(root->right);
+        return _left_rotate(root);
+    }
 	return (root);
 }

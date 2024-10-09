@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:35 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/08 14:39:12 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/09 19:59:00 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ t_bst_ptr					matrix_to_bst_none_sorted(char **matrix, char delim);
 
 // insertion
 void						insert_bst(t_bst_ptr bst, const t_key_type key,
-								const t_value_type value);
-void						update_bst(t_bst_ptr bst, const t_key_type key,
 								const t_value_type value);
 
 // height
