@@ -27,7 +27,7 @@ INCLUDES = $(foreach H, $(INCLPATH), -I $(H))
 
 UNAME = $(shell uname -s)
 ifeq ($(UNAME), Darwin)
-	LREADLINE =  -L/opt/homebrew/Cellar/readline/8.2.13/lib -lreadline
+	LREADLINE =  -L/usr/lib -lreadline
 else
 	LREADLINE = -lreadline
 endif
@@ -40,12 +40,10 @@ LIBFLAGS = -L$(LIBFTPATH) -lft -L$(LISTPATH) -llist -L$(BSTPATH) -lbst $(LREADLI
 
 all : $(NAME)
 
-$(OBJ_DIR): libs
+$(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-libs: $(BST) $(LIST) $(LIBFT)
-
-$(NAME): $(OBJ_DIR) $(OBJ) Makefile
+$(NAME): $(LIBFT) $(BST) $(LIST) $(OBJ_DIR) $(OBJ) Makefile
 	@$(CC) $(CFLAGS) $(INCLUDES) $(LIBFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(GREEN) Executable file has been created$(RESET)"
 
@@ -71,7 +69,7 @@ clean :
 	@make -C $(LIBFTPATH) clean
 	@make -C $(LISTPATH) clean
 	@make -C $(BSTPATH) clean
-	@rm -f $(OBJS)
+	@rm -f $(OBJ_DIR)/*.o
 	@echo "$(RED) Object files have been deleted $(RESET)"
 
 fclean : clean
@@ -96,4 +94,4 @@ config:
 leaks:
 	valgrind --leak-check=full --show-leak-kinds=all --suppressions=.vgignore ./$(NAME)
 
-.PHONY : all clean fclean re config push
+.PHONY : all clean libs fclean re config push
