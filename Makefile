@@ -5,7 +5,7 @@ RESET	= \033[0;37m
 SKY		= \033[1;36m
 
 NAME = minishell
-BRANCH = las
+BRANCH = main
 
 SRC_DIR = srcs/
 OBJ_DIR = build/
@@ -15,14 +15,13 @@ LIBFTPATH = libft/
 LISTPATH = list_c/
 BSTPATH = bst_c/
 
-INCLPATH = includes/ $(LIBFTPATH) $(LISTPATH)includes/ $(BSTPATH)includes/ /opt/homebrew/Cellar/readline/8.2.13/include/readline
+INCLPATH = includes/ $(LIBFTPATH) $(LISTPATH)includes/ $(BSTPATH)includes/
 
 SRCDIRS = $(addprefix $(SRC_DIR)/, $(SUBDIRS))
 SRCS = $(notdir $(foreach dir, $(SRCDIRS), $(wildcard $(dir)/*.c))) $(notdir $(SRC_DIR)/main.c)
 OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
 CFLAGS = -Wall -Wextra -Werror
-INCLUDES =
 DEBUG = -g -lncurses -fsanitize=address
 INCLUDES = $(foreach H, $(INCLPATH), -I $(H))
 
@@ -30,31 +29,33 @@ UNAME = $(shell uname -s)
 ARCH = $(shell uname -m)
 ifeq ($(UNAME), Darwin)
 	ifeq ($(ARCH), arm64)
-	LREADLINE = -L/opt/homebrew/Cellar/readline/8.2.13/lib -l readline
+		LREADLINE = -L/opt/homebrew/Cellar/readline/8.2.13/lib -l readline
+		INCLPATH += /opt/homebrew/Cellar/readline/8.2.13/include/readline
 	else
-	LREADLINE =  -L/usr/lib -lreadline
+		LREADLINE = -L/usr/lib -lreadline
 	endif
 else
-	LREADLINE = -lreadline
+	LREADLINE = -Lreadline_local -lreadline
 endif
 
 LIBFT = $(LIBFTPATH)libft.a
 LIST = $(LISTPATH)liblist.a
 BST = $(BSTPATH)libbst.a
 
-LIBFLAGS = -L$(LIBFTPATH) -lft -L$(LISTPATH) -llist -L$(BSTPATH) -lbst $(LREADLINE)
+LIBFLAGS = -L$(BSTPATH) -lbst -L$(LISTPATH) -llist -L$(LIBFTPATH) -lft $(LREADLINE)
 
 all : $(NAME)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-$(NAME): $(LIBFT) $(BST) $(LIST) $(OBJ_DIR) $(OBJ) Makefile
-	@$(CC) $(CFLAGS) $(INCLUDES) $(LIBFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJ_DIR) $(OBJ) $(BST) $(LIST) $(LIBFT) Makefile
+	@$(CC) $(OBJ) $(LIBFLAGS)  -o $(NAME)
 	@echo "$(GREEN) Executable file has been created$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c Makefile
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/*/%.c Makefile
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
