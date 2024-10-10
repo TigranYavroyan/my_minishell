@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   exec_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:00:49 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/24 17:27:54 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/10 13:07:38 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void exec_builtin (t_command_ptr command)
+void	exec_builtin(t_command_ptr command)
 {
-	const char* val;
+	const char *val;
 
 	val = command->name;
 	if (_equal(val, "echo"))
 		ft_echo(command);
-	// if (_equal(val, "cd"))
-	// 	ft_cd(command);
+	if (_equal(val, "cd"))
+		ft_cd(command);
 	else if (_equal(val, "pwd"))
 		ft_pwd(command);
 	else if (_equal(val, "export"))

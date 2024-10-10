@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/10 11:54:27 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/10/10 13:07:32 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ static void	ft_minishell(t_minishell_ptr minishell)
 
 	log_header_in_file();
 	signal_handle();
-	minishell->commands = init_cmds(minishell);
 	while (true)
 	{
 		input = readline("Minishell>$ ");
+		minishell->commands = init_cmds(minishell);
 		if (!input)
 			break ;
 		if (input[0] != '\0')
