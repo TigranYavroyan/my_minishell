@@ -3,11 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:02 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/13 18:24:06 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/10 13:09:02 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+
+void	ft_cd(t_command_ptr command)
+{
+	(void)command;
+	printf("this is cd\n");
+}
