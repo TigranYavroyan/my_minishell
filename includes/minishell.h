@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/10 11:54:03 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/10/10 18:16:31 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,11 +128,14 @@ void							ft_dollar_resolution(t_minishell_ptr minishell,
 
 // helpers
 void							remove_2d_str(char **str);
-void							ft_err_msg(char *msg);
-void							__err_msg__(char *name, char *err, int val);
-void							__err_msg_prmt__(char *name, char *err,
-									int val);
 void							auto_free(char **ptr);
+
+// err_print
+void	ft_err_msg(char *msg);
+void	__err_msg__(char* name, char* err, int err_val);
+void	__err_msg_prmt__(char* name, char* err, int err_val);
+void	__err_msg_full_prmt__(char* name, char* err, char* reason, int err_val);
+void	__err_msg_full__(char* name, char* err, char* reason, int err_val);
 
 // check_helpers
 bool							is_num_str(const char *str);

@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:11 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/26 13:08:27 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/10 18:23:10 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void ft_exit(t_command_ptr command) // have to quotes checking and passing
 {
-	char*	arg;
-
 	move_back_lt(&command->options, command->args);
 	if (!empty_lt(command->options))
 	{
@@ -30,12 +28,7 @@ void ft_exit(t_command_ptr command) // have to quotes checking and passing
 				set_status_unsigned(ft_atoi(command->options->head->val));
 		}
 		else
-		{
-			arg = ft_strdup(command->options->head->val);
-			ft_append(&arg, ": numeric argument required");
-			__err_msg_prmt__("exit: ", arg, EXIT_ERROR);
-			free(arg);
-		}
+			__err_msg_full_prmt__("exit: ", command->options->head->val, ": numeric argument required", EXIT_ERROR);
 	}
 	clear_minishell(&command->minishell);
 	ft_putstr_fd("exit\n", STDOUT_FILENO);
