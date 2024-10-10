@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/09 19:02:11 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/10 11:54:27 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	__ft_minishell__(t_minishell_ptr minishell, char *input)
 {
-	minishell->commands = init_cmds(minishell);
 	tokenize(minishell, "<>| \'\"()&", input);
 	ft_symbol_resolution(minishell);
 	if (!ft_quotes_check(minishell->line))
@@ -32,7 +31,6 @@ static void	__ft_minishell__(t_minishell_ptr minishell, char *input)
 	ft_count_cmds(minishell);
 	get_cmds(minishell);
 	execute(minishell);
-	add_history(input);
 }
 
 static void	ft_minishell(t_minishell_ptr minishell)
@@ -40,14 +38,15 @@ static void	ft_minishell(t_minishell_ptr minishell)
 	char	*input;
 
 	log_header_in_file();
+	signal_handle();
+	minishell->commands = init_cmds(minishell);
 	while (true)
 	{
 		input = readline("Minishell>$ ");
-		if (!input) // have to replace
-		{
-			printf("empty line: readline err\n");
+		if (!input)
 			break ;
-		}
+		if (input[0] != '\0')
+			add_history(input);
 		log_in_file(input);
 		__ft_minishell__(minishell, input);
 		clear_lt(minishell->line);

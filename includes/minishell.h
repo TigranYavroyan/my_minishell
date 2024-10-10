@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/09 19:38:17 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/10 11:54:03 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef enum e_direct			t_direct;
 typedef struct s_descriptors	t_descriptors;
 typedef t_descriptors			*t_descriptors_ptr;
 typedef struct s_dollar_info	t_dollar_info;
-typedef	t_dollar_info			*t_dollar_info_ptr;
+typedef t_dollar_info			*t_dollar_info_ptr;
 
 enum							e_direct
 {
@@ -70,9 +70,9 @@ enum							e_direct
 
 struct							s_dollar_info
 {
-	t_value_type	end;
-	t_value_type	resolved;
-	t_value_type	res;
+	t_value_type				end;
+	t_value_type				resolved;
+	t_value_type				res;
 };
 
 struct							s_descriptors
@@ -118,12 +118,13 @@ bool							ft_quotes_check(t_list_ptr line);
 
 // symbol_resolution
 void							ft_symbol_resolution(t_minishell_ptr minishell);
-void							_update_quote_info(bool *open, char *opened_ch, t_node_ptr curr);
+void							_update_quote_info(bool *open, char *opened_ch,
+									t_node_ptr curr);
 
 // dollar_resolution
 void							ft_dollar_resolution(t_minishell_ptr minishell,
-									t_node_ptr curr,
-									t_value_type begin, char opened_ch);
+									t_node_ptr curr, t_value_type begin,
+									char opened_ch);
 
 // helpers
 void							remove_2d_str(char **str);
@@ -212,5 +213,7 @@ t_descriptors_ptr				make_descriptors(void);
 // merge_quotes
 void							ft_merge_quotes(t_minishell_ptr minishell);
 
+// signal
+void							signal_handle(void);
 
 #endif // MINISHELL_H
