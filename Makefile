@@ -5,6 +5,7 @@ RESET	= \033[0;37m
 SKY		= \033[1;36m
 
 NAME = minishell
+BRANCH = main
 
 SRC_DIR = srcs/
 OBJ_DIR = build/
@@ -98,8 +99,7 @@ git:
 	@read -p "Enter commit message: " msg; \
 	git add .; \
 	git commit -m "$$msg"; \
-	@read -p "Enter branch name: " brch; \
-	git push -u origin $$msg
+	git push -u origin $(BRANCH)
 
 config:
 	mkdir -p readline_local
