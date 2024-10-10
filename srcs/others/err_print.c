@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:07:11 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/10 18:22:40 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/10 19:13:22 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void __err_msg__(char* name, char* err, int err_val)
 void __err_msg_prmt__(char* name, char* err, int err_val)
 {
 	ft_err_msg(NULL);
-	ft_putstr_fd(name, STDERR_FILENO);
 	__err_msg__(name, err, err_val);
 }
 
