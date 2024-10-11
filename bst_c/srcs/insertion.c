@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:57 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/09 19:58:30 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/11 16:20:58 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static t_treenode_ptr _balance(t_treenode_ptr root, const t_key_type key)
 		root->left = _left_rotate(root->left);
 		return _right_rotate(root);
 	}
-	else if (bf < -1 && key < root->right->key)
-		return _left_rotate(root);
 	else if (bf < -1 && key > root->right->key)
+		return _left_rotate(root);
+	else if (bf < -1 && key < root->right->key)
 	{
 		root->right = _right_rotate(root->right);
 		return _left_rotate(root);
