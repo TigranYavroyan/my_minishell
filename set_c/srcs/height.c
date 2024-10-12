@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helpers.c                                          :+:      :+:    :+:   */
+/*   height.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 17:40:23 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/12 17:01:18 by tyavroya         ###   ########.fr       */
+/*   Created: 2024/10/12 16:16:01 by tyavroya          #+#    #+#             */
+/*   Updated: 2024/10/12 16:59:37 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <set.h>
 
-t_setnode_ptr make_set_node (t_key_type key)
+int	get_height_set (t_set_ptr tree)
 {
-	t_setnode_ptr	node;
-
-	node = (t_setnode_ptr)wrapper_malloc(sizeof(t_setnode));
-	node->key = key;
-	node->left = NULL;
-	node->right = NULL;
-	return (node);
+	if (!tree)
+		return (-1);
+	return __get_height_set(tree->root);
 }
 
-void	_free_node(t_setnode_ptr *root)
+int	__get_height_set (t_setnode_ptr root)
 {
-	*root = NULL;
+	int	left;
+	int	right;
+	int	max;
+
+	if (!root)
+		return (-1);
+	left = __get_height_set(root->left);
+	right = __get_height_set(root->right);
+	if (left > right)
+		max = left + 1;
+	else
+		max = right + 1;
+	return (max);
 }

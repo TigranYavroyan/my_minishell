@@ -21,10 +21,6 @@ SRCDIRS = $(addprefix $(SRC_DIR)/, $(SUBDIRS))
 SRCS = $(notdir $(foreach dir, $(SRCDIRS), $(wildcard $(dir)/*.c))) $(notdir $(SRC_DIR)/main.c)
 OBJ = $(patsubst %.c, $(OBJ_DIR)/%.o, $(SRCS))
 
-CFLAGS = -Wall -Wextra -Werror
-DEBUG = -g -lncurses -fsanitize=address
-INCLUDES = $(foreach H, $(INCLPATH), -I $(H))
-
 UNAME = $(shell uname -s)
 ARCH = $(shell uname -m)
 ifeq ($(UNAME), Darwin)
@@ -32,11 +28,16 @@ ifeq ($(UNAME), Darwin)
 		LREADLINE = -L/opt/homebrew/Cellar/readline/8.2.13/lib -l readline
 		INCLPATH += /opt/homebrew/Cellar/readline/8.2.13/include/readline
 	else
-		LREADLINE = -L/usr/lib -lreadline
+		LREADLINE = -Lreadline_local/lib -lreadline
+		INCLPATH += ./readline_local/include/
 	endif
 else
 	LREADLINE = -Lreadline_local -lreadline
 endif
+
+CFLAGS = -Wall -Wextra -Werror
+DEBUG = -g -lncurses -fsanitize=address
+INCLUDES = $(foreach H, $(INCLPATH), -I $(H))
 
 LIBFT = $(LIBFTPATH)libft.a
 LIST = $(LISTPATH)liblist.a
@@ -50,7 +51,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 $(NAME): $(OBJ_DIR) $(OBJ) $(BST) $(LIST) $(LIBFT) Makefile
-	@$(CC) $(OBJ) $(LIBFLAGS)  -o $(NAME)
+	@$(CC) $(OBJ) $(LIBFLAGS) -o $(NAME)
 	@echo "$(GREEN) Executable file has been created$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c Makefile

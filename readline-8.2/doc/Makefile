@@ -22,7 +22,7 @@ topdir = ..
 srcdir = .
 
 
-prefix = /home/tigran/Programming/Erevan42/minishell/readline_local
+prefix = /Users/tyavroya/Desktop/afterPiscine/my_minishell/readline_local
 
 datarootdir = ${prefix}/share
 
@@ -49,7 +49,7 @@ RM = rm -f
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
 
-BUILD_DIR = /home/tigran/Programming/Erevan42/minishell/readline-8.2
+BUILD_DIR = /Users/tyavroya/Desktop/afterPiscine/my_minishell/readline-8.2
 TEXINPUTDIR = $(srcdir)
 
 MAKEINFO    = LANGUAGE= makeinfo

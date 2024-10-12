@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:06:54 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/07 18:10:47 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/12 16:58:25 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,13 @@ bool	find_set (t_set_ptr set, t_key_type key)
 	if (!to_find)
 		return (false);
 	return (true);
+}
+
+t_setnode_ptr	_find_min_bst(t_setnode_ptr root)
+{
+	if (!root)
+		return (NULL);
+	while (root->left)
+		root = root->left;
+	return (root);
 }

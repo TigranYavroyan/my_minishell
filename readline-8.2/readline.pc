@@ -1,4 +1,4 @@
-prefix=/home/tigran/Programming/Erevan42/minishell/readline_local
+prefix=/Users/tyavroya/Desktop/afterPiscine/my_minishell/readline_local
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include

@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helpers.c                                          :+:      :+:    :+:   */
+/*   balance_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 17:40:23 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/12 17:01:18 by tyavroya         ###   ########.fr       */
+/*   Created: 2024/10/12 15:32:31 by tyavroya          #+#    #+#             */
+/*   Updated: 2024/10/12 16:59:51 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <set.h>
 
-t_setnode_ptr make_set_node (t_key_type key)
+t_setnode_ptr	_left_rotate (t_setnode_ptr x)
 {
-	t_setnode_ptr	node;
+	t_setnode_ptr	y;
+	t_setnode_ptr	t2;
 
-	node = (t_setnode_ptr)wrapper_malloc(sizeof(t_setnode));
-	node->key = key;
-	node->left = NULL;
-	node->right = NULL;
-	return (node);
+	y = x->right;
+	t2 = y->left;
+	y->left = x;
+	x->right = t2;
+	return (y);
 }
 
-void	_free_node(t_setnode_ptr *root)
+t_setnode_ptr	_right_rotate (t_setnode_ptr x)
 {
-	*root = NULL;
+	t_setnode_ptr	y;
+	t_setnode_ptr	t2;
+
+	y = x->left;
+	t2 = y->right;
+	y->right = x;
+	x->left = t2;
+	return (y);
+}
+
+int	get_bf (t_setnode_ptr curr)
+{
+	return __get_height_set(curr->left) - __get_height_set(curr->right);
 }
