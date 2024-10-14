@@ -6,14 +6,14 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:54:31 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/14 20:22:51 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/14 23:04:54 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <set.h>
 
 static void				_clear(t_setnode_ptr root);
-static t_setnode_ptr	_remove(t_setnode_ptr root, const t_key_type key);
+static t_setnode_ptr	_remove(t_setnode_ptr root, const t_node_ptr key);
 
 void	clear_set(t_set_ptr *set)
 {
@@ -24,7 +24,7 @@ void	clear_set(t_set_ptr *set)
 	*set = NULL;
 }
 
-void	remove_set(t_set_ptr set, const t_key_type key)
+void	remove_set(t_set_ptr set, const t_node_ptr key)
 {
 	set->root = _remove(set->root, key);
 }
@@ -35,10 +35,10 @@ static void	_clear(t_setnode_ptr root)
 		return ;
 	_clear(root->left);
 	_clear(root->right);
-	_free_node(&root);
+	_free_node_set(&root);
 }
 
-static t_setnode_ptr	_remove(t_setnode_ptr root, const t_key_type key)
+static t_setnode_ptr	_remove(t_setnode_ptr root, const t_node_ptr key)
 {
 	t_setnode_ptr	tmp;
 	int				bf;
@@ -62,23 +62,23 @@ static t_setnode_ptr	_remove(t_setnode_ptr root, const t_key_type key)
 			root->right = _remove(root->right, tmp->key);
 			return (root);
 		}
-		_free_node(&root);
+		_free_node_set(&root);
 		return (tmp);
 	}
-	bf = get_bf(root);
-	if (bf < -1 && get_bf(root->right) <= 0)
-		return _left_rotate(root);
-	if (bf > 1 && get_bf(root->left) < 0)
+	bf = get_bf_set(root);
+	if (bf < -1 && get_bf_set(root->right) <= 0)
+		return _left_rotate_set(root);
+	if (bf > 1 && get_bf_set(root->left) < 0)
     {
-        root->left = _left_rotate(root->left);
-        return _right_rotate(root);
+        root->left = _left_rotate_set(root->left);
+        return _right_rotate_set(root);
     }
-    if (bf < -1 && get_bf(root->right) <= 0)
-        return _left_rotate(root);
-    if (bf < -1 && get_bf(root->right) > 0)
+    if (bf < -1 && get_bf_set(root->right) <= 0)
+        return _left_rotate_set(root);
+    if (bf < -1 && get_bf_set(root->right) > 0)
     {
-        root->right = _right_rotate(root->right);
-        return _left_rotate(root);
+        root->right = _right_rotate_set(root->right);
+        return _left_rotate_set(root);
     }
 	return (root);
 }

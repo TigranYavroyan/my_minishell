@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:42:07 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/14 19:56:50 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/14 22:59:00 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	traverse_in(t_treenode_ptr root, t_visitor_bst fptr);
 static void	traverse_post(t_treenode_ptr root, t_visitor_bst fptr);
 static void	print_for_traverse_bst(t_key_type key, t_value_type value);
 
-void	traverse_bst(t_bst_ptr tree, t_travers_type travers_type,
+void	traverse_bst(t_bst_ptr tree, t_travers_type_bst travers_type,
 		t_visitor_bst fptr)
 {
 	if (fptr == NULL)

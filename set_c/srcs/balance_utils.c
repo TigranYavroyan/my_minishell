@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   balance_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 15:32:31 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/12 16:59:51 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/14 22:53:17 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <set.h>
 
-t_setnode_ptr	_left_rotate (t_setnode_ptr x)
+t_setnode_ptr	_left_rotate_set (t_setnode_ptr x)
 {
 	t_setnode_ptr	y;
 	t_setnode_ptr	t2;
@@ -24,7 +24,7 @@ t_setnode_ptr	_left_rotate (t_setnode_ptr x)
 	return (y);
 }
 
-t_setnode_ptr	_right_rotate (t_setnode_ptr x)
+t_setnode_ptr	_right_rotate_set (t_setnode_ptr x)
 {
 	t_setnode_ptr	y;
 	t_setnode_ptr	t2;
@@ -36,7 +36,7 @@ t_setnode_ptr	_right_rotate (t_setnode_ptr x)
 	return (y);
 }
 
-int	get_bf (t_setnode_ptr curr)
+int	get_bf_set (t_setnode_ptr curr)
 {
 	return __get_height_set(curr->left) - __get_height_set(curr->right);
 }

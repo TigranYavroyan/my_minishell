@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:35 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/14 19:56:58 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/14 23:00:26 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,16 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include "../includes/tree_utils.h"
+
+
+typedef enum e_travers_type_bst	t_travers_type_bst;
+
+enum						e_travers_type_bst
+{
+	PREORDER,
+	INORDER,
+	POSTORDER,
+};
 
 typedef char				*t_key_type;
 typedef char				*t_value_type;
@@ -90,7 +99,7 @@ t_treenode_ptr				_find_bst(t_treenode_ptr root,
 
 // traverse
 void						traverse_bst(t_bst_ptr tree,
-								t_travers_type travers_type, t_visitor_bst fptr);
+								t_travers_type_bst travers_type, t_visitor_bst fptr);
 
 // cmp
 bool						_less(const char *op1, const char *op2);

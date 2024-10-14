@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/10 18:16:31 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/14 23:07:51 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 # define MINISHELL_H
 
 # include <bst.h>
-# include <curses.h>
-# include <dirent.h>
-# include <errno.h>
-# include <fcntl.h>
 # include <libft.h>
-# include <limits.h>
 # include <list.h>
+# include <set.h>
+# include <errno.h>
+# include <dirent.h>
+# include <curses.h>
+# include <limits.h>
+# include <fcntl.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
@@ -95,6 +96,7 @@ struct							s_minishell
 	t_list_ptr					line;
 	t_bst_ptr					env;
 	t_bst_ptr					export;
+	t_set_ptr					quote_tracker;
 	t_cmd_matrix_ptr			commands;
 	t_descriptors_ptr			descriptors;
 };
