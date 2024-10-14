@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/10 11:54:03 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/10/12 20:52:58 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,13 @@
 # define DIR_ERROR 126
 # define EXIT_ERROR 255
 # define SYNTAX_ERROR 258
-# define LEAKS false
+# define LEAKS true
 
 # define string __attribute__((cleanup(auto_free))) char *
+# define CDERR \
+	"error retrieving \
+current directory: getcwd: cannot \
+access parent directories: No such file or directory"
 
 typedef struct s_minishell		t_minishell;
 typedef t_minishell				*t_minishell_ptr;
@@ -215,5 +219,11 @@ void							ft_merge_quotes(t_minishell_ptr minishell);
 
 // signal
 void							signal_handle(void);
+
+// cd utils
+char							*get_pwd(void);
+char							*catch_home(t_command_ptr command);
+void							set_pwd(char *old_pwd, t_command_ptr command);
+bool							ft_chdir(char *path, t_command_ptr command);
 
 #endif // MINISHELL_H
