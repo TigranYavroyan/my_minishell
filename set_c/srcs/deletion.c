@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   deletion.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:54:31 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/12 16:58:32 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/14 20:22:51 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <set.h>
 
 static void				_clear(t_setnode_ptr root);
-static void				_copy_set(t_setnode_ptr to, t_setnode_ptr from);
 static t_setnode_ptr	_remove(t_setnode_ptr root, const t_key_type key);
 
 void	clear_set(t_set_ptr *set)
@@ -39,12 +38,6 @@ static void	_clear(t_setnode_ptr root)
 	_free_node(&root);
 }
 
-static void	_copy_set(t_setnode_ptr to, t_setnode_ptr from)
-{
-	free(to->key);
-	to->key = from->key;
-}
-
 static t_setnode_ptr	_remove(t_setnode_ptr root, const t_key_type key)
 {
 	t_setnode_ptr	tmp;
@@ -65,7 +58,7 @@ static t_setnode_ptr	_remove(t_setnode_ptr root, const t_key_type key)
 		else
 		{
 			tmp = _find_min_set(root->right);
-			_copy_set(root, tmp);
+			root->key = tmp->key;
 			root->right = _remove(root->right, tmp->key);
 			return (root);
 		}

@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   traverse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:42:07 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/29 15:33:41 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/14 19:56:50 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <bst.h>
 
-static void	traverse_pre(t_treenode_ptr root, t_visitor fptr);
-static void	traverse_in(t_treenode_ptr root, t_visitor fptr);
-static void	traverse_post(t_treenode_ptr root, t_visitor fptr);
+static void	traverse_pre(t_treenode_ptr root, t_visitor_bst fptr);
+static void	traverse_in(t_treenode_ptr root, t_visitor_bst fptr);
+static void	traverse_post(t_treenode_ptr root, t_visitor_bst fptr);
 static void	print_for_traverse_bst(t_key_type key, t_value_type value);
 
 void	traverse_bst(t_bst_ptr tree, t_travers_type travers_type,
-		t_visitor fptr)
+		t_visitor_bst fptr)
 {
 	if (fptr == NULL)
 		fptr = print_for_traverse_bst;
@@ -32,7 +32,7 @@ void	traverse_bst(t_bst_ptr tree, t_travers_type travers_type,
 		_err("Invalid travers_type for traverse");
 }
 
-static void	traverse_pre(t_treenode_ptr root, t_visitor fptr)
+static void	traverse_pre(t_treenode_ptr root, t_visitor_bst fptr)
 {
 	if (!root)
 		return ;
@@ -41,7 +41,7 @@ static void	traverse_pre(t_treenode_ptr root, t_visitor fptr)
 	traverse_pre(root->right, fptr);
 }
 
-static void	traverse_in(t_treenode_ptr root, t_visitor fptr)
+static void	traverse_in(t_treenode_ptr root, t_visitor_bst fptr)
 {
 	if (!root)
 		return ;
@@ -50,7 +50,7 @@ static void	traverse_in(t_treenode_ptr root, t_visitor fptr)
 	traverse_in(root->right, fptr);
 }
 
-static void	traverse_post(t_treenode_ptr root, t_visitor fptr)
+static void	traverse_post(t_treenode_ptr root, t_visitor_bst fptr)
 {
 	if (!root)
 		return ;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:06:54 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/12 16:58:25 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/14 20:12:14 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ bool	find_set (t_set_ptr set, t_key_type key)
 	return (true);
 }
 
-t_setnode_ptr	_find_min_bst(t_setnode_ptr root)
+t_setnode_ptr	_find_min_set(t_setnode_ptr root)
 {
 	if (!root)
 		return (NULL);

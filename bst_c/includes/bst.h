@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:35 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/09 19:59:00 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/14 19:56:58 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include "../includes/tree_utils.h"
 
-typedef enum e_travers_type	t_travers_type;
 typedef char				*t_key_type;
 typedef char				*t_value_type;
 typedef size_t				t_size_type;
@@ -28,14 +28,7 @@ typedef struct s_TreeNode	t_treenode;
 typedef t_treenode			*t_treenode_ptr;
 typedef struct s_BST		t_bst;
 typedef t_bst				*t_bst_ptr;
-typedef void				(*t_visitor)(t_key_type, t_value_type);
-
-enum						e_travers_type
-{
-	PREORDER,
-	INORDER,
-	POSTORDER,
-};
+typedef void				(*t_visitor_bst)(t_key_type, t_value_type);
 
 struct						s_TreeNode
 {
@@ -97,7 +90,7 @@ t_treenode_ptr				_find_bst(t_treenode_ptr root,
 
 // traverse
 void						traverse_bst(t_bst_ptr tree,
-								t_travers_type travers_type, t_visitor fptr);
+								t_travers_type travers_type, t_visitor_bst fptr);
 
 // cmp
 bool						_less(const char *op1, const char *op2);

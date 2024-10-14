@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helpers.c                                          :+:      :+:    :+:   */
+/*   tree_utils.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 17:40:23 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/14 20:19:43 by tigran           ###   ########.fr       */
+/*   Created: 2024/10/14 19:55:05 by tigran            #+#    #+#             */
+/*   Updated: 2024/10/14 19:55:21 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <set.h>
+typedef enum e_travers_type	t_travers_type;
 
-t_setnode_ptr make_set_node (t_key_type key)
+enum						e_travers_type
 {
-	t_setnode_ptr	node;
-
-	node = (t_setnode_ptr)wrapper_malloc(sizeof(t_setnode));
-	node->key = key;
-	node->left = NULL;
-	node->right = NULL;
-	return (node);
-}
-
-void	_free_node(t_setnode_ptr *root)
-{
-	free(*root);
-	*root = NULL;
-}
+	PREORDER,
+	INORDER,
+	POSTORDER,
+};
