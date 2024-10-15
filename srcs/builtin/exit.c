@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:11 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/10 18:23:10 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/15 10:34:17 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void ft_exit(t_command_ptr command) // have to quotes checking and passing
 		else
 			__err_msg_full_prmt__("exit: ", command->options->head->val, ": numeric argument required", EXIT_ERROR);
 	}
+	if (command->minishell->commands->size <= 1) // for (cmd | ... | exit) case
+		ft_putstr_fd("exit\n", STDOUT_FILENO);
 	clear_minishell(&command->minishell);
-	ft_putstr_fd("exit\n", STDOUT_FILENO);
 	exit(get_status());
 }
