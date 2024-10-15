@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/12 20:52:58 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/10/15 15:55:21 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 # define MINISHELL_H
 
 # include <bst.h>
-# include <curses.h>
-# include <dirent.h>
-# include <errno.h>
-# include <fcntl.h>
 # include <libft.h>
-# include <limits.h>
 # include <list.h>
+# include <set.h>
+# include <errno.h>
+# include <dirent.h>
+# include <curses.h>
+# include <limits.h>
+# include <fcntl.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
@@ -99,6 +100,7 @@ struct							s_minishell
 	t_list_ptr					line;
 	t_bst_ptr					env;
 	t_bst_ptr					export;
+	t_set_ptr					quote_tracker;
 	t_cmd_matrix_ptr			commands;
 	t_descriptors_ptr			descriptors;
 };
@@ -132,11 +134,14 @@ void							ft_dollar_resolution(t_minishell_ptr minishell,
 
 // helpers
 void							remove_2d_str(char **str);
-void							ft_err_msg(char *msg);
-void							__err_msg__(char *name, char *err, int val);
-void							__err_msg_prmt__(char *name, char *err,
-									int val);
 void							auto_free(char **ptr);
+
+// err_print
+void	ft_err_msg(char *msg);
+void	__err_msg__(char* name, char* err, int err_val);
+void	__err_msg_prmt__(char* name, char* err, int err_val);
+void	__err_msg_full_prmt__(char* name, char* err, char* reason, int err_val);
+void	__err_msg_full__(char* name, char* err, char* reason, int err_val);
 
 // check_helpers
 bool							is_num_str(const char *str);

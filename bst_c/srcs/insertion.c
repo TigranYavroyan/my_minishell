@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:57 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/11 16:26:17 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/10/15 15:59:26 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static t_treenode_ptr	_balance(t_treenode_ptr root, const t_key_type key)
 	}
 	else if (bf < -1 && key > root->right->key)
 		return (_left_rotate(root));
-	else if (bf < -1 && key > root->right->key)
+	else if (bf < -1 && key < root->right->key)
 	{
 		root->right = _right_rotate(root->right);
 		return (_left_rotate(root));

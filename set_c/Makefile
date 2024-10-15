@@ -12,8 +12,8 @@ INCLPATH = ./includes/ ../libft/ ../list_c/includes/
 SRCS = $(wildcard $(SRCSPATH)*.c)
 OBJS = $(patsubst $(SRCSPATH)%.c, $(SRCSPATH)%.o, $(SRCS))
 # -Wall -Wextra -Werror
-CFLAGS = -g $(foreach H, $(INCLPATH), -I$(H))
-NAME = set.a
+CFLAGS = -g -Wall -Wextra -Werror $(foreach H, $(INCLPATH), -I$(H))
+NAME = libset.a
 
 all : $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:22 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/09 19:54:29 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/10 18:27:03 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_export (t_command_ptr command)
 
 	err = ft_strdup("export: ");
 	if (!empty_lt(command->options))
-		printf("minishell: export: %s: invalid option\n", command->options->head->val);
+		__err_msg_full_prmt__("export: ", command->options->head->val, ": invalid option", INV_OPTION);
 	else if (!empty_lt(command->args))
 	{
 		curr = command->args->head;
@@ -31,7 +31,7 @@ void	ft_export (t_command_ptr command)
 		{
 			eq_sign = ft_strchr(curr->val, '=');
 			if (!is_var_name(curr->val, eq_sign))
-				printf("minishell: export: `%s': not a valid identifier\n", curr->val);
+				__err_msg_full_prmt__("export: `", curr->val, "\': not a valid identifier", INV_ARG);
 			else
 				_add_variable(command->minishell, curr, eq_sign);
 			curr = curr->next;

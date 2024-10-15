@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:23:51 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/02 14:25:24 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/10 20:08:53 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	print_out (char** output)
 	printf("%s", output[i]);
 }
 
-void ft_echo(t_command_ptr command)
+void ft_echo(t_command_ptr command) // fix echo -nnnnnnnnnnnnnnn adsfads \case
 {
 	char		**output;
 	t_node_ptr	s;
