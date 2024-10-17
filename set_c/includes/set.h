@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:33:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/14 23:13:00 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/17 19:14:37 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,18 @@ int				get_bf_set (t_setnode_ptr curr);
 // find
 t_setnode_ptr	_find_min_set(t_setnode_ptr root);
 bool			find_set (t_set_ptr set, t_node_ptr key);
+t_setnode_ptr	_find_set(t_setnode_ptr root, t_node_ptr key);
 
 // traverse
 void	traverse_set(t_set_ptr tree, t_travers_type_set travers_type,
 		t_visitor_set fptr);
 
 // deletion
-void	clear_set(t_set_ptr *set);
+void	clear_set(t_set_ptr set);
 void	remove_set(t_set_ptr set, const t_node_ptr key);
 
-
+// quote_check.c
+bool	is_single_quoted(t_set_ptr set, t_node_ptr curr);
+bool	is_double_quoted(t_set_ptr set, t_node_ptr curr);
 
 #endif // SET_C_H

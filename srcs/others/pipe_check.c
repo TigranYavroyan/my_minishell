@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:03:40 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/17 15:48:00 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/17 22:10:18 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-bool pipe_check (t_list_ptr line)
+bool pipe_check (t_list_ptr line, t_set_ptr quote_tracker)
 {
 	t_node_ptr	curr;
 
 	curr = line->head;
 	while (curr)
 	{
-		if (_equal(curr->val, "|"))
+		if (_equal(curr->val, "|") && !find_set(quote_tracker, curr))
 		{
 			if (curr->prev == NULL)
 				return (false);

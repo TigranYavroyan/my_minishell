@@ -6,13 +6,13 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:06:54 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/14 23:02:14 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/17 19:06:43 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <set.h>
 
-static t_setnode_ptr _find_set(t_setnode_ptr root, t_node_ptr key)
+t_setnode_ptr _find_set(t_setnode_ptr root, t_node_ptr key)
 {
 	if (!root)
 		return (NULL);

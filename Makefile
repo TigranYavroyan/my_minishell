@@ -5,7 +5,7 @@ RESET	= \033[0;37m
 SKY		= \033[1;36m
 
 NAME = minishell
-BRANCH = las
+BRANCH = main
 
 SRC_DIR = srcs/
 OBJ_DIR = build/
@@ -51,7 +51,7 @@ all : $(NAME)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
-
+# $(DEBUG)
 $(NAME): $(OBJ_DIR) $(OBJ) $(BST) $(LIST) $(LIBFT) $(SET) Makefile
 	@$(CC) $(OBJ) $(LIBFLAGS) -o $(NAME)
 	@echo "$(GREEN) Executable file has been created$(RESET)"

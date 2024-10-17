@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/29 15:24:20 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/17 18:27:31 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void					remove_if_lt(t_list_ptr list, char *val);
 
 void					remove_index_node_lt(t_list_ptr list, int index);
 
-void					remove_node_lt(t_list_ptr list, t_node *node);
+t_node_ptr				remove_node_lt(t_list_ptr list, t_node *node);
 
 void					remove_if_range_lt(t_list_ptr list, t_node *start,
 							t_node *end, char *val);

@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:37:48 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/08 14:05:49 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/17 20:32:22 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ void	ft_merge_quotes(t_minishell_ptr minishell) // echo "a"'b' case doesn't work
 	opened_ch = 0;
 	while (curr)
 	{
-		_update_quote_info(&open, &opened_ch, curr);
+		update_quote_info(&open, &opened_ch, curr);
 		if (open)
 		{
 			tmp = curr->next;
-			remove_node_lt(minishell->line, curr);
+			curr = remove_node_lt(minishell->line, curr); // check without tmp
 			curr = tmp;
 			if (*curr->val == opened_ch)
 			{
 				tmp = curr->next;
-				_update_quote_info(&open, &opened_ch, curr);
+				update_quote_info(&open, &opened_ch, curr);
 				remove_node_lt(minishell->line, curr);
 				curr = tmp;
 			}
@@ -45,7 +45,7 @@ void	ft_merge_quotes(t_minishell_ptr minishell) // echo "a"'b' case doesn't work
 					remove_node_lt(minishell->line, curr->next);
 				}
 				tmp = curr->next->next;
-				_update_quote_info(&open, &opened_ch, curr->next);
+				update_quote_info(&open, &opened_ch, curr->next);
 				remove_node_lt(minishell->line, curr->next);
 				curr = tmp;
 			}

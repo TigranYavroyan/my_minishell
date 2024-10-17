@@ -6,29 +6,32 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/15 14:09:23 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/17 22:14:23 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
+
 static void	__ft_minishell__(t_minishell_ptr minishell, char *input)
 {
 	tokenize(minishell, "<>| \'\"()&", input);
-	ft_symbol_resolution(minishell);
 	if (!ft_quotes_check(minishell->line))
 	{
 		__err_msg_prmt__(NULL, "Unclosed quotes", SYNTAX_ERROR);
 		return ;
 	}
-	if (!pipe_check(minishell->line)) // if pipe in quotes ("|") it is can't be
+	remove_quotes(minishell->line, minishell->quote_tracker);
+	parse_dollar(minishell);
+	merge_in_quotes(minishell->line, minishell->quote_tracker);
+	remove_spaces(minishell->line, minishell->quote_tracker);
+	ft_count_cmds(minishell);
+	if (!pipe_check(minishell->line, minishell->quote_tracker)) // have to change place of this check (but it works only with deleted spaces)
 	{
 		__err_msg_prmt__(NULL, "syntax error near unexpected token `|\'",
 			SYNTAX_ERROR);
 		return ;
 	}
-	ft_merge_quotes(minishell);
-	ft_count_cmds(minishell);
 	get_cmds(minishell);
 	execute(minishell);
 }
@@ -51,6 +54,7 @@ static void	ft_minishell(t_minishell_ptr minishell)
 		__ft_minishell__(minishell, input);
 		clear_lt(minishell->line);
 		clear_cmds(minishell->commands);
+		clear_set(minishell->quote_tracker);
 		free(minishell->commands);
 		free(input);
 	}
