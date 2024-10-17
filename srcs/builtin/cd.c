@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:02 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/14 14:38:58 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:37:04 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,11 @@ void	ft_cd(t_command_ptr command)
 		return ;
 	tmp_pwd = get_pwd();
 	if (!ft_chdir(path, command))
-		return ;
+	{
+		return (auto_free(&tmp_pwd));
+	}
 	if (!cwd_check(command))
-		return ;
+		return (auto_free(&tmp_pwd));
 	set_pwd(tmp_pwd, command);
 	free(tmp_pwd);
 }
