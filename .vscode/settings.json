@@ -22,6 +22,7 @@
 		"ios": "c",
 		"__bit_reference": "c",
 		"iterator": "c",
-		"wait.h": "c"
+		"wait.h": "c",
+		"set.h": "c"
 	}
 }

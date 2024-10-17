@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:54:31 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/14 23:04:54 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/17 18:48:58 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 static void				_clear(t_setnode_ptr root);
 static t_setnode_ptr	_remove(t_setnode_ptr root, const t_node_ptr key);
 
-void	clear_set(t_set_ptr *set)
+void	clear_set(t_set_ptr set)
 {
-	if (!set || !(*set))
+	if (!set)
 		return ;
-	_clear((*set)->root);
-	free(*set);
-	*set = NULL;
+	_clear(set->root);
+	set->root = NULL;
 }
 
 void	remove_set(t_set_ptr set, const t_node_ptr key)

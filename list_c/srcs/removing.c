@@ -6,14 +6,19 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:46 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/16 17:58:32 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/17 18:34:06 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <list.h>
 
-void	remove_node_lt(t_list_ptr list, t_node *node)
+t_node_ptr	remove_node_lt(t_list_ptr list, t_node *node)
 {
+	t_node_ptr	tmp;
+
+	if (!node)
+		return (NULL);
+	tmp = node->next;
 	if (node == list->head)
 		pop_front_lt(list);
 	else if (node == list->tail)
@@ -25,6 +30,7 @@ void	remove_node_lt(t_list_ptr list, t_node *node)
 		free_node(&node);
 		--(list->size);
 	}
+	return (tmp);
 }
 
 void	remove_index_node_lt(t_list_ptr list, int index)

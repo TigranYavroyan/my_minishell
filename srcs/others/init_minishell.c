@@ -1,6 +1,6 @@
 #include <minishell.h>
 
-static void shlvl_eval (t_minishell_ptr minishell) {
+static void shlvl_process (t_minishell_ptr minishell) {
 	t_treenode_ptr	found;
 	char			*val;
 	int				level;
@@ -30,7 +30,7 @@ t_minishell_ptr init_minishell (char** env) {
 	sort_env(env); // env have to be not sorted, check after
 	minishell->env = matrix_to_bst(env, '='); // matrix_to_bst_works only with sorted container
 	minishell->export = copy_bst(minishell->env);
-	shlvl_eval(minishell);
+	shlvl_process(minishell);
 	minishell->commands = NULL;
 	minishell->descriptors = make_descriptors();
 

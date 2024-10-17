@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dollar_resolution.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:22:15 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/07 20:23:58 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/10/17 20:19:45 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ static void			_final_res(t_node_ptr curr, t_value_type begin,
 						t_dollar_info_ptr df);
 
 void	ft_dollar_resolution(t_minishell_ptr minishell, t_node_ptr curr,
-		t_value_type begin, char opened_ch)
+		t_value_type begin)
 {
 	t_dollar_info	df;
 	t_value_type	tmp_begin;
 
 	tmp_begin = begin; // for e$SMTH hello case
-	if (ft_strlen(begin - 1) == 1)
+	if (ft_strlen(begin - 1) == 1) // check for $"" (???)
 		return ;
 	df.res = NULL;
 	df.end = NULL;
-	if (opened_ch == '\'')
+	if (is_single_quoted(minishell->quote_tracker, curr))
 		return ;
 	else
 	{
