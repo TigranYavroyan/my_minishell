@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/15 15:55:21 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/10/17 22:14:40 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 # define DIR_ERROR 126
 # define EXIT_ERROR 255
 # define SYNTAX_ERROR 258
-# define LEAKS true
+# define LEAKS false
 
 # define string __attribute__((cleanup(auto_free))) char *
 # define CDERR \
@@ -123,14 +123,16 @@ void							tokenize(t_minishell_ptr minishell, char *delim,
 bool							ft_quotes_check(t_list_ptr line);
 
 // symbol_resolution
-void							ft_symbol_resolution(t_minishell_ptr minishell);
-void							_update_quote_info(bool *open, char *opened_ch,
+void							remove_quotes(t_list_ptr line, t_set_ptr quote_tracker);
+void							parse_dollar (t_minishell_ptr minishell);
+void							remove_spaces(t_list_ptr line, t_set_ptr quote_tracker);
+void 							merge_in_quotes(t_list_ptr line, t_set_ptr quote_tracker);
+void							update_quote_info(bool *open, char *opened_ch,
 									t_node_ptr curr);
 
 // dollar_resolution
 void							ft_dollar_resolution(t_minishell_ptr minishell,
-									t_node_ptr curr, t_value_type begin,
-									char opened_ch);
+									t_node_ptr curr, t_value_type begin);
 
 // helpers
 void							remove_2d_str(char **str);
@@ -166,7 +168,7 @@ void							init_cmd(t_cmd_matrix_ptr cmds);
 void							get_cmds(t_minishell_ptr minishell);
 
 // pipe_check
-bool							pipe_check(t_list_ptr line);
+bool							pipe_check(t_list_ptr line, t_set_ptr quote_tracker);
 
 // execute
 void							execute(t_minishell_ptr minishell);

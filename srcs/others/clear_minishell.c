@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:26 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/14 23:08:42 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/17 18:46:58 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void clear_minishell(t_minishell_ptr* minishell)
 
 	clear_bst(&(*minishell)->env);
 	clear_bst(&(*minishell)->export);
-	clear_set(&(*minishell)->quote_tracker);
+	clear_set((*minishell)->quote_tracker);
+	free((*minishell)->quote_tracker);
 	clear_cmds((*minishell)->commands);
 	free(tmp->commands);
 	close(tmp->descriptors->stdin);
