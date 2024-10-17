@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 16:41:56 by healeksa          #+#    #+#             */
-/*   Updated: 2024/10/12 20:54:00 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:35:45 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,32 +34,25 @@ void	set_pwd(char *old_pwd, t_command_ptr command)
 
 bool	ft_chdir(char *path, t_command_ptr command)
 {
-	int		status;
-	char	*__err;
+	int	status;
 
 	status = chdir(path);
 	if (status == -1)
 	{
 		if (errno == ENOTDIR)
 		{
-			__err = ft_strdup(command->args->head->val);
-			ft_append(&__err, " : Not a directory");
-			__err_msg_prmt__("cd: ", __err, INV_ARG);
-			auto_free(&__err);
+			__err_msg_full_prmt__("cd: ", command->args->head->val,
+				": Not a directory", INV_ARG);
 		}
 		else if (errno == EACCES)
 		{
-			__err = ft_strdup(command->args->head->val);
-			ft_append(&__err, " : Permission denied");
-			__err_msg_prmt__("cd: ", __err, INV_ARG);
-			auto_free(&__err);
+			__err_msg_full_prmt__("cd: ", command->args->head->val,
+				": Permission denied", INV_ARG);
 		}
 		else if (errno == ENOENT)
 		{
-			__err = ft_strdup(command->args->head->val);
-			ft_append(&__err, " : No such file or directory");
-			__err_msg_prmt__("cd: ", __err, INV_ARG); /// poxenq pti
-			auto_free(&__err);
+			__err_msg_full_prmt__("cd: ", command->args->head->val,
+				": No such file or directory", INV_ARG);
 		}
 		return (false);
 	}
