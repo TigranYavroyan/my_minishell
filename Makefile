@@ -5,7 +5,7 @@ RESET	= \033[0;37m
 SKY		= \033[1;36m
 
 NAME = minishell
-BRANCH = las
+BRANCH = main
 
 SRC_DIR = srcs/
 OBJ_DIR = build/
