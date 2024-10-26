@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_helpers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:28:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/09 19:36:35 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/22 15:45:17 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ bool	is_num_str(const char *str)
 	if (!str)
 		return (false);
 	i = 0;
-	if (str[i] == '-')
+	while (ft_isspace(str[i]))
+		++i;
+	if (str[i] == '-' || str[i] == '+')
 		++i;
 	while (str[i] != '\0')
 	{
