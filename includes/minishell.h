@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/17 22:14:40 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/19 23:20:15 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 # define MINISHELL_H
 
 # include <bst.h>
-# include <libft.h>
-# include <list.h>
-# include <set.h>
-# include <errno.h>
-# include <dirent.h>
 # include <curses.h>
-# include <limits.h>
+# include <dirent.h>
+# include <errno.h>
 # include <fcntl.h>
+# include <libft.h>
+# include <limits.h>
+# include <list.h>
 # include <readline/history.h>
 # include <readline/readline.h>
+# include <set.h>
 # include <signal.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -123,10 +123,13 @@ void							tokenize(t_minishell_ptr minishell, char *delim,
 bool							ft_quotes_check(t_list_ptr line);
 
 // symbol_resolution
-void							remove_quotes(t_list_ptr line, t_set_ptr quote_tracker);
-void							parse_dollar (t_minishell_ptr minishell);
-void							remove_spaces(t_list_ptr line, t_set_ptr quote_tracker);
-void 							merge_in_quotes(t_list_ptr line, t_set_ptr quote_tracker);
+void							remove_quotes(t_list_ptr line,
+									t_set_ptr quote_tracker);
+void							parse_dollar(t_minishell_ptr minishell);
+void							remove_spaces(t_list_ptr line,
+									t_set_ptr quote_tracker);
+void							merge_in_quotes(t_list_ptr line,
+									t_set_ptr quote_tracker);
 void							update_quote_info(bool *open, char *opened_ch,
 									t_node_ptr curr);
 
@@ -139,11 +142,14 @@ void							remove_2d_str(char **str);
 void							auto_free(char **ptr);
 
 // err_print
-void	ft_err_msg(char *msg);
-void	__err_msg__(char* name, char* err, int err_val);
-void	__err_msg_prmt__(char* name, char* err, int err_val);
-void	__err_msg_full_prmt__(char* name, char* err, char* reason, int err_val);
-void	__err_msg_full__(char* name, char* err, char* reason, int err_val);
+void							ft_err_msg(char *msg);
+void							__err_msg__(char *name, char *err, int err_val);
+void							__err_msg_prmt__(char *name, char *err,
+									int err_val);
+void							__err_msg_full_prmt__(char *name, char *err,
+									char *reason, int err_val);
+void							__err_msg_full__(char *name, char *err,
+									char *reason, int err_val);
 
 // check_helpers
 bool							is_num_str(const char *str);
@@ -168,7 +174,8 @@ void							init_cmd(t_cmd_matrix_ptr cmds);
 void							get_cmds(t_minishell_ptr minishell);
 
 // pipe_check
-bool							pipe_check(t_list_ptr line, t_set_ptr quote_tracker);
+bool							pipe_check(t_list_ptr line,
+									t_set_ptr quote_tracker);
 
 // execute
 void							execute(t_minishell_ptr minishell);

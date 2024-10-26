@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmd_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/09 19:37:05 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/22 16:03:22 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static char**	get_path (t_minishell_ptr minishell);
-static char*	get_path_exec(t_command_ptr command);
+static char	**get_path(t_minishell_ptr minishell);
+static char	*get_path_exec(t_command_ptr command);
 
 bool	access_cmd(t_command_ptr command)
 {
@@ -33,31 +33,49 @@ bool	access_cmd(t_command_ptr command)
 	return (true);
 }
 
-static char**	get_path (t_minishell_ptr minishell)
+static char	**get_path(t_minishell_ptr minishell)
 {
-	char**	res;
-	char*	path;
+	char	**res;
+	char	*path;
 
 	path = get_bst(minishell->env, "PATH");
 	res = ft_split(path, ':');
 	return (res);
 }
 
-bool	_exec_util (char* full_path, t_command_ptr command, bool is_btin, int* fds UNUSED)
+static void	wait_and_status(pid_t pid, int *_status)
 {
-	char		**args;
-	char		**env;
-	pid_t		pid;
+	waitpid(pid, _status, 0);
+	if (WIFSIGNALED(*_status))
+	{
+		*_status = WTERMSIG(*_status) + 128;
+		if (*_status == 131)
+			write(1, "Quit: 3\n", 9);
+		return (set_status_unsigned(*_status));
+	}
+	set_status_unsigned(WEXITSTATUS(*_status));
+}
+
+bool	_exec_util(char *full_path, t_command_ptr command, bool is_btin,
+		int *fds UNUSED)
+{
+	char	**args;
+	char	**env;
+	pid_t	pid;
+	int		sts;
 
 	pid = fork();
 	args = NULL;
 	set_status_unsigned(VAL_CMD);
 	if (pid == 0)
 	{
+		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_DFL);
 		close(fds[in]);
 		if (is_btin)
 			exec_builtin(command);
-		else {
+		else
+		{
 			push_front_lt(command->options, command->name);
 			move_back_lt(&command->options, command->args);
 			env = bst_to_matrix(command->minishell->env);
@@ -68,12 +86,12 @@ bool	_exec_util (char* full_path, t_command_ptr command, bool is_btin, int* fds 
 		// have to free memory;
 		exit(get_status());
 	}
-	waitpid(pid, NULL, 0); // check
+	wait_and_status(pid, &sts);
 	remove_2d_str(args);
 	return (true);
 }
 
-static char*	get_path_exec(t_command_ptr command)
+static char	*get_path_exec(t_command_ptr command)
 {
 	char	*tmp;
 	char	*cmd;

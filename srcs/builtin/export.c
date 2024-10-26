@@ -3,47 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:22 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/10 18:27:03 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/19 23:10:34 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static void print_for_export_bst (t_key_type key, t_value_type value);
-static void _add_variable (t_minishell_ptr minishell, t_node_ptr curr, char* eq_sign);
-
-void	ft_export (t_command_ptr command)
+static void	print_for_export_bst(t_key_type key, t_value_type value)
 {
-	char		*eq_sign;
-	char		*err;
-	t_node_ptr	curr;
-
-	err = ft_strdup("export: ");
-	if (!empty_lt(command->options))
-		__err_msg_full_prmt__("export: ", command->options->head->val, ": invalid option", INV_OPTION);
-	else if (!empty_lt(command->args))
-	{
-		curr = command->args->head;
-		while (curr)
-		{
-			eq_sign = ft_strchr(curr->val, '=');
-			if (!is_var_name(curr->val, eq_sign))
-				__err_msg_full_prmt__("export: `", curr->val, "\': not a valid identifier", INV_ARG);
-			else
-				_add_variable(command->minishell, curr, eq_sign);
-			curr = curr->next;
-		}
-	}
-	else
-		traverse_bst(command->minishell->export, INORDER, print_for_export_bst);
-	free(err);
-}
-
-static void print_for_export_bst (t_key_type key, t_value_type value) {
-    printf("declare -x %s", key);
+	printf("declare -x %s", key);
 	if (value)
 	{
 		printf("=\"");
@@ -54,9 +25,10 @@ static void print_for_export_bst (t_key_type key, t_value_type value) {
 	printf("\n");
 }
 
-static void _add_variable (t_minishell_ptr minishell, t_node_ptr curr, char* eq_sign)
+static void	_add_variable(t_minishell_ptr minishell, t_node_ptr curr,
+		char *eq_sign)
 {
-	t_key_type	key;
+	t_key_type		key;
 	t_value_type	value;
 
 	key = ft_substr(curr->val, 0, (eq_sign - curr->val));
@@ -74,4 +46,30 @@ static void _add_variable (t_minishell_ptr minishell, t_node_ptr curr, char* eq_
 	}
 	free(key);
 	free(value);
+}
+
+void	ft_export(t_command_ptr command)
+{
+	char		*eq_sign;
+	t_node_ptr	curr;
+
+	if (!empty_lt(command->options))
+		__err_msg_full_prmt__("export: ", command->options->head->val,
+			": invalid option", INV_OPTION);
+	else if (!empty_lt(command->args))
+	{
+		curr = command->args->head;
+		while (curr)
+		{
+			eq_sign = ft_strchr(curr->val, '=');
+			if (!is_var_name(curr->val, eq_sign))
+				__err_msg_full_prmt__("export: `", curr->val,
+					"\': not a valid identifier", INV_ARG);
+			else
+				_add_variable(command->minishell, curr, eq_sign);
+			curr = curr->next;
+		}
+	}
+	else
+		traverse_bst(command->minishell->export, INORDER, print_for_export_bst);
 }

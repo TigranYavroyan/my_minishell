@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:28:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/20 13:47:15 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/26 16:50:39 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ bool	is_num_str(const char *str)
 	if (!str)
 		return (false);
 	i = 0;
+	while (ft_isspace(str[i]))
+		++i;
 	if (str[i] == '-' || str[i] == '+')
 		++i;
 	while (str[i] != '\0')
