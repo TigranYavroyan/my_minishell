@@ -51,9 +51,9 @@ all : $(NAME)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
-#
+# $(DEBUG)
 $(NAME): $(OBJ_DIR) $(OBJ) $(BST) $(LIST) $(LIBFT) $(SET) Makefile
-	@$(CC) $(DEBUG) $(OBJ) $(LIBFLAGS) -o $(NAME)
+	@$(CC) $(OBJ) $(LIBFLAGS) -o $(NAME)
 	@echo "$(GREEN) Executable file has been created$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c Makefile
