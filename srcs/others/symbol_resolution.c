@@ -6,11 +6,28 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:01:23 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/17 22:08:30 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/26 22:07:15 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+
+static void	update_quote_info(bool *open, char *opened_ch, t_node_ptr curr)
+{
+	if (is_quote(*curr->val))
+	{
+		if (!(*open))
+		{
+			*open = true;
+			*opened_ch = *curr->val;
+		}
+		else if (*opened_ch == *curr->val)
+		{
+			*open = false;
+			*opened_ch = 0;
+		}
+	}
+}
 
 void	remove_quotes(t_list_ptr line, t_set_ptr quote_tracker) {
 	bool			open;
@@ -71,23 +88,6 @@ void	remove_spaces(t_list_ptr line, t_set_ptr quote_tracker)
 			curr = remove_node_lt(line, curr);
 		else
 			curr = curr->next;
-	}
-}
-
-void	update_quote_info(bool *open, char *opened_ch, t_node_ptr curr)
-{
-	if (is_quote(*curr->val))
-	{
-		if (!(*open))
-		{
-			*open = true;
-			*opened_ch = *curr->val;
-		}
-		else if (*opened_ch == *curr->val)
-		{
-			*open = false;
-			*opened_ch = 0;
-		}
 	}
 }
 
