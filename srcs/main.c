@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/17 22:14:23 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/21 14:05:47 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ static void	__ft_minishell__(t_minishell_ptr minishell, char *input)
 	parse_dollar(minishell);
 	merge_in_quotes(minishell->line, minishell->quote_tracker);
 	remove_spaces(minishell->line, minishell->quote_tracker);
-	ft_count_cmds(minishell);
 	if (!pipe_check(minishell->line, minishell->quote_tracker)) // have to change place of this check (but it works only with deleted spaces)
 	{
 		__err_msg_prmt__(NULL, "syntax error near unexpected token `|\'",
 			SYNTAX_ERROR);
 		return ;
 	}
+	ft_count_cmds(minishell);
 	get_cmds(minishell);
 	execute(minishell);
 }

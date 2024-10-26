@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insertion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:57 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/15 15:59:26 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/10/20 13:24:40 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@ static t_treenode_ptr	_balance(t_treenode_ptr root, const t_key_type key)
 	int	bf;
 
 	bf = get_bf(root);
-	if (bf > 1 && key < root->left->key)
+	if (bf > 1 && _less(key, root->left->key))
 		return (_right_rotate(root));
-	else if (bf > 1 && key > root->left->key)
+	else if (bf > 1 && _greater(key, root->left->key))
 	{
 		root->left = _left_rotate(root->left);
 		return (_right_rotate(root));
 	}
-	else if (bf < -1 && key > root->right->key)
+	else if (bf < -1 && _greater(key, root->right->key))
 		return (_left_rotate(root));
-	else if (bf < -1 && key < root->right->key)
+	else if (bf < -1 && _less(key, root->right->key))
 	{
 		root->right = _right_rotate(root->right);
 		return (_left_rotate(root));
@@ -59,7 +59,8 @@ static t_treenode_ptr	__insert(t_treenode_ptr root, const t_key_type key,
 		root->left = __insert(root->left, key, value);
 	else
 	{
-		_update_old_value(root, value);
+		if (value)
+			_update_old_value(root, value);
 		return (root);
 	}
 	return (_balance(root, key));
