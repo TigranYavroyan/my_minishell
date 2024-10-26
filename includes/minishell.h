@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/19 23:20:15 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/10/26 19:19:39 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,6 @@ void							remove_spaces(t_list_ptr line,
 									t_set_ptr quote_tracker);
 void							merge_in_quotes(t_list_ptr line,
 									t_set_ptr quote_tracker);
-void							update_quote_info(bool *open, char *opened_ch,
-									t_node_ptr curr);
 
 // dollar_resolution
 void							ft_dollar_resolution(t_minishell_ptr minishell,
@@ -227,9 +225,6 @@ void							log_header_in_file(void);
 
 // descriptors
 t_descriptors_ptr				make_descriptors(void);
-
-// merge_quotes
-void							ft_merge_quotes(t_minishell_ptr minishell);
 
 // signal
 void							signal_handle(void);

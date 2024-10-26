@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:43 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/14 20:29:00 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/26 17:25:26 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ static void	_copy_bst(t_treenode_ptr to, t_treenode_ptr from)
 	free(to->key);
 	free(to->value);
 	to->key = ft_strdup(from->key);
-	to->value = ft_strdup(from->value);
+	if (from->value)
+		to->value = ft_strdup(from->value);
+	else
+		to->value = NULL;
 }
 
 static t_treenode_ptr	_remove(t_treenode_ptr root, const t_key_type key)
