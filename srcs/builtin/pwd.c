@@ -6,13 +6,13 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:29 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/17 17:00:49 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/10/18 11:51:51 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-char	*get_env_pwd(t_command_ptr command)
+static char	*get_env_pwd(t_command_ptr command)
 {
 	char	*curr_path;
 
@@ -22,7 +22,7 @@ char	*get_env_pwd(t_command_ptr command)
 	return (NULL);
 }
 
-void	cwd(void)
+static void	cwd(void)
 {
 	char	cwd_path[PATH_MAX];
 
