@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:42:04 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/08 14:17:30 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/28 18:38:29 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,10 @@ static t_treenode_ptr	_init_root(char *line, char delim)
 	t_key_type		key;
 	t_value_type	value;
 
-	key = ft_strchr(line, delim);
 	value = ft_strchr(line, delim);
 	if (!value)
 		return (_make_node(line, "", NULL, NULL));
-	key = ft_substr(line, 0, ft_strlen(line) - ft_strlen(key));
+	key = ft_substr(line, 0, ft_strlen(line) - ft_strlen(value));
 	root = _make_node(key, value + 1, NULL, NULL);
 	free(key);
 	return (root);

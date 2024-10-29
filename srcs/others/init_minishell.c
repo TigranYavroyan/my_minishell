@@ -29,6 +29,7 @@ t_minishell_ptr init_minishell (char** env) {
 	minishell->quote_tracker = init_set();
 	sort_env(env); // env have to be not sorted, check after
 	minishell->env = matrix_to_bst(env, '='); // matrix_to_bst_works only with sorted container
+	insert_bst(minishell->env, "OLDPWD", NULL);
 	minishell->export = copy_bst(minishell->env);
 	shlvl_process(minishell);
 	minishell->commands = NULL;

@@ -6,12 +6,11 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/21 14:05:47 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/29 18:31:55 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
-
 
 static void	__ft_minishell__(t_minishell_ptr minishell, char *input)
 {

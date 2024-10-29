@@ -117,8 +117,6 @@ exit nenie iri
 exit 42 42 42 42 42
 exit echo nenie_iri
 exit exit
-env | grep "_="
-export | grep "SHLVL"
 export | grep "OLDPWD"
 export | grep "PWD"
 export $?

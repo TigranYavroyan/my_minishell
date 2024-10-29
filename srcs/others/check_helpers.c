@@ -6,11 +6,18 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:28:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/26 16:50:39 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/29 20:49:21 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+
+bool	is_dir_util(char* name)
+{
+	if (!name || !*name || !(name[0] == '.' || name[0] == '/'))
+		return (false);
+	return (true);
+}
 
 bool	is_dir(char *name)
 {
