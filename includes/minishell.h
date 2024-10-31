@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/29 20:49:59 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/31 16:27:23 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ bool							is_num_str(const char *str);
 bool							is_quote(char ch);
 bool							is_dir_util(char* name);
 bool							is_dir(char *name);
-
+bool							is_mergeable_util(const char* str);
 // append
 void							ft_append(char **left, char *right);
 

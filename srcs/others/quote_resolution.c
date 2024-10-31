@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 22:45:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/26 22:46:21 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/31 16:45:18 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,27 @@ void remove_quotes (t_list_ptr line, t_set_ptr quote_tracker)
 	}
 }
 
+static bool __is_mergeable(t_node_ptr curr, t_set_ptr quote_tracker) // not done for the bonus
+{
+	if (!curr || !curr->next)
+		return (false);
+	if (find_set(quote_tracker, curr) && find_set(quote_tracker, curr->next))
+		return (true);
+	if (find_set(quote_tracker, curr) && is_mergeable_util(curr->next->val))
+		return (true);
+	if (find_set(quote_tracker, curr->next) && is_mergeable_util(curr->val))
+		return (true);
+	if (is_mergeable_util(curr->val) && is_mergeable_util(curr->next->val))
+		return (true);
+	if ((_equal(curr->val, ">") || _equal(curr->val, "<")) && !find_set(quote_tracker, curr)
+		&& !find_set(quote_tracker, curr->next))
+	{
+		if (_equal(curr->val, curr->next->val))
+			return (true);
+	}
+	return (false);
+}
+
 void merge_in_quotes(t_list_ptr line, t_set_ptr quote_tracker)
 {
 	t_node_ptr	curr;
@@ -72,9 +93,8 @@ void merge_in_quotes(t_list_ptr line, t_set_ptr quote_tracker)
 	curr = line->head;
 	while (curr && curr->next) // maybe can be better
 	{
-		if (ft_isspace(*curr->val) && !find_set(quote_tracker, curr))
-			curr = curr->next;
-		else if (curr && curr->next && (find_set(quote_tracker, curr->next) || !ft_isspace(*curr->next->val))) {
+		if (__is_mergeable(curr, quote_tracker)) 
+		{
 			ft_append(&curr->val, curr->next->val);
 			remove_node_lt(line, curr->next);
 		}

@@ -176,3 +176,5 @@ unset export
 unset echo
 unset unset
 unset TES^T
+cat Makefile | grep pr | head -n 5 | hello
+echo hello >'>' ta

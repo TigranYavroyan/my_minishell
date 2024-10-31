@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:28:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/29 20:49:21 by tigran           ###   ########.fr       */
+/*   Updated: 2024/10/31 16:28:05 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,11 @@ bool	is_num_str(const char *str)
 bool	is_quote(char ch)
 {
 	return (ch == '\'' || ch == '\"');
+}
+
+bool	is_mergeable_util(const char* str)
+{
+	return !(_equal(str, ">") || _equal(str, "<") || _equal(str, "<<")
+	 	|| _equal(str, ">>") || _equal(str, " ") || _equal(str, "|")
+		|| _equal(str, "&&") || _equal(str, "||"));
 }
