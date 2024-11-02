@@ -104,10 +104,11 @@ push :
 	@echo "$(SKY) Pushed! $(RESET)"
 
 git:
-	@read -p "Enter commit message: " msg; \
+	@read -p "Enter branch name: " branch; \
+	read -p "Enter commit message: " msg; \
 	git add .; \
 	git commit -m "$$msg"; \
-	git push -u origin $(BRANCH)
+	git push -u origin "$$branch"
 
 config:
 	mkdir -p readline_local
