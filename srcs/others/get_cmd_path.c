@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/29 20:49:13 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/02 15:22:11 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	wait_and_status(pid_t pid, int *_status)
 }
 
 bool	_exec_util(char *full_path, t_command_ptr command, bool is_btin,
-		int *fds UNUSED)
+		int *fds)
 {
 	char	**args;
 	char	**env;
@@ -73,6 +73,7 @@ bool	_exec_util(char *full_path, t_command_ptr command, bool is_btin,
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
 		close(fds[in]);
+		close(fds[out]);
 		if (is_btin)
 			exec_builtin(command);
 		else

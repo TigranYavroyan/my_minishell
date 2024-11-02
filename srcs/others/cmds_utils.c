@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmds_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 19:06:24 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/09/29 20:37:29 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/11/02 17:51:03 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	init_cmd(t_cmd_matrix_ptr cmds)
 		cmds->cmds[i]->args = init_lt();
 		cmds->cmds[i]->options = init_lt();
 		cmds->cmds[i]->minishell = cmds->minishell;
+		cmds->cmds[i]->descriptors = make_descriptors();
+		cmds->cmds[i]->redirection = 0; // for shifting and getting redirection info
 	}
 
 }
@@ -46,6 +48,10 @@ static void remove_cmd(t_command_ptr* command)
 	clear_lt((*command)->options);
 	free((*command)->options);
 	free((*command)->name);
+	close((*command)->descriptors->stdout);
+	close((*command)->descriptors->stdin);
+	close((*command)->descriptors->stderr);
+	free((*command)->descriptors);
 	(*command)->minishell = NULL;
 	free(*command);
 	*command = NULL;

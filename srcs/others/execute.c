@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:50:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/02 15:23:14 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/11/02 17:53:37 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ static void eval(t_cmd_matrix_ptr commands, int* fds, int i)
 	is_btin = is_builtin(commands->cmds[i]->name);
 	if (i < commands->size - 1)
 		dup2(fds[out], STDOUT_FILENO);
+	if (commands->cmds[i]->redirection == redirect_out)
+		dup2(commands->cmds[i]->descriptors->stdout, STDOUT_FILENO);
+	if (commands->cmds[i]->redirection == redirect_in)
+		dup2(commands->cmds[i]->descriptors->stdin, STDIN_FILENO);
 	if (commands->size == 1 && is_btin)
 		exec_builtin(commands->cmds[i]);
 	else if (is_btin || access_cmd(commands->cmds[i]))
@@ -27,6 +31,7 @@ static void eval(t_cmd_matrix_ptr commands, int* fds, int i)
 	dup2(commands->minishell->descriptors->stdout, STDOUT_FILENO);
 	close(fds[in]);
 	close(fds[out]);
+	refresh_descriptors(commands->cmds[i]);
 }
 
 void execute (t_minishell_ptr minishell)

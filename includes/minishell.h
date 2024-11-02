@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/31 16:27:23 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/02 17:41:56 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,11 @@ struct							s_descriptors
 struct							s_command
 {
 	t_minishell_ptr				minishell;
-	char						*name;
-	t_list_ptr					args;
 	t_list_ptr					options;
+	t_descriptors_ptr			descriptors;
+	t_list_ptr					args;
+	char						*name;
+	int							redirection;
 };
 
 struct							s_minishell
@@ -149,12 +151,18 @@ void							__err_msg_full_prmt__(char *name, char *err,
 void							__err_msg_full__(char *name, char *err,
 									char *reason, int err_val);
 
-// check_helpers
+// check_helpers1
 bool							is_num_str(const char *str);
 bool							is_quote(char ch);
 bool							is_dir_util(char* name);
 bool							is_dir(char *name);
 bool							is_mergeable_util(const char* str);
+
+// check_helpers2
+bool							is_redirect (const char* val);
+bool							redir_check(t_list_ptr line, t_set_ptr quote_tracker);
+
+
 // append
 void							ft_append(char **left, char *right);
 
@@ -226,6 +234,7 @@ void							log_header_in_file(void);
 
 // descriptors
 t_descriptors_ptr				make_descriptors(void);
+void							refresh_descriptors (t_command_ptr command);
 
 // signal
 void							signal_handle(void);
