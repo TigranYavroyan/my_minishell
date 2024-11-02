@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/02 17:41:56 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/02 20:15:27 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define DIR_ERROR 126
 # define EXIT_ERROR 255
 # define SYNTAX_ERROR 258
+# define FILE_PERM 0644
 # define LEAKS false
 
 # define string __attribute__((cleanup(auto_free))) char *
