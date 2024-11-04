@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:50:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/02 19:42:50 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/04 21:22:18 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ static void eval(t_cmd_matrix_ptr commands, int* fds, int i)
 		dup2(commands->cmds[i]->descriptors->stdout, STDOUT_FILENO);
 	else if (commands->cmds[i]->redirection == redirect_in)
 		dup2(commands->cmds[i]->descriptors->stdin, STDIN_FILENO);
+	// henrik implement from here
+	else if (commands->cmds[i]->redirection == redirect_heredoc)
+		heredoc_handle(commands->cmds[i]); // <--
+	// to here
 	if (commands->size == 1 && is_btin)
 		exec_builtin(commands->cmds[i]);
 	else if (is_btin || access_cmd(commands->cmds[i]))

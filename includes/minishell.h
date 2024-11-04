@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/04 16:52:34 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/04 21:20:30 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ struct							s_command
 	t_list_ptr					args;
 	char						*name;
 	int							redirection;
+	char						*delim;
 };
 
 struct							s_minishell
@@ -249,5 +250,12 @@ char							*get_pwd(void);
 char							*catch_home(t_command_ptr command);
 void							set_pwd(char *old_pwd, t_command_ptr command);
 bool							ft_chdir(char *path, t_command_ptr command);
+
+// redirection_helpers
+void							__redir_swap(t_minishell_ptr minishell, t_node_ptr curr);
+t_node_ptr						__redirect_handle(t_minishell_ptr minishell, t_node_ptr curr, int i);
+
+// heredoc
+void							heredoc_handle(t_command_ptr command); // henrik , implement , please
 
 #endif // MINISHELL_H

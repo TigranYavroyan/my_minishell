@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 16:58:11 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/04 15:52:43 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/04 21:09:35 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 bool	is_redirect (const char* val)
 {
-	if (_equal(val, ">") || _equal(val, "<") || _equal(val, ">>"))
-		return (true);
-	return (false);
+	return (_equal(val, ">") || _equal(val, "<") || _equal(val, ">>") || _equal(val, "<<"));
 }
 
 char	*redir_check(t_list_ptr line, t_set_ptr quote_tracker)

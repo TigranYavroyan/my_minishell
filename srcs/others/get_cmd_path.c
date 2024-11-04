@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/04 17:45:35 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/04 17:48:29 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ bool	_exec_util(char *full_path, t_command_ptr command, bool is_btin,
 			execve(full_path, args, env);
 			set_status_unsigned(DIR_ERROR);
 		}
-		// have to free memory;
 		clear_minishell(&command->minishell);
 		remove_2d_str(env);
 		remove_2d_str(args);
