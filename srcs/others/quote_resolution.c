@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 22:45:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/31 16:45:18 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/04 14:41:03 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ void remove_quotes (t_list_ptr line, t_set_ptr quote_tracker)
 	parse_quotes(line, quote_tracker);
 	curr = line->head;
 	while (curr) {
+		if (curr->next && is_quote(*curr->val) && is_quote(*curr->next->val))
+			insert_node_lt(line, "", curr);
 		if (is_quote(*curr->val) && !find_set(quote_tracker, curr))
 			curr = remove_node_lt(line, curr);
 		else
