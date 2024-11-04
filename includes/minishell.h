@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/04 15:33:13 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/04 16:52:34 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,9 +224,13 @@ void							sort_env(char **env);
 // is_var_name
 bool							is_var_name(char *s, char *e);
 
+// syntax_check
+bool							syntax_check(t_minishell_ptr minishell);
+
 // status
 void							set_status_unsigned(int status);
 void							set_status_signed(int status);
+void							set_status_int(int status);
 int								get_status(void);
 
 // log_in_file

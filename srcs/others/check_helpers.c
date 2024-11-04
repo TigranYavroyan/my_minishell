@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:28:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/31 16:28:05 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/04 16:44:22 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,5 @@ bool	is_mergeable_util(const char* str)
 {
 	return !(_equal(str, ">") || _equal(str, "<") || _equal(str, "<<")
 	 	|| _equal(str, ">>") || _equal(str, " ") || _equal(str, "|")
-		|| _equal(str, "&&") || _equal(str, "||"));
+		|| _equal(str, "&&") || _equal(str, "||") || _equal(str, "&"));
 }

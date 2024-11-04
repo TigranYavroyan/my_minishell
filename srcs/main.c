@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/04 15:49:30 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/04 16:51:37 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,9 @@
 
 static void	__ft_minishell__(t_minishell_ptr minishell, char *input)
 {
-	char	*err;
-
 	tokenize(minishell, "<>| \'\"()&", input);
-	if (!ft_quotes_check(minishell->line))
-	{
-		__err_msg_prmt__(NULL, "Unclosed quotes", SYNTAX_ERROR);
+	if (syntax_check(minishell))
 		return ;
-	}
-	remove_quotes(minishell->line, minishell->quote_tracker);
-	parse_dollar(minishell);
-	merge_in_quotes(minishell->line, minishell->quote_tracker);
-	remove_spaces(minishell->line, minishell->quote_tracker);
-	if (!pipe_check(minishell->line, minishell->quote_tracker))
-	{
-		__err_msg_prmt__(NULL, "syntax error near unexpected token `|\'",
-			SYNTAX_ERROR);
-		return ;
-	}
-	err = redir_check(minishell->line, minishell->quote_tracker);
-	if (err)
-	{
-		// exit status must be 258
-		__err_msg_full_prmt__("syntax error near unexpected token `", err, "\'", INV_OPTION);
-		return ;
-	}
 	ft_count_cmds(minishell);
 	get_cmds(minishell);
 	execute(minishell);
