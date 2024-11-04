@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/02 17:44:39 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/04 15:49:30 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	__ft_minishell__(t_minishell_ptr minishell, char *input)
 {
+	char	*err;
+
 	tokenize(minishell, "<>| \'\"()&", input);
 	if (!ft_quotes_check(minishell->line))
 	{
@@ -30,10 +32,11 @@ static void	__ft_minishell__(t_minishell_ptr minishell, char *input)
 			SYNTAX_ERROR);
 		return ;
 	}
-	if (!redir_check(minishell->line, minishell->quote_tracker))
+	err = redir_check(minishell->line, minishell->quote_tracker);
+	if (err)
 	{
 		// exit status must be 258
-		__err_msg__("syntax error near unexpected token `newline\'", NULL, INV_OPTION);
+		__err_msg_full_prmt__("syntax error near unexpected token `", err, "\'", INV_OPTION);
 		return ;
 	}
 	ft_count_cmds(minishell);

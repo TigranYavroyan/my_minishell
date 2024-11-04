@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/02 20:15:27 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/04 15:33:13 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,16 +152,16 @@ void							__err_msg_full_prmt__(char *name, char *err,
 void							__err_msg_full__(char *name, char *err,
 									char *reason, int err_val);
 
-// check_helpers1
+// check_helpers
 bool							is_num_str(const char *str);
 bool							is_quote(char ch);
 bool							is_dir_util(char* name);
 bool							is_dir(char *name);
 bool							is_mergeable_util(const char* str);
 
-// check_helpers2
+// redir_check
 bool							is_redirect (const char* val);
-bool							redir_check(t_list_ptr line, t_set_ptr quote_tracker);
+char							*redir_check(t_list_ptr line, t_set_ptr quote_tracker);
 
 
 // append

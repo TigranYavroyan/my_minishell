@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 19:06:24 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/02 17:51:03 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/04 14:53:40 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	init_cmd(t_cmd_matrix_ptr cmds)
 		cmds->cmds[i]->options = init_lt();
 		cmds->cmds[i]->minishell = cmds->minishell;
 		cmds->cmds[i]->descriptors = make_descriptors();
-		cmds->cmds[i]->redirection = 0; // for shifting and getting redirection info
+		cmds->cmds[i]->redirection = 0;
 	}
 
 }
