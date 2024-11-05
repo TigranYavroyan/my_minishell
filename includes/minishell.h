@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/02 17:41:56 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/04 21:20:30 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define DIR_ERROR 126
 # define EXIT_ERROR 255
 # define SYNTAX_ERROR 258
+# define FILE_PERM 0644
 # define LEAKS false
 
 # define string __attribute__((cleanup(auto_free))) char *
@@ -95,6 +96,7 @@ struct							s_command
 	t_list_ptr					args;
 	char						*name;
 	int							redirection;
+	char						*delim;
 };
 
 struct							s_minishell
@@ -151,16 +153,16 @@ void							__err_msg_full_prmt__(char *name, char *err,
 void							__err_msg_full__(char *name, char *err,
 									char *reason, int err_val);
 
-// check_helpers1
+// check_helpers
 bool							is_num_str(const char *str);
 bool							is_quote(char ch);
 bool							is_dir_util(char* name);
 bool							is_dir(char *name);
 bool							is_mergeable_util(const char* str);
 
-// check_helpers2
+// redir_check
 bool							is_redirect (const char* val);
-bool							redir_check(t_list_ptr line, t_set_ptr quote_tracker);
+char							*redir_check(t_list_ptr line, t_set_ptr quote_tracker);
 
 
 // append
@@ -223,9 +225,13 @@ void							sort_env(char **env);
 // is_var_name
 bool							is_var_name(char *s, char *e);
 
+// syntax_check
+bool							syntax_check(t_minishell_ptr minishell);
+
 // status
 void							set_status_unsigned(int status);
 void							set_status_signed(int status);
+void							set_status_int(int status);
 int								get_status(void);
 
 // log_in_file
@@ -244,5 +250,12 @@ char							*get_pwd(void);
 char							*catch_home(t_command_ptr command);
 void							set_pwd(char *old_pwd, t_command_ptr command);
 bool							ft_chdir(char *path, t_command_ptr command);
+
+// redirection_helpers
+void							__redir_swap(t_minishell_ptr minishell, t_node_ptr curr);
+t_node_ptr						__redirect_handle(t_minishell_ptr minishell, t_node_ptr curr, int i);
+
+// heredoc
+void							heredoc_handle(t_command_ptr command); // henrik , implement , please
 
 #endif // MINISHELL_H

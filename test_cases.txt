@@ -69,6 +69,7 @@ echo $PWD/file
 echo "$PWD/file"
 echo "nenie_iri" "nenie_iri$USER" ... "$USER"
 echo test      tout
+echo hello "" a
 exit 0 0
 exit 42 42
 exit -42 -24
@@ -180,3 +181,11 @@ cat Makefile | grep pr | head -n 5 | hello
 wc -l <
 echo hello >
 echo hello >>
+echo hello > >
+echo hello > |
+echo hello > <
+echo hello > &&
+echo hello > &
+echo hello >>> file
+echo hello > >
+echo hello >
