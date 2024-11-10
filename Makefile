@@ -26,7 +26,7 @@ ARCH = $(shell uname -m)
 ifeq ($(UNAME), Darwin)
 	ifeq ($(ARCH), arm64)
 		LREADLINE = -L/opt/homebrew/Cellar/readline/8.2.13/lib -l readline
-		INCLPATH += /opt/homebrew/Cellar/readline/8.2.13/include/readline
+		INCLPATH += /opt/homebrew/Cellar/readline/8.2.13/include
 	else
 		LREADLINE = -Lreadline_local/lib -lreadline
 		INCLPATH += ./readline_local/include/

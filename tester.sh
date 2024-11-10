@@ -3,6 +3,13 @@
 # Path to your Minishell executable
 MINISHELL="./minishell"
 
+if [[ -x "$MINISHELL" ]]; then
+    echo "Executable exists, continuing..."
+    # Add any code you want to execute if the executable exists
+else
+    echo "Executable does not exist, exiting the script."
+    exit 1
+fi
 # Function to print colored text
 print_in_color() {
     color_code="$1"
