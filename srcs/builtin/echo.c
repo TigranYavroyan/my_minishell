@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:23:51 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/06 15:59:28 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/10 19:36:13 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	print_out(char **output)
 	printf("%s", output[i]);
 }
 
-t_node_ptr	check_flag(t_command_ptr command, int *flag)
+static t_node_ptr	check_flag(t_command_ptr command, bool *flag)
 {
 	t_node_ptr	tmp;
 	int			i;
@@ -55,7 +55,7 @@ void	ft_echo(t_command_ptr command)
 {
 	char		**output;
 	t_node_ptr	s;
-	int			flag;
+	bool		flag;
 
 	output = NULL;
 	flag = 0;
@@ -65,7 +65,7 @@ void	ft_echo(t_command_ptr command)
 		return ;
 	output = from_head_to_matrix_lt(s);
 	print_out(output);
-	if (flag == 1)
+	if (!flag)
 		printf("\n");
 	set_status_unsigned(VAL_CMD);
 	remove_2d_str(output);
