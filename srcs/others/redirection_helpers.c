@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:00:55 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/10 19:31:58 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/10 19:36:46 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ t_node_ptr	__redirect_handle(t_minishell_ptr minishell, t_node_ptr curr, int i)
 		minishell->commands->cmds[i]->redirection = redirect_out;
 		close(minishell->commands->cmds[i]->descriptors->stdout);
 		minishell->commands->cmds[i]->descriptors->stdout = fd;
-		// dup2(fd, minishell->commands->cmds[i]->descriptors->stdout);
-		// close(fd);
-		// minishell->commands->cmds[i]->descriptors->stdout = fd;
 	}
 	else if (_equal(curr->val, "<"))
 	{
