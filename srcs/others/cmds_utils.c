@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 19:06:24 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/04 21:17:39 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/10 19:22:17 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	init_cmd(t_cmd_matrix_ptr cmds)
 		cmds->cmds[i]->descriptors = make_descriptors();
 		cmds->cmds[i]->delim = NULL;
 		cmds->cmds[i]->redirection = 0;
+		cmds->cmds[i]->is_delim_quotes = false;
 	}
 
 }

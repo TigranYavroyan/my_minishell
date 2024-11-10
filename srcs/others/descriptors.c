@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 19:01:36 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/02 17:12:45 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/10 19:23:46 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ void	refresh_descriptors (t_command_ptr command)
 	
 	if (command->minishell->descriptors->stdout != command->descriptors->stdout)
 	{
-		close(command->descriptors->stdout);
+		// close(command->descriptors->stdout);
 		dup2(command->minishell->descriptors->stdout, command->descriptors->stdout);
 	}
 	if (command->minishell->descriptors->stdin != command->descriptors->stdin)
 	{
-		close(command->descriptors->stdin);
+		// close(command->descriptors->stdin);
 		dup2(command->minishell->descriptors->stdin, command->descriptors->stdin);
 	}
 	if (command->minishell->descriptors->stderr != command->descriptors->stderr)
 	{
-		close(command->descriptors->stderr);
+		// close(command->descriptors->stderr);
 		dup2(command->minishell->descriptors->stderr, command->descriptors->stderr);
 	}
 }

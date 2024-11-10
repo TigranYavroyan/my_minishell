@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/04 21:20:30 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/10 19:21:43 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 	"error retrieving \
 current directory: getcwd: cannot \
 access parent directories: No such file or directory"
+# define HEREDOC_FILE "./.heredoc"
 
 typedef struct s_minishell		t_minishell;
 typedef t_minishell				*t_minishell_ptr;
@@ -97,6 +98,7 @@ struct							s_command
 	char						*name;
 	int							redirection;
 	char						*delim;
+	bool						is_delim_quotes;
 };
 
 struct							s_minishell
