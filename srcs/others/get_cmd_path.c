@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/11 19:21:31 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/11 21:03:18 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	_exec_util(t_command_ptr command, bool is_btin,
 	if (pid == 0)
 	{ 
 		args = NULL;
+		env = NULL;
 		set_status_unsigned(VAL_CMD);
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
