@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   singal_handle.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:53:37 by healeksa          #+#    #+#             */
-/*   Updated: 2024/11/11 19:07:19 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/11 20:52:05 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	sig_int(int sig)
 	rl_redisplay();
 }
 
-void	signal_herdoc(int sig)
+void	signal_heredoc(int sig)
 {
 	(void)sig;
 	write(STDOUT_FILENO, "\n", 1);

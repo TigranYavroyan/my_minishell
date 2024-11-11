@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 20:54:59 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/11 19:26:29 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/11 20:51:53 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	lol(void)
 {
+
 }
 
 void	child_heredoc(t_command_ptr command)
@@ -22,7 +23,7 @@ void	child_heredoc(t_command_ptr command)
 	int		fd;
 
 	fd = command->descriptors->stdin;
-	signal(SIGINT, signal_herdoc);
+	signal(SIGINT, signal_heredoc);
 	while (1)
 	{
 		line = readline("> ");
@@ -35,6 +36,7 @@ void	child_heredoc(t_command_ptr command)
 	}
 	auto_free(&line);
 	close(fd);
+	clear_minishell(&(command->minishell));
 	exit(EXIT_SUCCESS);
 }
 
@@ -53,6 +55,7 @@ bool	parrent_heredoc(t_command_ptr command)
 		if (status == EXIT_FAILURE)
 		{
 			close(fd);
+			signal_handle();
 			return (false);
 		}
 		else

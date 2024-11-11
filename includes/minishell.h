@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/11 20:28:55 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/11 20:52:13 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define EXIT_ERROR 255
 # define SYNTAX_ERROR 258
 # define FILE_PERM 0644
+# define FORK_ERROR 254
 # define LEAKS false
 
 # define string __attribute__((cleanup(auto_free))) char *
@@ -217,9 +218,8 @@ void							ft_exit(t_command_ptr command);
 
 // get_cmd_path
 bool							access_cmd(t_command_ptr command);
-bool							_exec_util(char *full_path,
-									t_command_ptr command, bool is_btin,
-									int *fds);
+void							_exec_util(t_command_ptr command, bool is_btin,
+									int *fds, int i);
 
 // sort_env
 void							sort_env(char **env);
@@ -246,7 +246,7 @@ void							refresh_descriptors(t_command_ptr command);
 
 // signal
 void							signal_handle(void);
-void							signal_herdoc(int sig);
+void							signal_heredoc(int sig);
 
 // cd utils
 char							*get_pwd(void);
