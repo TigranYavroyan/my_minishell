@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deletion.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:54:31 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/17 18:48:58 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 00:26:49 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,18 @@ static t_setnode_ptr	_remove(t_setnode_ptr root, const t_node_ptr key)
 	}
 	bf = get_bf_set(root);
 	if (bf < -1 && get_bf_set(root->right) <= 0)
-		return _left_rotate_set(root);
+		return (_left_rotate_set(root));
 	if (bf > 1 && get_bf_set(root->left) < 0)
-    {
-        root->left = _left_rotate_set(root->left);
-        return _right_rotate_set(root);
-    }
-    if (bf < -1 && get_bf_set(root->right) <= 0)
-        return _left_rotate_set(root);
-    if (bf < -1 && get_bf_set(root->right) > 0)
-    {
-        root->right = _right_rotate_set(root->right);
-        return _left_rotate_set(root);
-    }
+	{
+		root->left = _left_rotate_set(root->left);
+		return (_right_rotate_set(root));
+	}
+	if (bf < -1 && get_bf_set(root->right) <= 0)
+		return (_left_rotate_set(root));
+	if (bf < -1 && get_bf_set(root->right) > 0)
+	{
+		root->right = _right_rotate_set(root->right);
+		return (_left_rotate_set(root));
+	}
 	return (root);
 }

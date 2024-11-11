@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:40:23 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/26 20:00:23 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 00:29:12 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <set.h>
 
-t_setnode_ptr make_set_node (t_node_ptr key, t_quote_type q_type)
+t_setnode_ptr	make_set_node(t_node_ptr key, t_quote_type q_type)
 {
 	t_setnode_ptr	node;
 
@@ -24,15 +24,16 @@ t_setnode_ptr make_set_node (t_node_ptr key, t_quote_type q_type)
 	return (node);
 }
 
-t_quote_type get_quote_type (char ch)
+t_quote_type	get_quote_type(char ch)
 {
 	if (ch == '\"')
 		return (DOUBLE_QUOTE);
 	else if (ch == '\'')
 		return (SINGLE_QUOTE);
-	else {
+	else
+	{
 		printf("char ch = (%c) - ", ch);
-		_err("Invalid argument in get_quote_type in set/helpers.c: (must be quote)\n");
+		_err(QUOTE_MSG);
 	}
 	return (0);
 }
