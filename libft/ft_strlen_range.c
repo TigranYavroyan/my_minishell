@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen_range.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/03 14:47:31 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/03 14:49:20 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/11/12 00:24:57 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_strlen_range (char* begin, char* end)
+int	ft_strlen_range(char *begin, char *end)
 {
 	int	count;
 
