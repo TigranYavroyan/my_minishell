@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   balance_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:27:23 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/09 17:26:12 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 00:20:51 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <bst.h>
 
-t_treenode_ptr	_left_rotate (t_treenode_ptr x)
+t_treenode_ptr	_left_rotate(t_treenode_ptr x)
 {
 	t_treenode_ptr	y;
 	t_treenode_ptr	t2;
@@ -24,7 +24,7 @@ t_treenode_ptr	_left_rotate (t_treenode_ptr x)
 	return (y);
 }
 
-t_treenode_ptr	_right_rotate (t_treenode_ptr x)
+t_treenode_ptr	_right_rotate(t_treenode_ptr x)
 {
 	t_treenode_ptr	y;
 	t_treenode_ptr	t2;
@@ -36,7 +36,7 @@ t_treenode_ptr	_right_rotate (t_treenode_ptr x)
 	return (y);
 }
 
-int	get_bf (t_treenode_ptr curr)
+int	get_bf(t_treenode_ptr curr)
 {
-	return __get_height_bst(curr->left) - __get_height_bst(curr->right);
+	return (__get_height_bst(curr->left) - __get_height_bst(curr->right));
 }

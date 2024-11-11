@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_to_bst.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:42:04 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/28 18:38:29 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 00:19:50 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,9 @@ t_bst_ptr	matrix_to_bst_none_sorted(char **matrix, char delim)
 	t_key_type		key;
 	t_value_type	value;
 	int				i;
-	
+
 	tree = init_bst();
 	i = 0;
-
 	while (matrix[i] != NULL)
 	{
 		value = ft_strchr(matrix[i], delim);

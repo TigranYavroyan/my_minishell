@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deletion.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:43 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/26 17:25:26 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 00:20:55 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,18 +81,18 @@ static t_treenode_ptr	_remove(t_treenode_ptr root, const t_key_type key)
 	}
 	bf = get_bf(root);
 	if (bf < -1 && get_bf(root->right) <= 0)
-		return _left_rotate(root);
+		return (_left_rotate(root));
 	if (bf > 1 && get_bf(root->left) < 0)
-    {
-        root->left = _left_rotate(root->left);
-        return _right_rotate(root);
-    }
-    if (bf < -1 && get_bf(root->right) <= 0)
-        return _left_rotate(root);
-    if (bf < -1 && get_bf(root->right) > 0)
-    {
-        root->right = _right_rotate(root->right);
-        return _left_rotate(root);
-    }
+	{
+		root->left = _left_rotate(root->left);
+		return (_right_rotate(root));
+	}
+	if (bf < -1 && get_bf(root->right) <= 0)
+		return (_left_rotate(root));
+	if (bf < -1 && get_bf(root->right) > 0)
+	{
+		root->right = _right_rotate(root->right);
+		return (_left_rotate(root));
+	}
 	return (root);
 }
