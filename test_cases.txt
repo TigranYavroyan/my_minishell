@@ -189,3 +189,4 @@ echo hello > &
 echo hello >>> file
 echo hello > >
 echo hello >
+export | sort | grep -v SHLVL | grep -v _= | grep -v OLDPWD

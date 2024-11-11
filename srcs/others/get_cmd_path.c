@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/04 17:48:29 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/11 19:21:31 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,21 @@ static void	wait_and_status(pid_t pid, int *_status)
 	set_status_unsigned(WEXITSTATUS(*_status));
 }
 
-bool	_exec_util(char *full_path, t_command_ptr command, bool is_btin,
-		int *fds)
+void	_exec_util(t_command_ptr command, bool is_btin,
+		int *fds, int i)
 {
 	char	**args;
 	char	**env;
 	pid_t	pid;
 	int		sts;
-
+	
 	pid = fork();
-	args = NULL;
-	env = NULL;
-	set_status_unsigned(VAL_CMD);
+	if (pid == -1)
+		return (__err_msg_prmt__("fork: ", "Resource temporarily unavailable", FORK_ERROR));
 	if (pid == 0)
-	{
+	{ 
+		args = NULL;
+		set_status_unsigned(VAL_CMD);
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
 		close(fds[in]);
@@ -83,7 +84,7 @@ bool	_exec_util(char *full_path, t_command_ptr command, bool is_btin,
 			move_back_lt(&command->options, command->args);
 			env = bst_to_matrix(command->minishell->env);
 			args = list_to_matrix_lt(command->options);
-			execve(full_path, args, env);
+			execve(command->name, args, env);
 			set_status_unsigned(DIR_ERROR);
 		}
 		clear_minishell(&command->minishell);
@@ -91,9 +92,8 @@ bool	_exec_util(char *full_path, t_command_ptr command, bool is_btin,
 		remove_2d_str(args);
 		exit(get_status());
 	}
-	wait_and_status(pid, &sts);
-	remove_2d_str(args);
-	return (true);
+	if (i == command->minishell->commands->size - 1)
+		wait_and_status(pid, &sts);
 }
 
 static char	*get_path_exec(t_command_ptr command)

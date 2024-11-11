@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/10 19:24:33 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/10 20:55:31 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int argc, char **argv, char **env)
 
 	if (argc != 1 && argv[0])
 		_err("Too much arguments");
-	printf("getpid(): %d\n", getpid());
+	// printf("getpid(): %d\n", getpid());
 	minishell = init_minishell(env);
 	ft_minishell(minishell);
 	clear_minishell(&minishell);
