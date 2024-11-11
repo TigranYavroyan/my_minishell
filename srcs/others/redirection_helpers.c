@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection_helpers.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:00:55 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/10 19:31:58 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/11 09:28:12 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	__redir_swap(t_minishell_ptr minishell, t_node_ptr curr)
 t_node_ptr	__redirect_handle(t_minishell_ptr minishell, t_node_ptr curr, int i)
 {
 	int	fd;
-	
+
 	if (_equal(curr->val, ">"))
 	{
 		fd = open(curr->next->val, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERM);
@@ -53,11 +53,13 @@ t_node_ptr	__redirect_handle(t_minishell_ptr minishell, t_node_ptr curr, int i)
 	}
 	else
 	{
-		// open file for henrik
-		// fd = open(...)
+		fd = open(HEREDOC_FILE, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERM);
+		if (find_set(minishell->quote_tracker, curr->next))
+			minishell->commands->cmds[i]->is_delim_quoted = true;
 		minishell->commands->cmds[i]->redirection = redirect_heredoc;
-		minishell->commands->cmds[i]->delim = ft_strdup(curr->next->val); // delim (100% it exist)
-		// minishell->commands->cmds[i]->descriptors->stdin = fd or STDIN_FILENO , idk
+		minishell->commands->cmds[i]->delim = ft_strdup(curr->next->val);
+		close(minishell->commands->cmds[i]->descriptors->stdin);
+		minishell->commands->cmds[i]->descriptors->stdin = fd;
 	}
 	curr = remove_node_lt(minishell->line, curr);
 	return (remove_node_lt(minishell->line, curr));

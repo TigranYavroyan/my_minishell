@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/10 19:21:43 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/11 20:28:55 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ struct							s_command
 	char						*name;
 	int							redirection;
 	char						*delim;
-	bool						is_delim_quotes;
+	bool						is_delim_quoted;
 };
 
 struct							s_minishell
@@ -158,14 +158,14 @@ void							__err_msg_full__(char *name, char *err,
 // check_helpers
 bool							is_num_str(const char *str);
 bool							is_quote(char ch);
-bool							is_dir_util(char* name);
+bool							is_dir_util(char *name);
 bool							is_dir(char *name);
-bool							is_mergeable_util(const char* str);
+bool							is_mergeable_util(const char *str);
 
 // redir_check
-bool							is_redirect (const char* val);
-char							*redir_check(t_list_ptr line, t_set_ptr quote_tracker);
-
+bool							is_redirect(const char *val);
+char							*redir_check(t_list_ptr line,
+									t_set_ptr quote_tracker);
 
 // append
 void							ft_append(char **left, char *right);
@@ -242,10 +242,11 @@ void							log_header_in_file(void);
 
 // descriptors
 t_descriptors_ptr				make_descriptors(void);
-void							refresh_descriptors (t_command_ptr command);
+void							refresh_descriptors(t_command_ptr command);
 
 // signal
 void							signal_handle(void);
+void							signal_herdoc(int sig);
 
 // cd utils
 char							*get_pwd(void);
@@ -254,10 +255,12 @@ void							set_pwd(char *old_pwd, t_command_ptr command);
 bool							ft_chdir(char *path, t_command_ptr command);
 
 // redirection_helpers
-void							__redir_swap(t_minishell_ptr minishell, t_node_ptr curr);
-t_node_ptr						__redirect_handle(t_minishell_ptr minishell, t_node_ptr curr, int i);
+void							__redir_swap(t_minishell_ptr minishell,
+									t_node_ptr curr);
+t_node_ptr						__redirect_handle(t_minishell_ptr minishell,
+									t_node_ptr curr, int i);
 
 // heredoc
-void							heredoc_handle(t_command_ptr command); // henrik , implement , please
+bool							heredoc_handle(t_command_ptr command);
 
 #endif // MINISHELL_H
