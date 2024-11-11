@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:50:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/11 20:35:03 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/11 20:40:57 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	eval(t_cmd_matrix_ptr commands, int *fds, int i)
 		exec_flag = heredoc_handle(commands->cmds[i]);
 	if (commands->size == 1 && is_btin && exec_flag)
 		exec_builtin(commands->cmds[i]);
-	else if (is_btin || access_cmd(commands->cmds[i]))
+	else if ((is_btin || access_cmd(commands->cmds[i])) && exec_flag)
 		_exec_util(commands->cmds[i], is_btin, fds, i);
 	dup2(fds[in], STDIN_FILENO);
 	dup2(commands->minishell->descriptors->stdout, STDOUT_FILENO);

@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/11 20:36:07 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/11 20:52:13 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,7 +246,7 @@ void							refresh_descriptors(t_command_ptr command);
 
 // signal
 void							signal_handle(void);
-void							signal_herdoc(int sig);
+void							signal_heredoc(int sig);
 
 // cd utils
 char							*get_pwd(void);
