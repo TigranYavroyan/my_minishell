@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmds_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 19:06:24 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/10 19:22:17 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/11 09:28:38 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_cmd_matrix_ptr	init_cmds(t_minishell_ptr minishell)
 {
-	t_cmd_matrix_ptr commands;
+	t_cmd_matrix_ptr	commands;
 
 	commands = (t_cmd_matrix_ptr)wrapper_malloc(sizeof(t_cmd_matrix));
 	commands->cmds = NULL;
@@ -28,7 +28,8 @@ void	init_cmd(t_cmd_matrix_ptr cmds)
 	int	i;
 
 	i = -1;
-	cmds->cmds = (t_command_ptr*)wrapper_malloc(sizeof(t_command_ptr) * cmds->size);
+	cmds->cmds = (t_command_ptr *)wrapper_malloc(sizeof(t_command_ptr)
+			* cmds->size);
 	while (++i < cmds->size)
 	{
 		cmds->cmds[i] = (t_command_ptr)wrapper_malloc(sizeof(t_command));
@@ -38,12 +39,11 @@ void	init_cmd(t_cmd_matrix_ptr cmds)
 		cmds->cmds[i]->descriptors = make_descriptors();
 		cmds->cmds[i]->delim = NULL;
 		cmds->cmds[i]->redirection = 0;
-		cmds->cmds[i]->is_delim_quotes = false;
+		cmds->cmds[i]->is_delim_quoted = false;
 	}
-
 }
 
-static void remove_cmd(t_command_ptr* command)
+static void	remove_cmd(t_command_ptr *command)
 {
 	clear_lt((*command)->args);
 	free((*command)->args);
