@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:11 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/26 22:48:39 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 17:48:16 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void	ft_exit(t_command_ptr command) // have to quotes checking and passing
+void	ft_exit(t_command_ptr command)
 {
 	move_back_lt(&command->options, command->args);
 	if (!empty_lt(command->options))
@@ -31,8 +31,6 @@ void	ft_exit(t_command_ptr command) // have to quotes checking and passing
 			__err_msg_full_prmt__("exit: ", command->options->head->val,
 				": numeric argument required", EXIT_ERROR);
 	}
-	// if (command->minishell->commands->size <= 1) // for (cmd | ... | exit) case
-	// 	ft_putstr_fd("exit\n", STDOUT_FILENO);
 	clear_minishell(&command->minishell);
 	exit(get_status());
 }
