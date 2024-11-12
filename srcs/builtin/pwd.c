@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:29 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/18 11:51:51 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:57:32 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	cwd(void)
 		perror("getcwd() error");
 }
 
-void	ft_pwd(t_command_ptr command UNUSED)
+void	ft_pwd(t_command_ptr command)
 {
 	char	*cur;
 

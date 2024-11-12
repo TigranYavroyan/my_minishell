@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/11 20:36:25 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 17:05:42 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int argc, char **argv, char **env)
 
 #if LEAKS == true
 
-void DTOR	___err___(void)
+void	__attribute__((destructor)) ___err___(void)
 {
 	system("leaks minishell");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/11 20:52:13 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 17:06:00 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@
 # include <unistd.h>
 
 # define UNUSED __attribute__((unused))
-# define DTOR __attribute__((destructor))
+# define string __attribute__((cleanup(auto_free))) char *
+
 # define INV_OPTION 2
 # define INV_ARG 1
 # define VAL_CMD 0
@@ -48,7 +49,6 @@
 # define FORK_ERROR 254
 # define LEAKS false
 
-# define string __attribute__((cleanup(auto_free))) char *
 # define CDERR \
 	"error retrieving \
 current directory: getcwd: cannot \
