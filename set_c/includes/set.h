@@ -6,15 +6,19 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:33:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/12 00:32:54 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/12 11:44:40 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SET_C_H
-# define SET_C_H
+#ifndef SET_H
+# define SET_H
 
 # include <libft.h>
 # include <list.h>
+
+# define QUOTE_MSG \
+	"Invalid argument in get_quote_type \
+ in set/helpers.c: (must be quote)\n"
 
 typedef enum e_travers_type_set	t_travers_type_set;
 typedef struct s_set_node		t_setnode;
@@ -22,7 +26,7 @@ typedef t_setnode				*t_setnode_ptr;
 typedef struct s_set			t_set;
 typedef t_set					*t_set_ptr;
 typedef void					(*t_visitor_set)(t_node_ptr);
-typedef enum s_quote_type		t_quote_type;
+typedef enum e_quote_type		t_quote_type;
 
 enum							e_travers_type_set
 {
@@ -31,7 +35,7 @@ enum							e_travers_type_set
 	POSTORDER_SET
 };
 
-enum							s_quote_type
+enum							e_quote_type
 {
 	DOUBLE_QUOTE,
 	SINGLE_QUOTE,
@@ -92,4 +96,4 @@ bool							is_single_quoted(t_set_ptr set,
 bool							is_double_quoted(t_set_ptr set,
 									t_node_ptr curr);
 
-#endif // SET_C_H
+#endif // SET_H
