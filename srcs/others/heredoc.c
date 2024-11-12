@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 20:54:59 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/11 20:51:53 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 18:05:06 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	lol(void)
 {
-
 }
 
 void	child_heredoc(t_command_ptr command)

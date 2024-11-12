@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:49:31 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/04 17:36:11 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 17:49:53 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ inline static void	__parse(t_minishell_ptr minishell)
 
 bool	syntax_check(t_minishell_ptr minishell)
 {
-	char*	err;
+	char	*err;
 
 	if (!ft_quotes_check(minishell->line))
 	{
@@ -39,7 +39,8 @@ bool	syntax_check(t_minishell_ptr minishell)
 	err = redir_check(minishell->line, minishell->quote_tracker);
 	if (err)
 	{
-		__err_msg_full_prmt__("syntax error near unexpected token `", err, "\'", SYNTAX_ERROR);
+		__err_msg_full_prmt__("syntax error near unexpected token `", err, "\'",
+			SYNTAX_ERROR);
 		return (true);
 	}
 	return (false);

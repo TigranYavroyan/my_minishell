@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quote_resolution.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 22:45:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/04 14:41:03 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 17:53:09 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ static void	update_quote_info(bool *open, char *opened_ch, t_node_ptr curr)
 	}
 }
 
-static void	parse_quotes(t_list_ptr line, t_set_ptr quote_tracker) {
-	bool			open;
-	char			opened_ch;
-	t_node_ptr		curr;
+static void	parse_quotes(t_list_ptr line, t_set_ptr quote_tracker)
+{
+	bool		open;
+	char		opened_ch;
+	t_node_ptr	curr;
 
 	open = false;
 	opened_ch = 0;
@@ -41,7 +42,8 @@ static void	parse_quotes(t_list_ptr line, t_set_ptr quote_tracker) {
 	{
 		if (!open)
 		{
-			if (_equal(curr->val, "$") && curr->next && is_quote(*curr->next->val)) // handling for $'adf' case
+			if (_equal(curr->val, "$") && curr->next
+				&& is_quote(*curr->next->val)) // handling for $'adf' case
 				curr = remove_node_lt(line, curr);
 		}
 		if (open && *curr->val != opened_ch)
@@ -51,13 +53,14 @@ static void	parse_quotes(t_list_ptr line, t_set_ptr quote_tracker) {
 	}
 }
 
-void remove_quotes (t_list_ptr line, t_set_ptr quote_tracker)
+void	remove_quotes(t_list_ptr line, t_set_ptr quote_tracker)
 {
 	t_node_ptr	curr;
 
 	parse_quotes(line, quote_tracker);
 	curr = line->head;
-	while (curr) {
+	while (curr)
+	{
 		if (curr->next && is_quote(*curr->val) && is_quote(*curr->next->val))
 			insert_node_lt(line, "", curr);
 		if (is_quote(*curr->val) && !find_set(quote_tracker, curr))
@@ -67,7 +70,8 @@ void remove_quotes (t_list_ptr line, t_set_ptr quote_tracker)
 	}
 }
 
-static bool __is_mergeable(t_node_ptr curr, t_set_ptr quote_tracker) // not done for the bonus
+static bool	__is_mergeable(t_node_ptr curr, t_set_ptr quote_tracker)
+// not done for the bonus
 {
 	if (!curr || !curr->next)
 		return (false);
@@ -79,8 +83,9 @@ static bool __is_mergeable(t_node_ptr curr, t_set_ptr quote_tracker) // not done
 		return (true);
 	if (is_mergeable_util(curr->val) && is_mergeable_util(curr->next->val))
 		return (true);
-	if ((_equal(curr->val, ">") || _equal(curr->val, "<")) && !find_set(quote_tracker, curr)
-		&& !find_set(quote_tracker, curr->next))
+	if ((_equal(curr->val, ">") || _equal(curr->val, "<"))
+		&& !find_set(quote_tracker, curr) && !find_set(quote_tracker,
+			curr->next))
 	{
 		if (_equal(curr->val, curr->next->val))
 			return (true);
@@ -88,14 +93,14 @@ static bool __is_mergeable(t_node_ptr curr, t_set_ptr quote_tracker) // not done
 	return (false);
 }
 
-void merge_in_quotes(t_list_ptr line, t_set_ptr quote_tracker)
+void	merge_in_quotes(t_list_ptr line, t_set_ptr quote_tracker)
 {
 	t_node_ptr	curr;
 
 	curr = line->head;
 	while (curr && curr->next) // maybe can be better
 	{
-		if (__is_mergeable(curr, quote_tracker)) 
+		if (__is_mergeable(curr, quote_tracker))
 		{
 			ft_append(&curr->val, curr->next->val);
 			remove_node_lt(line, curr->next);

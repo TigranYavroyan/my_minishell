@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmds.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:51:38 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/07 11:54:42 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 18:02:22 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ static void	get_cmds_names(t_minishell_ptr minishell)
 	}
 }
 
-static t_node_ptr get_cmds_attr(t_minishell_ptr minishell, t_node_ptr head, int i)
+static t_node_ptr	get_cmds_attr(t_minishell_ptr minishell, t_node_ptr head,
+		int i)
 {
 	t_node_ptr	curr;
 
@@ -52,7 +53,7 @@ static t_node_ptr get_cmds_attr(t_minishell_ptr minishell, t_node_ptr head, int 
 	{
 		if (_equal(curr->val, "|"))
 			return (curr);
-		if (is_redirect(curr->val) && !find_set(minishell->quote_tracker, curr)) // heredoc parsing too
+		if (is_redirect(curr->val) && !find_set(minishell->quote_tracker, curr))
 			curr = __redirect_handle(minishell, curr, i);
 		else
 		{
@@ -63,7 +64,7 @@ static t_node_ptr get_cmds_attr(t_minishell_ptr minishell, t_node_ptr head, int 
 	return (NULL);
 }
 
-void get_cmds(t_minishell_ptr minishell)
+void	get_cmds(t_minishell_ptr minishell)
 {
 	t_node_ptr	possible_pipe;
 	int			i;
@@ -79,14 +80,4 @@ void get_cmds(t_minishell_ptr minishell)
 		++i;
 		possible_pipe = get_cmds_attr(minishell, possible_pipe->next, i);
 	}
-	// for (int i = 0; i < minishell->commands->size; ++i)
-	// {
-	// 	printf("The name: %s\n", minishell->commands->cmds[i]->name);
-	// 	printf("Options: ");
-	// 	print_lt(minishell->commands->cmds[i]->options);
-	// 	printf("Args: ");
-	// 	print_lt(minishell->commands->cmds[i]->args);
-	// 	printf("\n\n");
-	// }
-	// exit(0);
 }

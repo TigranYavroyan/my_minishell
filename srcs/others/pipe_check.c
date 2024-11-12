@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:03:40 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/17 22:10:18 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 17:54:06 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-bool pipe_check (t_list_ptr line, t_set_ptr quote_tracker)
+bool	pipe_check(t_list_ptr line, t_set_ptr quote_tracker)
 {
 	t_node_ptr	curr;
 

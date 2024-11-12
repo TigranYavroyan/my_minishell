@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dollar_resolution.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:22:15 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/10/17 20:19:45 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 18:03:48 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_dollar_resolution(t_minishell_ptr minishell, t_node_ptr curr,
 	t_dollar_info	df;
 	t_value_type	tmp_begin;
 
-	tmp_begin = begin; // for e$SMTH hello case
+	tmp_begin = begin;             // for e$SMTH hello case
 	if (ft_strlen(begin - 1) == 1) // check for $"" (???)
 		return ;
 	df.res = NULL;

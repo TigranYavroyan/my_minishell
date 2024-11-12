@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_helpers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:28:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/04 16:44:22 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 18:04:27 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-bool	is_dir_util(char* name)
+bool	is_dir_util(char *name)
 {
 	if (!name || !*name || !(name[0] == '.' || name[0] == '/'))
 		return (false);
@@ -70,9 +70,9 @@ bool	is_quote(char ch)
 	return (ch == '\'' || ch == '\"');
 }
 
-bool	is_mergeable_util(const char* str)
+bool	is_mergeable_util(const char *str)
 {
-	return !(_equal(str, ">") || _equal(str, "<") || _equal(str, "<<")
-	 	|| _equal(str, ">>") || _equal(str, " ") || _equal(str, "|")
-		|| _equal(str, "&&") || _equal(str, "||") || _equal(str, "&"));
+	return (!(_equal(str, ">") || _equal(str, "<") || _equal(str, "<<")
+			|| _equal(str, ">>") || _equal(str, " ") || _equal(str, "|")
+			|| _equal(str, "&&") || _equal(str, "||") || _equal(str, "&")));
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quotes.c                                           :+:      :+:    :+:   */
+/*   quotes_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:42:26 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/13 18:01:08 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 17:53:00 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static void _update_stack (const t_node_ptr curr, t_list_ptr stack)
+static void	_update_stack(const t_node_ptr curr, t_list_ptr stack)
 {
 	if (_equal(curr->val, "\""))
 	{
@@ -30,7 +30,7 @@ static void _update_stack (const t_node_ptr curr, t_list_ptr stack)
 	}
 }
 
-bool ft_quotes_check (t_list_ptr line)
+bool	ft_quotes_check(t_list_ptr line)
 {
 	bool		flag;
 	t_list_ptr	stack;
@@ -44,7 +44,6 @@ bool ft_quotes_check (t_list_ptr line)
 		_update_stack(curr, stack);
 		curr = curr->next;
 	}
-	
 	if (empty_lt(stack))
 		flag = true;
 	clear_lt(stack);

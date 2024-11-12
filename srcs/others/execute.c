@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:50:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/11 20:40:57 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 18:02:53 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void	execute(t_minishell_ptr minishell)
 	while (++i < minishell->commands->size)
 	{
 		if (pipe(fds) < 0)
-			return (__err_msg_prmt__("fork: ", "Resource temporarily unavailable", FORK_ERROR));
+			return (__err_msg_prmt__("fork: ",
+					"Resource temporarily unavailable", FORK_ERROR));
 		eval(minishell->commands, fds, i);
 		if (minishell->commands->cmds[i]->redirection == redirect_heredoc)
 			unlink(HEREDOC_FILE);

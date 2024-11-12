@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmd_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/11 21:03:18 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 18:02:29 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,19 @@ static void	wait_and_status(pid_t pid, int *_status)
 	set_status_unsigned(WEXITSTATUS(*_status));
 }
 
-void	_exec_util(t_command_ptr command, bool is_btin,
-		int *fds, int i)
+void	_exec_util(t_command_ptr command, bool is_btin, int *fds, int i)
 {
 	char	**args;
 	char	**env;
 	pid_t	pid;
 	int		sts;
-	
+
 	pid = fork();
 	if (pid == -1)
-		return (__err_msg_prmt__("fork: ", "Resource temporarily unavailable", FORK_ERROR));
+		return (__err_msg_prmt__("fork: ", "Resource temporarily unavailable",
+				FORK_ERROR));
 	if (pid == 0)
-	{ 
+	{
 		args = NULL;
 		env = NULL;
 		set_status_unsigned(VAL_CMD);

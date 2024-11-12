@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   symbol_resolution.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:01:23 by tigran            #+#    #+#             */
-/*   Updated: 2024/10/26 22:46:19 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/12 17:51:08 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void	parse_dollar (t_minishell_ptr minishell)
+void	parse_dollar(t_minishell_ptr minishell)
 {
 	t_node_ptr		curr;
 	t_value_type	begin;
@@ -21,12 +21,13 @@ void	parse_dollar (t_minishell_ptr minishell)
 	while (curr)
 	{
 		begin = ft_strchr(curr->val, '$');
-		if (begin) {
+		if (begin)
+		{
 			ft_dollar_resolution(minishell, curr, begin + 1);
 			if (curr->val && !(*curr->val))
 				curr = remove_node_lt(minishell->line, curr);
 			else
-				curr = curr->next; // kolxoz, but works
+				curr = curr->next;
 		}
 		else
 			curr = curr->next;
