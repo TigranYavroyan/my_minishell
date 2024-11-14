@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/12 17:06:00 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:50:38 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,13 +127,15 @@ void							tokenize(t_minishell_ptr minishell, char *delim,
 									char *input);
 
 // quotes_check
-bool							ft_quotes_check(t_list_ptr line);
+bool							ft_quotes_check(t_list_ptr line, t_set_ptr quote_tracker);
 
 // symbol_resolution
-void							remove_quotes(t_list_ptr line,
-									t_set_ptr quote_tracker);
 void							parse_dollar(t_minishell_ptr minishell);
 void							remove_spaces(t_list_ptr line,
+									t_set_ptr quote_tracker);
+
+// quote_resolutin
+bool							remove_quotes(t_list_ptr line,
 									t_set_ptr quote_tracker);
 void							merge_in_quotes(t_list_ptr line,
 									t_set_ptr quote_tracker);

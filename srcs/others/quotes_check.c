@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:42:26 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/12 17:53:00 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:58:42 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	_update_stack(const t_node_ptr curr, t_list_ptr stack)
 	}
 }
 
-bool	ft_quotes_check(t_list_ptr line)
+bool	ft_quotes_check(t_list_ptr line, t_set_ptr quote_tracker)
 {
 	bool		flag;
 	t_list_ptr	stack;
@@ -38,14 +38,15 @@ bool	ft_quotes_check(t_list_ptr line)
 
 	stack = init_lt();
 	curr = line->head;
-	flag = false;
+	flag = true;
 	while (curr)
 	{
-		_update_stack(curr, stack);
+		if (!find_set(quote_tracker, curr))
+			_update_stack(curr, stack);
 		curr = curr->next;
 	}
-	if (empty_lt(stack))
-		flag = true;
+	if (!empty_lt(stack))
+		flag = false;
 	clear_lt(stack);
 	free(stack);
 	return (flag);
