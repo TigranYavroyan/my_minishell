@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:50:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/14 18:26:27 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/14 20:01:08 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	eval(t_cmd_matrix_ptr commands, int *fds, int i)
 	bool	is_btin;
 	bool	exec_flag;
 
+	if (commands->cmds[i]->redirection == invalid_permission)
+		return ;
 	exec_flag = true;
 	is_btin = is_builtin(commands->cmds[i]->name);
 	if (*(commands->cmds[i]->name) == 0)
