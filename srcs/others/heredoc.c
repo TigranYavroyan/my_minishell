@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 20:54:59 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/14 16:40:01 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/14 17:56:59 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ bool	heredoc_handle(t_command_ptr command)
 
 	pid = fork();
 	if (pid < 0)
-		ft_err_msg("fork: Resource temporarily unavailable");
+		__err_msg_prmt__("fork", HEREDOC_ERR_MSG, FORK_ERROR);
 	else if (pid == 0)
 		child_heredoc(command);
 	else

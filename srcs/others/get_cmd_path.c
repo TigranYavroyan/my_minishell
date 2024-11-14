@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/14 17:23:54 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/14 17:56:33 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,7 @@ void	_exec_util(t_command_ptr command, bool is_btin, int *fds, int i)
 
 	pid = fork();
 	if (pid == -1)
-		return (__err_msg_prmt__("fork: ", "Resource temporarily unavailable",
-				FORK_ERROR));
+		return (__err_msg_prmt__("fork: ", HEREDOC_ERR_MSG, FORK_ERROR));
 	if (pid == 0)
 	{
 		args = NULL;

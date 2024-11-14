@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 19:43:10 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/12 18:01:15 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 17:17:47 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,18 @@ void	auto_free(char **ptr)
 		free(*ptr);
 		*ptr = NULL;
 	}
+}
+
+int	ft_open(char *path, int flags, int permisson)
+{
+	int	fd;
+
+	fd = open(path, flags, permisson);
+	if (fd < 0)
+	{
+		if (errno == EACCES)
+			__err_msg_prmt__(path, ": Permission denied", INV_ARG);
+		return (-1);
+	}
+	return (fd);
 }

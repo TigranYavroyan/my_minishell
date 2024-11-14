@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/14 17:24:02 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/14 17:57:14 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@
 current directory: getcwd: cannot \
 access parent directories: No such file or directory"
 # define HEREDOC_FILE "./.heredoc"
+# define HEREDOC_ERR_MSG "Resource temporarily unavailable"
 
 typedef struct s_minishell		t_minishell;
 typedef t_minishell				*t_minishell_ptr;
@@ -127,7 +128,8 @@ void							tokenize(t_minishell_ptr minishell, char *delim,
 									char *input);
 
 // quotes_check
-bool							ft_quotes_check(t_list_ptr line, t_set_ptr quote_tracker);
+bool							ft_quotes_check(t_list_ptr line,
+									t_set_ptr quote_tracker);
 
 // symbol_resolution
 void							parse_dollar(t_minishell_ptr minishell);
@@ -147,6 +149,7 @@ void							ft_dollar_resolution(t_minishell_ptr minishell,
 // helpers
 void							remove_2d_str(char **str);
 void							auto_free(char **ptr);
+int								ft_open(char *path, int flags, int permisson);
 
 // err_print
 void							ft_err_msg(char *msg);
