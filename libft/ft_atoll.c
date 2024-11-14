@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 18:01:10 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/14 21:19:29 by tigran           ###   ########.fr       */
+/*   Created: 2024/11/14 21:02:06 by tigran            #+#    #+#             */
+/*   Updated: 2024/11/14 21:20:14 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static int	is_whitespace(const char ch)
 		|| ch == '\n' || ch == '\f' || ch == '\r');
 }
 
-int	ft_atoi(const char *str)
+long long	ft_atoll(const char *str)
 {
-	int	res;
-	int	sign;
-	int	i;
+	long long	res;
+	int			sign;
+	int			i;
 
 	res = 0;
 	sign = 1;
