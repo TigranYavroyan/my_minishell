@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:28:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/14 17:24:13 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/14 18:54:00 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool	is_dir(char *name, struct stat* info, int status)
 	if (status == -1)
 	{
 		if (_equal(name + ft_strlen(name) - 1, "/"))
-			__err_msg_prmt__(name, ": Not a directory", INV_ARG);
+			__err_msg_prmt__(name, ": Not a directory", DIR_ERROR);
 		else
 			__err_msg_prmt__(name, ": No such file or directory",
 				CMD_NOT_FOUND);

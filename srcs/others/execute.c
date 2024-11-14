@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:50:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/14 16:17:35 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 18:26:27 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	eval(t_cmd_matrix_ptr commands, int *fds, int i)
 
 	exec_flag = true;
 	is_btin = is_builtin(commands->cmds[i]->name);
+	if (*(commands->cmds[i]->name) == 0)
+		return ;
 	if (i < commands->size - 1)
 		dup2(fds[out], STDOUT_FILENO);
 	if (commands->cmds[i]->redirection == redirect_out)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/12 17:05:42 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 18:20:16 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 static void	__ft_minishell__(t_minishell_ptr minishell, char *input)
 {
+	bool	perm_err;
+
+	perm_err = false;
 	tokenize(minishell, "<>| \'\"()&", input);
 	if (syntax_check(minishell))
 		return ;
 	ft_count_cmds(minishell);
-	get_cmds(minishell);
+	get_cmds(minishell, &perm_err);
+	if (perm_err == true)
+		return ;
 	execute(minishell);
 }
 

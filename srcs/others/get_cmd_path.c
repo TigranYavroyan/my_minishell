@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/14 17:56:33 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/14 18:52:34 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ bool	access_cmd(t_command_ptr command)
 	exec_path = get_path_exec(command);
 	if (exec_path == NULL || S_ISDIR(info.st_mode))
 	{
-		__err_msg_prmt__(command->name, ": command not found", CMD_NOT_FOUND);
+		if (access(command->name, X_OK))
+			__err_msg_prmt__(command->name, ": Permission denied", DIR_ERROR);
+		else
+			__err_msg_prmt__(command->name, ": command not found", CMD_NOT_FOUND);
 		return (false);
 	}
 	free(command->name);

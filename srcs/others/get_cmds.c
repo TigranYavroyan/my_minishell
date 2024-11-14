@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmds.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:51:38 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/12 18:02:22 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 18:19:18 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	get_cmds_names(t_minishell_ptr minishell)
 }
 
 static t_node_ptr	get_cmds_attr(t_minishell_ptr minishell, t_node_ptr head,
-		int i)
+		int i, bool *perm_err)
 {
 	t_node_ptr	curr;
 
@@ -54,7 +54,7 @@ static t_node_ptr	get_cmds_attr(t_minishell_ptr minishell, t_node_ptr head,
 		if (_equal(curr->val, "|"))
 			return (curr);
 		if (is_redirect(curr->val) && !find_set(minishell->quote_tracker, curr))
-			curr = __redirect_handle(minishell, curr, i);
+			curr = __redirect_handle(minishell, curr, i, perm_err);
 		else
 		{
 			push_back_lt(minishell->commands->cmds[i]->args, curr->val);
@@ -64,7 +64,7 @@ static t_node_ptr	get_cmds_attr(t_minishell_ptr minishell, t_node_ptr head,
 	return (NULL);
 }
 
-void	get_cmds(t_minishell_ptr minishell)
+void	get_cmds(t_minishell_ptr minishell, bool *perm_err)
 {
 	t_node_ptr	possible_pipe;
 	int			i;
@@ -74,10 +74,10 @@ void	get_cmds(t_minishell_ptr minishell)
 	i = 0;
 	init_cmd(minishell->commands);
 	get_cmds_names(minishell);
-	possible_pipe = get_cmds_attr(minishell, minishell->line->head, i);
+	possible_pipe = get_cmds_attr(minishell, minishell->line->head, i, perm_err);
 	while (possible_pipe)
 	{
 		++i;
-		possible_pipe = get_cmds_attr(minishell, possible_pipe->next, i);
+		possible_pipe = get_cmds_attr(minishell, possible_pipe->next, i, perm_err);
 	}
 }

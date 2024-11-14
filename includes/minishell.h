@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/14 17:57:14 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/14 18:19:52 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,7 @@ void							clear_cmds(t_cmd_matrix_ptr commands);
 void							init_cmd(t_cmd_matrix_ptr cmds);
 
 // get_cmds
-void							get_cmds(t_minishell_ptr minishell);
+void							get_cmds(t_minishell_ptr minishell, bool *perm_err);
 
 // pipe_check
 bool							pipe_check(t_list_ptr line,
@@ -263,7 +263,7 @@ bool							ft_chdir(char *path, t_command_ptr command);
 void							__redir_swap(t_minishell_ptr minishell,
 									t_node_ptr curr);
 t_node_ptr						__redirect_handle(t_minishell_ptr minishell,
-									t_node_ptr curr, int i);
+									t_node_ptr curr, int i, bool *perm_err);
 
 // heredoc
 bool							heredoc_handle(t_command_ptr command);
