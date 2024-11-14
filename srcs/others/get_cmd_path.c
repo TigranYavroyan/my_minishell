@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/12 18:02:29 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:17:21 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ void	_exec_util(t_command_ptr command, bool is_btin, int *fds, int i)
 
 	pid = fork();
 	if (pid == -1)
-		return (__err_msg_prmt__("fork: ", "Resource temporarily unavailable",
-				FORK_ERROR));
+		return (__err_msg_prmt__("fork: ", HEREDOC_ERR_MSG, FORK_ERROR));
 	if (pid == 0)
 	{
 		args = NULL;
