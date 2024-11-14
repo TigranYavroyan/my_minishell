@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quote_resolution.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 22:45:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/12 17:53:09 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:57:24 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	parse_quotes(t_list_ptr line, t_set_ptr quote_tracker)
 		if (!open)
 		{
 			if (_equal(curr->val, "$") && curr->next
-				&& is_quote(*curr->next->val)) // handling for $'adf' case
+				&& is_quote(*curr->next->val))
 				curr = remove_node_lt(line, curr);
 		}
 		if (open && *curr->val != opened_ch)
@@ -53,11 +53,16 @@ static void	parse_quotes(t_list_ptr line, t_set_ptr quote_tracker)
 	}
 }
 
-void	remove_quotes(t_list_ptr line, t_set_ptr quote_tracker)
+bool	remove_quotes(t_list_ptr line, t_set_ptr quote_tracker)
 {
 	t_node_ptr	curr;
 
 	parse_quotes(line, quote_tracker);
+	if (!ft_quotes_check(line, quote_tracker))
+	{
+		__err_msg_prmt__(NULL, "Unclosed quotes", SYNTAX_ERROR);
+		return (false);
+	}
 	curr = line->head;
 	while (curr)
 	{
@@ -68,10 +73,10 @@ void	remove_quotes(t_list_ptr line, t_set_ptr quote_tracker)
 		else
 			curr = curr->next;
 	}
+	return (true);
 }
 
 static bool	__is_mergeable(t_node_ptr curr, t_set_ptr quote_tracker)
-// not done for the bonus
 {
 	if (!curr || !curr->next)
 		return (false);
@@ -98,7 +103,7 @@ void	merge_in_quotes(t_list_ptr line, t_set_ptr quote_tracker)
 	t_node_ptr	curr;
 
 	curr = line->head;
-	while (curr && curr->next) // maybe can be better
+	while (curr && curr->next)
 	{
 		if (__is_mergeable(curr, quote_tracker))
 		{

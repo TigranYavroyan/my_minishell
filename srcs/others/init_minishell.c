@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_minishell.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:00:31 by healeksa          #+#    #+#             */
-/*   Updated: 2024/11/12 18:00:32 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 15:33:45 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ t_minishell_ptr	init_minishell(char **env)
 	// check after
 	minishell->env = matrix_to_bst(env, '=');
 	// matrix_to_bst_works only with sorted container
-	insert_bst(minishell->env, "OLDPWD", NULL);
+	// remove_bst(minishell->env, "OLDPWD");
 	minishell->export = copy_bst(minishell->env);
+	insert_bst(minishell->export, "OLDPWD", NULL);
 	shlvl_process(minishell);
 	minishell->commands = NULL;
 	minishell->descriptors = make_descriptors();
