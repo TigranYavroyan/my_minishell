@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:53:37 by healeksa          #+#    #+#             */
-/*   Updated: 2024/11/14 14:58:43 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:02:12 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@ void	inp_correction(void)
 {
 	struct termios	termios_p;
 
-	if (tcgetattr(0, &termios_p) != 0)
-		perror("Minishell: tcgetattr");
-	termios_p.c_lflag &= ~ECHOCTL;
-	if (tcsetattr(0, 0, &termios_p) != 0)
-		perror("Minishell: tcsetattr");
+	if (isatty(STDIN_FILENO))
+	{
+		if (tcgetattr(0, &termios_p) != 0)
+			perror("Minishell: tcgetattr");
+		termios_p.c_lflag &= ~ECHOCTL;
+		if (tcsetattr(0, 0, &termios_p) != 0)
+			perror("Minishell: tcsetattr");
+	}
 }
 
 void	sig_quit(int sig)
