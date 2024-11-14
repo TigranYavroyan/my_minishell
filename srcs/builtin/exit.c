@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:11 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/12 17:48:16 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 20:36:31 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ft_exit(t_command_ptr command)
 {
 	move_back_lt(&command->options, command->args);
+	ft_putstr_fd("exit\n", STDERR_FILENO);
 	if (!empty_lt(command->options))
 	{
 		if (is_num_str(command->options->head->val))
