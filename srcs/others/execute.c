@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:50:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/14 20:01:08 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/14 20:27:46 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ static void	eval(t_cmd_matrix_ptr commands, int *fds, int i)
 	bool	is_btin;
 	bool	exec_flag;
 
-	if (commands->cmds[i]->redirection == invalid_permission)
-		return ;
 	exec_flag = true;
 	is_btin = is_builtin(commands->cmds[i]->name);
 	if (*(commands->cmds[i]->name) == 0)
@@ -31,10 +29,13 @@ static void	eval(t_cmd_matrix_ptr commands, int *fds, int i)
 		dup2(commands->cmds[i]->descriptors->stdin, STDIN_FILENO);
 	else if (commands->cmds[i]->redirection == redirect_heredoc)
 		exec_flag = heredoc_handle(commands->cmds[i]);
-	if (commands->size == 1 && is_btin && exec_flag)
-		exec_builtin(commands->cmds[i]);
-	else if ((is_btin || access_cmd(commands->cmds[i])) && exec_flag)
-		_exec_util(commands->cmds[i], is_btin, fds, i);
+	if (commands->cmds[i]->redirection != invalid_permission) 
+	{
+		if (commands->size == 1 && is_btin && exec_flag)
+			exec_builtin(commands->cmds[i]);
+		else if ((is_btin || access_cmd(commands->cmds[i])) && exec_flag)
+			_exec_util(commands->cmds[i], is_btin, fds, i);
+	}
 	dup2(fds[in], STDIN_FILENO);
 	dup2(commands->minishell->descriptors->stdout, STDOUT_FILENO);
 	close(fds[in]);
