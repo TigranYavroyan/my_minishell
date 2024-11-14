@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dollar_resolution.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:22:15 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/12 18:03:48 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:30:02 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ static t_value_type	_find_right_end(t_value_type begin);
 static t_value_type	_till_dollar(t_value_type begin);
 static void			_resolve(t_dollar_info_ptr df, t_value_type begin,
 						t_minishell_ptr minishell);
-static void			_final_res(t_node_ptr curr, t_value_type begin,
+static void			_final_res(t_value_type* curr, t_value_type begin,
 						t_dollar_info_ptr df);
 
 void	ft_dollar_resolution(t_minishell_ptr minishell, t_node_ptr curr,
-		t_value_type begin)
+		t_value_type begin, t_value_type* val)
 {
 	t_dollar_info	df;
 	t_value_type	tmp_begin;
@@ -40,26 +40,26 @@ void	ft_dollar_resolution(t_minishell_ptr minishell, t_node_ptr curr,
 			begin = df.end + 1;
 			_resolve(&df, begin, minishell);
 		}
-		_final_res(curr, tmp_begin, &df);
+		_final_res(val, tmp_begin, &df);
 	}
 }
 
-static void	_final_res(t_node_ptr curr, t_value_type begin,
+static void	_final_res(t_value_type* curr, t_value_type begin,
 		t_dollar_info_ptr df)
 {
 	t_value_type	tmp;
 
-	if (curr->val == begin)
+	if (*curr == begin)
 	{
-		free(curr->val);
-		curr->val = df->res;
+		free(*curr);
+		*curr = df->res;
 	}
 	else
 	{
-		tmp = ft_substr(curr->val, 0, ft_strlen_range(curr->val, begin - 1));
-		free(curr->val);
-		curr->val = tmp;
-		ft_append(&curr->val, df->res);
+		tmp = ft_substr(*curr, 0, ft_strlen_range(*curr, begin - 1));
+		free(*curr);
+		*curr = tmp;
+		ft_append(curr, df->res);
 		free(df->res);
 	}
 }

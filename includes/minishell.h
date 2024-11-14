@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/14 14:50:38 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/14 17:24:02 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ void							merge_in_quotes(t_list_ptr line,
 
 // dollar_resolution
 void							ft_dollar_resolution(t_minishell_ptr minishell,
-									t_node_ptr curr, t_value_type begin);
+									t_node_ptr curr, t_value_type begin, t_value_type* val);
 
 // helpers
 void							remove_2d_str(char **str);
@@ -162,7 +162,7 @@ void							__err_msg_full__(char *name, char *err,
 bool							is_num_str(const char *str);
 bool							is_quote(char ch);
 bool							is_dir_util(char *name);
-bool							is_dir(char *name);
+bool							is_dir(char *name, struct stat* info, int status);
 bool							is_mergeable_util(const char *str);
 
 // redir_check

@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:00:31 by healeksa          #+#    #+#             */
-/*   Updated: 2024/11/14 15:33:45 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/14 15:45:39 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_minishell_ptr	init_minishell(char **env)
 	// check after
 	minishell->env = matrix_to_bst(env, '=');
 	// matrix_to_bst_works only with sorted container
-	// remove_bst(minishell->env, "OLDPWD");
+	remove_bst(minishell->env, "OLDPWD");
 	minishell->export = copy_bst(minishell->env);
 	insert_bst(minishell->export, "OLDPWD", NULL);
 	shlvl_process(minishell);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_helpers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:28:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/12 18:04:27 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 17:24:13 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,14 @@ bool	is_dir_util(char *name)
 	return (true);
 }
 
-bool	is_dir(char *name)
+bool	is_dir(char *name, struct stat* info, int status)
 {
-	struct stat	info;
-
 	if (_equal(name, "."))
 	{
 		__err_msg_prmt__(".", ": filename argument required", INV_OPTION);
 		return (true);
 	}
-	if (stat(name, &info) == -1)
+	if (status == -1)
 	{
 		if (_equal(name + ft_strlen(name) - 1, "/"))
 			__err_msg_prmt__(name, ": Not a directory", INV_ARG);
@@ -37,7 +35,7 @@ bool	is_dir(char *name)
 				CMD_NOT_FOUND);
 		return (true);
 	}
-	else if (S_ISDIR(info.st_mode))
+	else if (S_ISDIR((*info).st_mode))
 	{
 		__err_msg_prmt__(name, ": is a directory", DIR_ERROR);
 		return (true);

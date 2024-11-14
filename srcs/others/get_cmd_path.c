@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmd_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/12 18:02:29 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 17:23:54 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@ static char	*get_path_exec(t_command_ptr command);
 bool	access_cmd(t_command_ptr command)
 {
 	string	exec_path;
+	struct stat	info;
+	int		status;
 
+	status = stat(command->name, &info);
 	exec_path = NULL;
-	if (is_dir_util(command->name) && is_dir(command->name))
+	if (is_dir_util(command->name) && is_dir(command->name, &info, status))
 		return (false);
 	exec_path = get_path_exec(command);
-	if (exec_path == NULL)
+	if (exec_path == NULL || S_ISDIR(info.st_mode))
 	{
 		__err_msg_prmt__(command->name, ": command not found", CMD_NOT_FOUND);
 		return (false);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   symbol_resolution.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:01:23 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/12 17:51:08 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:31:30 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	parse_dollar(t_minishell_ptr minishell)
 		begin = ft_strchr(curr->val, '$');
 		if (begin)
 		{
-			ft_dollar_resolution(minishell, curr, begin + 1);
+			ft_dollar_resolution(minishell, curr, begin + 1, &curr->val);
 			if (curr->val && !(*curr->val))
 				curr = remove_node_lt(minishell->line, curr);
 			else

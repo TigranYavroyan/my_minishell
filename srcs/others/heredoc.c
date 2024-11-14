@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 20:54:59 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/12 18:05:06 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:40:01 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ void	lol(void)
 
 void	child_heredoc(t_command_ptr command)
 {
-	char	*line;
-	int		fd;
+	char			*line;
+	int				fd;
+	t_value_type	begin;
 
 	fd = command->descriptors->stdin;
 	signal(SIGINT, signal_heredoc);
@@ -28,8 +29,12 @@ void	child_heredoc(t_command_ptr command)
 		line = readline("> ");
 		if (!line || _equal(line, command->delim))
 			break ;
-		if (command->is_delim_quoted)
-			lol(); // var resolution
+		if (!command->is_delim_quoted)
+		{
+			begin = ft_strchr(line, '$');
+			if (begin)
+				ft_dollar_resolution(command->minishell, NULL, begin + 1, &line);
+		}
 		ft_putendl_fd(line, fd);
 		auto_free(&line);
 	}
