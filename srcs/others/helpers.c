@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helpers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 19:43:10 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/14 17:17:47 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 19:34:45 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	ft_open(char *path, int flags, int permisson)
 	{
 		if (errno == EACCES)
 			__err_msg_prmt__(path, ": Permission denied", INV_ARG);
+		else if (errno == ENOENT)
+			__err_msg_prmt__(path, ": No such file or directory", INV_ARG);
 		return (-1);
 	}
 	return (fd);

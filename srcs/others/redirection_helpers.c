@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:00:55 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/14 18:29:36 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/14 19:29:44 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_node_ptr	__redirect_handle(t_minishell_ptr minishell, t_node_ptr curr, int i, 
 	}
 	else if (_equal(curr->val, "<"))
 	{
-		fd = ft_open(curr->next->val, O_RDONLY | O_CREAT, FILE_PERM);
+		fd = ft_open(curr->next->val, O_RDONLY, FILE_PERM);
 		if (fd < 0)
 			*perm_err = true;
 		minishell->commands->cmds[i]->redirection = redirect_in;
