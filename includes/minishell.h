@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/14 16:17:11 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 17:15:09 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ void							ft_dollar_resolution(t_minishell_ptr minishell,
 // helpers
 void							remove_2d_str(char **str);
 void							auto_free(char **ptr);
+int								ft_open(char *path, int flags, int permisson);
 
 // err_print
 void							ft_err_msg(char *msg);

@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:00:55 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/12 17:52:27 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/14 17:21:05 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,44 @@ t_node_ptr	__redirect_handle(t_minishell_ptr minishell, t_node_ptr curr, int i)
 
 	if (_equal(curr->val, ">"))
 	{
-		fd = open(curr->next->val, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERM);
+		fd = ft_open(curr->next->val, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERM);
+		if (fd < 0)
+		{
+			// err
+		}
 		minishell->commands->cmds[i]->redirection = redirect_out;
 		close(minishell->commands->cmds[i]->descriptors->stdout);
 		minishell->commands->cmds[i]->descriptors->stdout = fd;
 	}
 	else if (_equal(curr->val, "<"))
 	{
-		fd = open(curr->next->val, O_RDONLY | O_CREAT, FILE_PERM);
+		fd = ft_open(curr->next->val, O_RDONLY | O_CREAT, FILE_PERM);
+		if (fd < 0)
+		{
+			// err
+		}
 		minishell->commands->cmds[i]->redirection = redirect_in;
 		close(minishell->commands->cmds[i]->descriptors->stdin);
 		minishell->commands->cmds[i]->descriptors->stdin = fd;
 	}
 	else if (_equal(curr->val, ">>"))
 	{
-		fd = open(curr->next->val, O_WRONLY | O_CREAT | O_APPEND, FILE_PERM);
+		fd = ft_open(curr->next->val, O_WRONLY | O_CREAT | O_APPEND, FILE_PERM);
+		if (fd < 0)
+		{
+			// err
+		}
 		minishell->commands->cmds[i]->redirection = redirect_out;
 		close(minishell->commands->cmds[i]->descriptors->stdout);
 		minishell->commands->cmds[i]->descriptors->stdout = fd;
 	}
 	else
 	{
-		fd = open(HEREDOC_FILE, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERM);
+		fd = ft_open(HEREDOC_FILE, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERM);
+		if (fd < 0)
+		{
+			// err
+		}
 		if (find_set(minishell->quote_tracker, curr->next))
 			minishell->commands->cmds[i]->is_delim_quoted = true;
 		minishell->commands->cmds[i]->redirection = redirect_heredoc;
