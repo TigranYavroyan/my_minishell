@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:51:38 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/15 16:44:03 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/15 16:56:11 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static void	get_cmds_names(t_minishell_ptr minishell)
 		{
 			tmp = curr;
 			curr = curr->next;
-			if (is_redirect(curr->val)) {
+			if (is_redirect(curr->val))
+			{
 				__redir_swap(minishell, curr);
 				curr = tmp->next;
 			}
