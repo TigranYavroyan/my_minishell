@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection_helpers.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:00:55 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/14 19:58:55 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/15 14:40:30 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_node_ptr	__redirect_handle(t_minishell_ptr minishell, t_node_ptr curr, int i)
 	if (_equal(curr->val, ">"))
 	{
 		fd = ft_open(curr->next->val, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERM);
-			
 		if (fd < 0)
 			minishell->commands->cmds[i]->redirection = invalid_permission;
 		else
@@ -44,7 +43,7 @@ t_node_ptr	__redirect_handle(t_minishell_ptr minishell, t_node_ptr curr, int i)
 	{
 		fd = ft_open(curr->next->val, O_RDONLY, FILE_PERM);
 		if (fd < 0)
-			minishell->commands->cmds[i]->redirection = invalid_permission;	
+			minishell->commands->cmds[i]->redirection = invalid_permission;
 		else
 			minishell->commands->cmds[i]->redirection = redirect_in;
 		close(minishell->commands->cmds[i]->descriptors->stdin);

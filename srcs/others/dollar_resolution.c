@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dollar_resolution.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:22:15 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/14 16:30:02 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/15 14:48:48 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,19 @@ static t_value_type	_find_right_end(t_value_type begin);
 static t_value_type	_till_dollar(t_value_type begin);
 static void			_resolve(t_dollar_info_ptr df, t_value_type begin,
 						t_minishell_ptr minishell);
-static void			_final_res(t_value_type* curr, t_value_type begin,
+static void			_final_res(t_value_type *curr, t_value_type begin,
 						t_dollar_info_ptr df);
 
 void	ft_dollar_resolution(t_minishell_ptr minishell, t_node_ptr curr,
-		t_value_type begin, t_value_type* val)
+		t_value_type begin, t_value_type *val)
 {
 	t_dollar_info	df;
 	t_value_type	tmp_begin;
 
-	tmp_begin = begin;             // for e$SMTH hello case
-	if (ft_strlen(begin - 1) == 1) // check for $"" (???)
+	// for e$SMTH hello case
+	// check for $"" (???)
+	tmp_begin = begin;
+	if (ft_strlen(begin - 1) == 1)
 		return ;
 	df.res = NULL;
 	df.end = NULL;
@@ -44,7 +46,7 @@ void	ft_dollar_resolution(t_minishell_ptr minishell, t_node_ptr curr,
 	}
 }
 
-static void	_final_res(t_value_type* curr, t_value_type begin,
+static void	_final_res(t_value_type *curr, t_value_type begin,
 		t_dollar_info_ptr df)
 {
 	t_value_type	tmp;

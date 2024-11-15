@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/14 20:00:14 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/15 14:36:50 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,18 @@ static void	ft_minishell(t_minishell_ptr minishell)
 {
 	char	*input;
 
-	log_header_in_file();
 	signal_handle();
 	while (true)
 	{
 		input = readline("Minishell>$ ");
 		minishell->commands = init_cmds(minishell);
 		if (!input)
+		{
+			ft_putstr_fd("exit\n", 2);
 			break ;
+		}
 		if (input[0] != '\0')
 			add_history(input);
-		log_in_file(input);
 		__ft_minishell__(minishell, input);
 		clear_lt(minishell->line);
 		clear_cmds(minishell->commands);

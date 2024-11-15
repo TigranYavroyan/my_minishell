@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/14 20:00:30 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/15 15:22:05 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@
 # include <sys/wait.h>
 # include <termios.h>
 # include <unistd.h>
-
-# define UNUSED __attribute__((unused))
-# define string __attribute__((cleanup(auto_free))) char *
 
 # define INV_OPTION 2
 # define INV_ARG 1
@@ -145,7 +142,8 @@ void							merge_in_quotes(t_list_ptr line,
 
 // dollar_resolution
 void							ft_dollar_resolution(t_minishell_ptr minishell,
-									t_node_ptr curr, t_value_type begin, t_value_type* val);
+									t_node_ptr curr, t_value_type begin,
+									t_value_type *val);
 
 // helpers
 void							remove_2d_str(char **str);
@@ -166,7 +164,8 @@ void							__err_msg_full__(char *name, char *err,
 bool							is_num_str(const char *str);
 bool							is_quote(char ch);
 bool							is_dir_util(char *name);
-bool							is_dir(char *name, struct stat* info, int status);
+bool							is_dir(char *name, struct stat *info,
+									int status);
 bool							is_mergeable_util(const char *str);
 
 // redir_check
@@ -226,6 +225,8 @@ void							ft_exit(t_command_ptr command);
 bool							access_cmd(t_command_ptr command);
 void							_exec_util(t_command_ptr command, bool is_btin,
 									int *fds, int i);
+void							exec_path_util(t_command_ptr command,
+									bool is_btin, int *fds);
 
 // sort_env
 void							sort_env(char **env);
@@ -241,10 +242,6 @@ void							set_status_unsigned(int status);
 void							set_status_signed(int status);
 void							set_status_int(int status);
 int								get_status(void);
-
-// log_in_file
-void							log_in_file(char *input);
-void							log_header_in_file(void);
 
 // descriptors
 t_descriptors_ptr				make_descriptors(void);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_atoll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 21:02:06 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/14 21:20:14 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/15 14:42:35 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	is_whitespace(const char ch)
 {
-	return (ch == '\t' || ch == ' ' || ch == '\v'
-		|| ch == '\n' || ch == '\f' || ch == '\r');
+	return (ch == '\t' || ch == ' ' || ch == '\v' || ch == '\n' || ch == '\f'
+		|| ch == '\r');
 }
 
 long long	ft_atoll(const char *str)

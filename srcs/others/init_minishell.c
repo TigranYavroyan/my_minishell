@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_minishell.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:00:31 by healeksa          #+#    #+#             */
-/*   Updated: 2024/11/14 15:45:39 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/14 21:31:48 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,28 @@
 static void	shlvl_process(t_minishell_ptr minishell)
 {
 	t_treenode_ptr	found;
-	char			*val;
 	int				level;
 
 	found = _find_bst(minishell->env->root, "SHLVL");
 	if (found)
 	{
-		val = found->value;
-		level = ft_atoi(val);
-		++level;
-		val = ft_itoa(level);
-		free(found->value);
-		found->value = val;
+		level = ft_atoi(found->value);
+		if (level < 0)
+			level = 0;
+		else if (level >= 0 && level <= 999)
+			++level;
+		else
+			level = 1;
+		if (level == 1000)
+		{
+			free(found->value);
+			found->value = ft_strdup("");
+		}
+		else
+		{
+			free(found->value);
+			found->value = ft_itoa(level);
+		}
 	}
 	else
 	{
