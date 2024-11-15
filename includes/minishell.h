@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/15 14:44:48 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:22:05 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@
 # include <sys/wait.h>
 # include <termios.h>
 # include <unistd.h>
-
-# define string __attribute__((cleanup(auto_free))) char *
 
 # define INV_OPTION 2
 # define INV_ARG 1
@@ -227,6 +225,8 @@ void							ft_exit(t_command_ptr command);
 bool							access_cmd(t_command_ptr command);
 void							_exec_util(t_command_ptr command, bool is_btin,
 									int *fds, int i);
+void							exec_path_util(t_command_ptr command,
+									bool is_btin, int *fds);
 
 // sort_env
 void							sort_env(char **env);

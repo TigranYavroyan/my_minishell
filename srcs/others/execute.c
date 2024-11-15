@@ -6,11 +6,21 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:50:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/15 14:40:59 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:34:53 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
+
+static void	redir_checker(t_cmd_matrix_ptr commands, int i, bool *exec_flag)
+{
+	if (commands->cmds[i]->redirection == redirect_out)
+		dup2(commands->cmds[i]->descriptors->stdout, STDOUT_FILENO);
+	else if (commands->cmds[i]->redirection == redirect_in)
+		dup2(commands->cmds[i]->descriptors->stdin, STDIN_FILENO);
+	else if (commands->cmds[i]->redirection == redirect_heredoc)
+		*exec_flag = heredoc_handle(commands->cmds[i]);
+}
 
 static void	eval(t_cmd_matrix_ptr commands, int *fds, int i)
 {
@@ -23,12 +33,7 @@ static void	eval(t_cmd_matrix_ptr commands, int *fds, int i)
 		return ;
 	if (i < commands->size - 1)
 		dup2(fds[out], STDOUT_FILENO);
-	if (commands->cmds[i]->redirection == redirect_out)
-		dup2(commands->cmds[i]->descriptors->stdout, STDOUT_FILENO);
-	else if (commands->cmds[i]->redirection == redirect_in)
-		dup2(commands->cmds[i]->descriptors->stdin, STDIN_FILENO);
-	else if (commands->cmds[i]->redirection == redirect_heredoc)
-		exec_flag = heredoc_handle(commands->cmds[i]);
+	redir_checker(commands, i, &exec_flag);
 	if (commands->cmds[i]->redirection != invalid_permission)
 	{
 		if (commands->size == 1 && is_btin && exec_flag)
