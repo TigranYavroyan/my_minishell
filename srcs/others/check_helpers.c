@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_helpers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:28:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/15 14:41:24 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/15 19:31:38 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ bool	is_num_str(const char *str)
 	while (str[i] != '\0')
 	{
 		if (!ft_isdigit(str[i]))
+		{
 			return (false);
+		}
 		++i;
 	}
 	return (true);
