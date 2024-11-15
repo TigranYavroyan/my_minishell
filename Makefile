@@ -114,7 +114,7 @@ config:
 	./readline_config.sh readline_local
 
 leaks:
-	valgrind --leak-check=full --show-leak-kinds=all --suppressions=.vgignore ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --suppressions=.vgignore --track-origins=yes ./$(NAME)
 
 #lsof -p $$ -a -d 0-255
 

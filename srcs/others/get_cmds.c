@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:51:38 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/15 15:28:02 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/15 16:56:11 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	get_cmds_names(t_minishell_ptr minishell)
 {
 	t_node_ptr	curr;
+	t_node_ptr	tmp;
 	int			i;
 
 	if (is_redirect(minishell->line->head->val))
@@ -26,14 +27,29 @@ static void	get_cmds_names(t_minishell_ptr minishell)
 	{
 		if (_equal(curr->val, "|"))
 		{
+			tmp = curr;
 			curr = curr->next;
 			if (is_redirect(curr->val))
+			{
 				__redir_swap(minishell, curr);
+				curr = tmp->next;
+			}
 			minishell->commands->cmds[i]->name = ft_strdup(curr->val);
 			++i;
 		}
 		curr = curr->next;
 	}
+}
+
+static t_node_ptr	__till_pipe(t_node_ptr curr)
+{
+	while (curr)
+	{
+		if (_equal(curr->val, "|"))
+			return (curr);
+		curr = curr->next;
+	}
+	return (curr);
 }
 
 static t_node_ptr	get_cmds_attr(t_minishell_ptr minishell, t_node_ptr head,
@@ -57,7 +73,7 @@ static t_node_ptr	get_cmds_attr(t_minishell_ptr minishell, t_node_ptr head,
 		{
 			curr = __redirect_handle(minishell, curr, i);
 			if (minishell->commands->cmds[i]->redirection == invalid_permission)
-				break;
+				return (__till_pipe(curr));
 		}
 		else
 		{
@@ -84,4 +100,14 @@ void	get_cmds(t_minishell_ptr minishell)
 		++i;
 		possible_pipe = get_cmds_attr(minishell, possible_pipe->next, i);
 	}
+	// for (int i = 0; i < minishell->commands->size; ++i)
+	// {
+	// 	printf("The name: %s\n", minishell->commands->cmds[i]->name);
+	// 	printf("Options: ");
+	// 	print_lt(minishell->commands->cmds[i]->options);
+	// 	printf("Args: ");
+	// 	print_lt(minishell->commands->cmds[i]->args);
+	// 	printf("\n\n");
+	// }
+	// exit(0);
 }

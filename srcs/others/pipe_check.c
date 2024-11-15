@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:03:40 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/12 17:54:06 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:12:28 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	pipe_check(t_list_ptr line, t_set_ptr quote_tracker)
 			if (curr->prev == NULL)
 				return (false);
 			curr = curr->next;
-			if (!curr || !ft_isalpha(*curr->val))
+			if (!curr || (!ft_isalpha(*curr->val) && !is_redirect(curr->val)))
 				return (false);
 		}
 		curr = curr->next;
