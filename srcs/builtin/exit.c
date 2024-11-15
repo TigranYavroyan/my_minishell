@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:11 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/15 15:32:51 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/15 18:22:56 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static long long	sh_atoll(const char *str, bool* plus)
+static long long	sh_atoll(const char *str, bool *plus)
 {
 	long long	res;
 	int			sign;
@@ -41,7 +41,7 @@ static long long	sh_atoll(const char *str, bool* plus)
 	return (sign * res);
 }
 
-static bool	ft_exit_util (t_command_ptr command)
+static bool	ft_exit_util(t_command_ptr command)
 {
 	bool		plus;
 	char		*real_val;

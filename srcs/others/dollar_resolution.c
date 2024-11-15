@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:22:15 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/15 14:48:48 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:25:37 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	ft_dollar_resolution(t_minishell_ptr minishell, t_node_ptr curr,
 	t_dollar_info	df;
 	t_value_type	tmp_begin;
 
-	// for e$SMTH hello case
-	// check for $"" (???)
 	tmp_begin = begin;
 	if (ft_strlen(begin - 1) == 1)
 		return ;

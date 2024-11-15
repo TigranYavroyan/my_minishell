@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmds.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:51:38 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/15 16:56:11 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/15 18:25:11 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,4 @@ void	get_cmds(t_minishell_ptr minishell)
 		++i;
 		possible_pipe = get_cmds_attr(minishell, possible_pipe->next, i);
 	}
-	// for (int i = 0; i < minishell->commands->size; ++i)
-	// {
-	// 	printf("The name: %s\n", minishell->commands->cmds[i]->name);
-	// 	printf("Options: ");
-	// 	print_lt(minishell->commands->cmds[i]->options);
-	// 	printf("Args: ");
-	// 	print_lt(minishell->commands->cmds[i]->args);
-	// 	printf("\n\n");
-	// }
-	// exit(0);
 }

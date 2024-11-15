@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection_helpers.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:00:55 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/15 16:33:41 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/15 18:25:28 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	__redir_swap(t_minishell_ptr minishell, t_node_ptr curr)
 		return ;
 	if (curr->next->next)
 	{
-		// push_front_lt(minishell->line, curr->next->next->val);
 		if (minishell->line->head == curr)
 			push_front_lt(minishell->line, curr->next->next->val);
 		else

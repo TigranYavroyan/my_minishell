@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:00:31 by healeksa          #+#    #+#             */
-/*   Updated: 2024/11/14 21:31:48 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/15 18:22:42 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,8 @@ t_minishell_ptr	init_minishell(char **env)
 	minishell = (t_minishell_ptr)wrapper_malloc(sizeof(t_minishell));
 	minishell->line = init_lt();
 	minishell->quote_tracker = init_set();
-	sort_env(env); // env have to be not sorted,
-	// check after
+	sort_env(env);
 	minishell->env = matrix_to_bst(env, '=');
-	// matrix_to_bst_works only with sorted container
 	remove_bst(minishell->env, "OLDPWD");
 	minishell->export = copy_bst(minishell->env);
 	insert_bst(minishell->export, "OLDPWD", NULL);
