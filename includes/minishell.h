@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/15 15:22:05 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/15 20:01:19 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,4 +266,6 @@ t_node_ptr						__redirect_handle(t_minishell_ptr minishell,
 // heredoc
 bool							heredoc_handle(t_command_ptr command);
 
+// shlvl
+void							shlvl_process(t_minishell_ptr minishell);
 #endif // MINISHELL_H
