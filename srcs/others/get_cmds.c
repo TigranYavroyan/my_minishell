@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:51:38 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/15 18:25:11 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/15 22:04:56 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,8 @@ static t_node_ptr	__till_pipe(t_node_ptr curr)
 	return (curr);
 }
 
-static t_node_ptr	get_cmds_attr(t_minishell_ptr minishell, t_node_ptr head,
-		int i)
+void	execolp(t_node_ptr curr, t_minishell_ptr minishell, int i)
 {
-	t_node_ptr	curr;
-
-	if (!head || !head->next)
-		return (NULL);
-	curr = head->next;
-	while (curr && *curr->val == '-')
-	{
-		push_back_lt(minishell->commands->cmds[i]->options, curr->val);
-		curr = curr->next;
-	}
 	while (curr)
 	{
 		if (_equal(curr->val, "|"))
@@ -81,6 +70,22 @@ static t_node_ptr	get_cmds_attr(t_minishell_ptr minishell, t_node_ptr head,
 			curr = curr->next;
 		}
 	}
+}
+
+static t_node_ptr	get_cmds_attr(t_minishell_ptr minishell, t_node_ptr head,
+		int i)
+{
+	t_node_ptr	curr;
+
+	if (!head || !head->next)
+		return (NULL);
+	curr = head->next;
+	while (curr && *curr->val == '-')
+	{
+		push_back_lt(minishell->commands->cmds[i]->options, curr->val);
+		curr = curr->next;
+	}
+	execolp(curr, minishell, i);
 	return (NULL);
 }
 
