@@ -4,9 +4,8 @@
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                // "/usr/include",
                 "/usr/local/include",
-				"/Library/Developer/CommandLineTools/usr/include/c++/v1"
+                "/Library/Developer/CommandLineTools/usr/include/c++/v1"
             ],
             "defines": [],
             "macFrameworkPath": [
@@ -16,9 +15,9 @@
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c11",
             "cppStandard": "c++17",
-            "intelliSenseMode": "macos-gcc-x64"
+            "intelliSenseMode": "macos-gcc-x64",
+            "configurationProvider": "ms-vscode.makefile-tools"
         }
     ],
     "version": 4
 }
-
