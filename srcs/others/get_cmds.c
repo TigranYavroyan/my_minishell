@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:51:38 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/15 15:28:02 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/15 15:55:07 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,17 @@ static void	get_cmds_names(t_minishell_ptr minishell)
 	}
 }
 
+static t_node_ptr	__till_pipe(t_node_ptr curr)
+{
+	while (curr)
+	{
+		if (_equal(curr->val, "|"))
+			return (curr);
+		curr = curr->next;
+	}
+	return (curr);
+}
+
 static t_node_ptr	get_cmds_attr(t_minishell_ptr minishell, t_node_ptr head,
 		int i)
 {
@@ -57,7 +68,7 @@ static t_node_ptr	get_cmds_attr(t_minishell_ptr minishell, t_node_ptr head,
 		{
 			curr = __redirect_handle(minishell, curr, i);
 			if (minishell->commands->cmds[i]->redirection == invalid_permission)
-				break;
+				return (__till_pipe(curr));
 		}
 		else
 		{
