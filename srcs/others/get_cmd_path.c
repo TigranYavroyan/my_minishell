@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmd_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/14 19:26:39 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/15 14:35:33 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,17 @@ static char	*get_path_exec(t_command_ptr command);
 
 bool	access_cmd(t_command_ptr command)
 {
-	string	exec_path;
+	string		exec_path;
 	struct stat	info;
-	int		status;
+	int			status;
 
 	status = stat(command->name, &info);
 	exec_path = NULL;
 	if (is_dir_util(command->name) && is_dir(command->name, &info, status))
 		return (false);
-	if (is_dir_util(command->name) && S_ISREG(info.st_mode) && !(info.st_mode & S_IXUSR)) {
+	if (is_dir_util(command->name) && S_ISREG(info.st_mode)
+		&& !(info.st_mode & S_IXUSR))
+	{
 		__err_msg_prmt__(command->name, ": Permission denied", DIR_ERROR);
 		return (false);
 	}

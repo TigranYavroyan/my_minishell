@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_helpers.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:28:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/14 18:54:00 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/15 14:41:24 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	is_dir_util(char *name)
 	return (true);
 }
 
-bool	is_dir(char *name, struct stat* info, int status)
+bool	is_dir(char *name, struct stat *info, int status)
 {
 	if (_equal(name, "."))
 	{

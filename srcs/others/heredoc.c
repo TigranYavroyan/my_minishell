@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 20:54:59 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/14 17:56:59 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/15 14:39:56 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
-
-void	lol(void)
-{
-}
 
 void	child_heredoc(t_command_ptr command)
 {
@@ -33,7 +29,8 @@ void	child_heredoc(t_command_ptr command)
 		{
 			begin = ft_strchr(line, '$');
 			if (begin)
-				ft_dollar_resolution(command->minishell, NULL, begin + 1, &line);
+				ft_dollar_resolution(command->minishell, NULL, begin + 1,
+					&line);
 		}
 		ft_putendl_fd(line, fd);
 		auto_free(&line);

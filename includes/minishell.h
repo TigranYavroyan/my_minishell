@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/14 20:00:30 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/15 14:44:48 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@
 # include <termios.h>
 # include <unistd.h>
 
-# define UNUSED __attribute__((unused))
 # define string __attribute__((cleanup(auto_free))) char *
 
 # define INV_OPTION 2
@@ -145,7 +144,8 @@ void							merge_in_quotes(t_list_ptr line,
 
 // dollar_resolution
 void							ft_dollar_resolution(t_minishell_ptr minishell,
-									t_node_ptr curr, t_value_type begin, t_value_type* val);
+									t_node_ptr curr, t_value_type begin,
+									t_value_type *val);
 
 // helpers
 void							remove_2d_str(char **str);
@@ -166,7 +166,8 @@ void							__err_msg_full__(char *name, char *err,
 bool							is_num_str(const char *str);
 bool							is_quote(char ch);
 bool							is_dir_util(char *name);
-bool							is_dir(char *name, struct stat* info, int status);
+bool							is_dir(char *name, struct stat *info,
+									int status);
 bool							is_mergeable_util(const char *str);
 
 // redir_check
@@ -241,10 +242,6 @@ void							set_status_unsigned(int status);
 void							set_status_signed(int status);
 void							set_status_int(int status);
 int								get_status(void);
-
-// log_in_file
-void							log_in_file(char *input);
-void							log_header_in_file(void);
 
 // descriptors
 t_descriptors_ptr				make_descriptors(void);
