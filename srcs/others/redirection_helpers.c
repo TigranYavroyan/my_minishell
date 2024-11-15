@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection_helpers.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:00:55 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/15 14:40:30 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:33:41 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ void	__redir_swap(t_minishell_ptr minishell, t_node_ptr curr)
 		return ;
 	if (curr->next->next)
 	{
-		push_front_lt(minishell->line, curr->next->next->val);
+		// push_front_lt(minishell->line, curr->next->next->val);
+		if (minishell->line->head == curr)
+			push_front_lt(minishell->line, curr->next->next->val);
+		else
+			insert_node_lt(minishell->line, curr->next->next->val, curr->prev);
 		remove_node_lt(minishell->line, curr->next->next);
 	}
 	else
