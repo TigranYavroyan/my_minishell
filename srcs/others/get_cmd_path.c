@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmd_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/15 15:21:47 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/15 17:39:46 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ bool	access_cmd(t_command_ptr command)
 	if (exec_path == NULL || S_ISDIR(info.st_mode))
 	{
 		__err_msg_prmt__(command->name, ": command not found", CMD_NOT_FOUND);
+		// printf("gegham\n");
 		return (false);
 	}
 	free(command->name);

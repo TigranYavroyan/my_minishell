@@ -1,0 +1,16 @@
+bst_c
+build
+includes
+invalid_perm
+libft
+list_c
+Makefile
+minishell
+minishell_tester
+readline_config.sh
+readline_local
+set_c
+srcs
+test_cases.txt
+tester.sh
+test.txt
