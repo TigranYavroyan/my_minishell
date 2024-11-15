@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:51:38 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/14 20:00:19 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/15 15:28:02 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,11 @@ static t_node_ptr	get_cmds_attr(t_minishell_ptr minishell, t_node_ptr head,
 		if (_equal(curr->val, "|"))
 			return (curr);
 		if (is_redirect(curr->val) && !find_set(minishell->quote_tracker, curr))
+		{
 			curr = __redirect_handle(minishell, curr, i);
+			if (minishell->commands->cmds[i]->redirection == invalid_permission)
+				break;
+		}
 		else
 		{
 			push_back_lt(minishell->commands->cmds[i]->args, curr->val);
