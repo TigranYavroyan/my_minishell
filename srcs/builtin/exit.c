@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:11 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/15 15:32:51 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/15 19:31:49 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static bool	ft_exit_util (t_command_ptr command)
 	plus = false;
 	exit_status = sh_atoll(command->options->head->val, &plus);
 	real_val = ft_lltoa(exit_status);
-	if (exit_status && _equal(real_val, command->options->head->val + plus))
+	if ((is_num_str(command->options->head->val) && !exit_status) || _equal(real_val, command->options->head->val + plus))
 	{
 		if (get_size(command->options) > 1)
 		{
