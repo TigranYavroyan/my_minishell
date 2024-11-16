@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:50:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/16 16:26:52 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/16 17:11:06 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void	redir_checker(t_cmd_matrix_ptr commands, int i, bool *exec_flag)
 {
-	if (commands->cmds[i]->redirection == redirect_out)
+	if ((commands->cmds[i]->redirection & redirect_out) == redirect_out)
 		dup2(commands->cmds[i]->descriptors->stdout, STDOUT_FILENO);
-	else if (commands->cmds[i]->redirection == redirect_in)
+	if ((commands->cmds[i]->redirection & redirect_in) == redirect_in)
 		dup2(commands->cmds[i]->descriptors->stdin, STDIN_FILENO);
-	else if (commands->cmds[i]->redirection == redirect_heredoc)
+	if ((commands->cmds[i]->redirection & redirect_heredoc) == redirect_heredoc)
 		*exec_flag = heredoc_handle(commands->cmds[i]);
 }
 

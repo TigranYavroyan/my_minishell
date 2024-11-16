@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection_helpers.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:00:55 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/16 16:08:02 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/16 17:11:15 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	_redirect_heredoc_util(t_minishell_ptr minishell, t_node_ptr curr,
 	if (*fd < 0)
 		minishell->commands->cmds[i]->redirection = invalid_permission;
 	else
-		minishell->commands->cmds[i]->redirection = redirect_heredoc;
+		minishell->commands->cmds[i]->redirection |= redirect_heredoc;
 	minishell->commands->cmds[i]->delim = ft_strdup(curr->next->val);
 	close(minishell->commands->cmds[i]->descriptors->stdin);
 	minishell->commands->cmds[i]->descriptors->stdin = *fd;
@@ -34,7 +34,7 @@ static void	_redirect_out_util(t_minishell_ptr minishell, t_node_ptr curr,
 	if (*fd < 0)
 		minishell->commands->cmds[i]->redirection = invalid_permission;
 	else
-		minishell->commands->cmds[i]->redirection = redirect_out;
+		minishell->commands->cmds[i]->redirection |= redirect_out;
 	close(minishell->commands->cmds[i]->descriptors->stdout);
 	minishell->commands->cmds[i]->descriptors->stdout = *fd;
 }
@@ -46,7 +46,7 @@ static void	_redirect_in_util(t_minishell_ptr minishell, t_node_ptr curr,
 	if (*fd < 0)
 		minishell->commands->cmds[i]->redirection = invalid_permission;
 	else
-		minishell->commands->cmds[i]->redirection = redirect_in;
+		minishell->commands->cmds[i]->redirection |= redirect_in;
 	close(minishell->commands->cmds[i]->descriptors->stdin);
 	minishell->commands->cmds[i]->descriptors->stdin = *fd;
 }
@@ -58,7 +58,7 @@ static void	_redirect_out_append_util(t_minishell_ptr minishell,
 	if (*fd < 0)
 		minishell->commands->cmds[i]->redirection = invalid_permission;
 	else
-		minishell->commands->cmds[i]->redirection = redirect_out;
+		minishell->commands->cmds[i]->redirection |= redirect_out;
 	close(minishell->commands->cmds[i]->descriptors->stdout);
 	minishell->commands->cmds[i]->descriptors->stdout = *fd;
 }
