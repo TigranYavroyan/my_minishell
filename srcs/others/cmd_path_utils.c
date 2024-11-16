@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_path_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 15:17:44 by healeksa          #+#    #+#             */
-/*   Updated: 2024/11/15 15:21:17 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/16 15:25:50 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	exec_path_util(t_command_ptr command, bool is_btin, int *fds)
 		move_back_lt(&command->options, command->args);
 		env = bst_to_matrix(command->minishell->env);
 		args = list_to_matrix_lt(command->options);
+		
 		execve(command->name, args, env);
 		set_status_unsigned(DIR_ERROR);
 	}
