@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bst.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:35 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/16 15:31:47 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/16 16:08:16 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int								__get_height_bst(t_treenode_ptr root);
 t_treenode_ptr					_left_rotate(t_treenode_ptr x);
 t_treenode_ptr					_right_rotate(t_treenode_ptr x);
 int								get_bf(t_treenode_ptr curr);
-t_treenode_ptr					_balance_remove(t_treenode_ptr* root);
+t_treenode_ptr					_balance_remove(t_treenode_ptr *root);
 
 // deletion
 void							remove_bst(t_bst_ptr bst, const t_key_type key);

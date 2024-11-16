@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deletion.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:43 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/16 15:32:06 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/16 16:08:09 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,5 @@ static t_treenode_ptr	_remove(t_treenode_ptr root, const t_key_type key)
 		_free_node(&root);
 		return (tmp);
 	}
-	return _balance_remove(&root);
+	return (_balance_remove(&root));
 }

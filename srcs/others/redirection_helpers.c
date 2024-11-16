@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   redirection_helpers.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:00:55 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/16 15:49:30 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/16 16:08:02 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-static void	_redirect_heredoc_util (t_minishell_ptr minishell, t_node_ptr curr, int* fd, int i)
+static void	_redirect_heredoc_util(t_minishell_ptr minishell, t_node_ptr curr,
+		int *fd, int i)
 {
 	*fd = ft_open(HEREDOC_FILE, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERM);
 	if (find_set(minishell->quote_tracker, curr->next))
@@ -26,7 +27,8 @@ static void	_redirect_heredoc_util (t_minishell_ptr minishell, t_node_ptr curr, 
 	minishell->commands->cmds[i]->descriptors->stdin = *fd;
 }
 
-static void	_redirect_out_util(t_minishell_ptr minishell, t_node_ptr curr, int* fd, int i)
+static void	_redirect_out_util(t_minishell_ptr minishell, t_node_ptr curr,
+		int *fd, int i)
 {
 	*fd = ft_open(curr->next->val, O_WRONLY | O_CREAT | O_TRUNC, FILE_PERM);
 	if (*fd < 0)
@@ -37,7 +39,8 @@ static void	_redirect_out_util(t_minishell_ptr minishell, t_node_ptr curr, int* 
 	minishell->commands->cmds[i]->descriptors->stdout = *fd;
 }
 
-static void	_redirect_in_util(t_minishell_ptr minishell, t_node_ptr curr, int* fd, int i)
+static void	_redirect_in_util(t_minishell_ptr minishell, t_node_ptr curr,
+		int *fd, int i)
 {
 	*fd = ft_open(curr->next->val, O_RDONLY, FILE_PERM);
 	if (*fd < 0)
@@ -48,7 +51,8 @@ static void	_redirect_in_util(t_minishell_ptr minishell, t_node_ptr curr, int* f
 	minishell->commands->cmds[i]->descriptors->stdin = *fd;
 }
 
-static void	_redirect_out_append_util(t_minishell_ptr minishell, t_node_ptr curr, int* fd, int i)
+static void	_redirect_out_append_util(t_minishell_ptr minishell,
+		t_node_ptr curr, int *fd, int i)
 {
 	*fd = ft_open(curr->next->val, O_WRONLY | O_CREAT | O_APPEND, FILE_PERM);
 	if (*fd < 0)

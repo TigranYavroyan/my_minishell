@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   balance_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:27:23 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/16 15:32:01 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/16 16:08:13 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	get_bf(t_treenode_ptr curr)
 	return (__get_height_bst(curr->left) - __get_height_bst(curr->right));
 }
 
-t_treenode_ptr	_balance_remove(t_treenode_ptr* root)
+t_treenode_ptr	_balance_remove(t_treenode_ptr *root)
 {
 	int	bf;
 
@@ -60,5 +60,5 @@ t_treenode_ptr	_balance_remove(t_treenode_ptr* root)
 		(*root)->right = _right_rotate((*root)->right);
 		return (_left_rotate(*root));
 	}
-	return (*root); 
+	return (*root);
 }
