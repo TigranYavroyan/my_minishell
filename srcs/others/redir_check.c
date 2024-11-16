@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 16:58:11 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/16 15:43:01 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/16 16:31:26 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,12 @@ void	__redir_swap(t_minishell_ptr minishell, t_node_ptr curr)
 		remove_node_lt(minishell->line, curr->next->next);
 	}
 	else
-		push_front_lt(minishell->line, "");
+	{
+		if (minishell->line->head == curr)
+			push_front_lt(minishell->line, curr->next->next->val);
+		else
+			insert_node_lt(minishell->line, "", curr->prev);
+	}
 }
 
 char	*redir_check(t_list_ptr line, t_set_ptr quote_tracker)

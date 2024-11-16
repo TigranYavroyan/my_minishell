@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmds_count.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 18:23:31 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/12 18:04:13 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/16 16:27:14 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_count_cmds(t_minishell_ptr minishell)
 		++minishell->commands->size;
 	while (curr)
 	{
-		if (_equal(curr->val, "|"))
+		if (_equal(curr->val, "|") && !find_set(minishell->quote_tracker, curr))
 			++minishell->commands->size;
 		curr = curr->next;
 	}
