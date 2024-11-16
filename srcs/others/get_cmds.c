@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmds.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:51:38 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/15 22:04:56 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/16 16:12:11 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static t_node_ptr	__till_pipe(t_node_ptr curr)
 	return (curr);
 }
 
-void	execolp(t_node_ptr curr, t_minishell_ptr minishell, int i)
+t_node_ptr	execolp(t_node_ptr curr, t_minishell_ptr minishell, int i)
 {
 	while (curr)
 	{
@@ -70,6 +70,7 @@ void	execolp(t_node_ptr curr, t_minishell_ptr minishell, int i)
 			curr = curr->next;
 		}
 	}
+	return (NULL);
 }
 
 static t_node_ptr	get_cmds_attr(t_minishell_ptr minishell, t_node_ptr head,
@@ -85,8 +86,7 @@ static t_node_ptr	get_cmds_attr(t_minishell_ptr minishell, t_node_ptr head,
 		push_back_lt(minishell->commands->cmds[i]->options, curr->val);
 		curr = curr->next;
 	}
-	execolp(curr, minishell, i);
-	return (NULL);
+	return (execolp(curr, minishell, i));
 }
 
 void	get_cmds(t_minishell_ptr minishell)

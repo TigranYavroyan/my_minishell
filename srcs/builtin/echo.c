@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:23:51 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/16 15:07:07 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/16 16:13:59 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,20 @@ static void	print_out(char **output)
 	ft_putstr_fd(output[i], 1);
 }
 
+static void	_check_flag_util(t_node_ptr tmp, int* i)
+{
+	while (tmp->val[*i])
+	{
+		if (tmp->val[*i] == 'n')
+		{
+			++(*i);
+			continue ;
+		}
+		else
+			break ;
+	}
+}
+
 static t_node_ptr	check_flag(t_command_ptr command, bool *flag)
 {
 	t_node_ptr	tmp;
@@ -38,16 +52,7 @@ static t_node_ptr	check_flag(t_command_ptr command, bool *flag)
 		i = 0;
 		if (tmp->val[i] == '-')
 			++i;
-		while (tmp->val[i])
-		{
-			if (tmp->val[i] == 'n')
-			{
-				++i;
-				continue ;
-			}
-			else
-				break ;
-		}
+		_check_flag_util(tmp, &i);
 		if (tmp->val[i] != '\0' || i <= 1)
 			return (tmp);
 		if (i > 1)
