@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   deletion.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:54:31 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/12 00:26:49 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/16 15:37:47 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,32 @@ static void	_clear(t_setnode_ptr root)
 	_free_node_set(&root);
 }
 
+static t_setnode_ptr	_balance_remove_set(t_setnode_ptr* root)
+{
+	int	bf;
+
+	bf = get_bf_set(*root);
+	if (bf < -1 && get_bf_set((*root)->right) <= 0)
+		return (_left_rotate_set(*root));
+	if (bf > 1 && get_bf_set((*root)->left) < 0)
+	{
+		(*root)->left = _left_rotate_set((*root)->left);
+		return (_right_rotate_set(*root));
+	}
+	if (bf < -1 && get_bf_set((*root)->right) <= 0)
+		return (_left_rotate_set(*root));
+	if (bf < -1 && get_bf_set((*root)->right) > 0)
+	{
+		(*root)->right = _right_rotate_set((*root)->right);
+		return (_left_rotate_set(*root));
+	}
+	return (*root);
+}
+
+
 static t_setnode_ptr	_remove(t_setnode_ptr root, const t_node_ptr key)
 {
 	t_setnode_ptr	tmp;
-	int				bf;
 
 	if (!root)
 		return (NULL);
@@ -64,20 +86,5 @@ static t_setnode_ptr	_remove(t_setnode_ptr root, const t_node_ptr key)
 		_free_node_set(&root);
 		return (tmp);
 	}
-	bf = get_bf_set(root);
-	if (bf < -1 && get_bf_set(root->right) <= 0)
-		return (_left_rotate_set(root));
-	if (bf > 1 && get_bf_set(root->left) < 0)
-	{
-		root->left = _left_rotate_set(root->left);
-		return (_right_rotate_set(root));
-	}
-	if (bf < -1 && get_bf_set(root->right) <= 0)
-		return (_left_rotate_set(root));
-	if (bf < -1 && get_bf_set(root->right) > 0)
-	{
-		root->right = _right_rotate_set(root->right);
-		return (_left_rotate_set(root));
-	}
-	return (root);
+	return	_balance_remove_set(&root);
 }
