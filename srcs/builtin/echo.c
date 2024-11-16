@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:23:51 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/16 14:40:33 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/16 15:07:07 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@ static void	print_out(char **output)
 {
 	int	i;
 
-	if (!output || !(*output))
+	if (!output && !(*output))
 		return ;
 	i = -1;
 	while (output[++i + 1])
-		printf("%s ", output[i]);
-	printf("%s", output[i]);
+	{
+		ft_putstr_fd(output[i], 1);
+		ft_putchar_fd(' ', 1);
+	}
+	ft_putstr_fd(output[i], 1);
 }
 
 static t_node_ptr	check_flag(t_command_ptr command, bool *flag)
@@ -45,7 +48,7 @@ static t_node_ptr	check_flag(t_command_ptr command, bool *flag)
 			else
 				break ;
 		}
-		if (tmp->val[i] != '\0')
+		if (tmp->val[i] != '\0' || i <= 1)
 			return (tmp);
 		if (i > 1)
 			*flag = true;
