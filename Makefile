@@ -52,7 +52,7 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 # $(DEBUG)
 $(NAME): $(OBJ_DIR) $(OBJ) $(BST) $(LIST) $(LIBFT) $(SET) Makefile
-	@$(CC) -fsanitize=address $(OBJ) $(LIBFLAGS) -o $(NAME)
+	@$(CC) -g $(OBJ) $(LIBFLAGS) -o $(NAME)
 	@echo "$(GREEN) Executable file has been created$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c Makefile
