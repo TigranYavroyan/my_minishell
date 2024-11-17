@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:23:51 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/16 16:13:59 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/17 16:27:09 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	print_out(char **output)
 {
 	int	i;
 
-	if (!output && !(*output))
+	if (!output || !(*output))
 		return ;
 	i = -1;
 	while (output[++i + 1])
@@ -27,7 +27,7 @@ static void	print_out(char **output)
 	ft_putstr_fd(output[i], 1);
 }
 
-static void	_check_flag_util(t_node_ptr tmp, int* i)
+static void	_check_flag_util(t_node_ptr tmp, int *i)
 {
 	while (tmp->val[*i])
 	{

@@ -116,6 +116,4 @@ config:
 leaks:
 	valgrind --leak-check=full --show-leak-kinds=all --suppressions=.vgignore --track-origins=yes ./$(NAME)
 
-#lsof -p $$ -a -d 0-255
-
 .PHONY : all clean fclean re config push git
