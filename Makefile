@@ -36,7 +36,6 @@ else
 endif
 
 CFLAGS = -Wall -Wextra -Werror
-DEBUG = -g -lncurses -fsanitize=address
 INCLUDES = $(foreach H, $(INCLPATH), -I $(H))
 
 LIBFT = $(LIBFTPATH)libft.a
@@ -50,7 +49,7 @@ all : $(NAME)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
-# $(DEBUG)
+
 $(NAME): $(OBJ_DIR) $(OBJ) $(BST) $(LIST) $(LIBFT) $(SET) Makefile
 	@$(CC) $(OBJ) $(LIBFLAGS) -o $(NAME)
 	@echo "$(GREEN) Executable file has been created$(RESET)"
@@ -96,24 +95,8 @@ fclean : clean
 
 re : fclean all
 
-push :
-	@git add .
-	@git commit -m "added something"
-	@git push
-	@echo "$(SKY) Pushed! $(RESET)"
-
-git:
-	@read -p "Enter branch name: " branch; \
-	read -p "Enter commit message: " msg; \
-	git add .; \
-	git commit -m "$$msg"; \
-	git push -u origin "$$branch"
-
 config:
 	mkdir -p readline_local
 	./readline_config.sh readline_local
 
-leaks:
-	valgrind --leak-check=full --show-leak-kinds=all --suppressions=.vgignore --track-origins=yes ./$(NAME)
-
-.PHONY : all clean fclean re config push git
+.PHONY : all clean fclean re config

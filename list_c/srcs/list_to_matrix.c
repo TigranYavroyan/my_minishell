@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 19:54:21 by tigran            #+#    #+#             */
-/*   Updated: 2024/09/29 15:26:06 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/11/17 17:38:56 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ char	**list_to_matrix_lt(t_list_ptr list)
 
 char	**from_head_to_matrix_lt(t_node_ptr head)
 {
-	t_node	*tmp;
 	char	**res;
 	int		size;
 	int		i;

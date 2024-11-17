@@ -6,7 +6,7 @@ SKY		= \033[1;36m
 
 NAME = libft.a
 CC = cc
-CFLAGS = -g -Wall -Wextra -Werror -c
+CFLAGS = -Wall -Wextra -Werror -c
 ROOT = ./
 
 MANDATORY		= ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_memchr.c ft_memcmp.c \
@@ -38,3 +38,5 @@ fclean: clean
 	@echo "$(RED) Libfts archive has been removed $(RESET)"
 
 re: fclean all
+
+.PHONY : all clean fclean re

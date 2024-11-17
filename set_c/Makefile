@@ -11,8 +11,7 @@ SRCSPATH = ./srcs/
 INCLPATH = ./includes/ ../libft/ ../list_c/includes/
 SRCS = $(wildcard $(SRCSPATH)*.c)
 OBJS = $(patsubst $(SRCSPATH)%.c, $(SRCSPATH)%.o, $(SRCS))
-# -Wall -Wextra -Werror
-CFLAGS = -g -Wall -Wextra -Werror $(foreach H, $(INCLPATH), -I$(H))
+CFLAGS = -Wall -Wextra -Werror $(foreach H, $(INCLPATH), -I$(H))
 NAME = libset.a
 
 all : $(NAME)
@@ -35,7 +34,4 @@ fclean : clean
 
 re : fclean all
 
-leaks :
-	valgrind ./$(NAME)
-
-.PHONY : all clean fclean re push copy clone grm leaks
+.PHONY : all clean fclean re

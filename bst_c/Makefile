@@ -10,8 +10,7 @@ LIBFTPATH = ../libft/
 INCLPATH = ./includes/ $(LIBFTPATH)
 SRCS = $(wildcard $(SRCSPATH)*.c)
 OBJS = $(patsubst $(SRCSPATH)%.c, $(SRCSPATH)%.o, $(SRCS))
-#-Wall -Wextra -Werror
-CFLAGS = -g -Wall -Wextra -Werror $(foreach H, $(INCLPATH), -I$(H))
+CFLAGS = -Wall -Wextra -Werror $(foreach H, $(INCLPATH), -I$(H))
 
 NAME = libbst.a
 LIBFT = $(LIBFTPATH)libft.a
@@ -38,7 +37,4 @@ fclean : clean
 
 re : fclean all
 
-leaks :
-	valgrind --leak-check=full ./$(NAME)
-
-.PHONY : all clean fclean re leaks
+.PHONY : all clean fclean re
