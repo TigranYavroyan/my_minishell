@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmds.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:51:38 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/17 16:54:51 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/17 20:32:08 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,15 @@ void	get_cmds(t_minishell_ptr minishell)
 		++i;
 		possible_pipe = get_cmds_attr(minishell, possible_pipe->next, i);
 	}
+	// for (int i = 0; i < minishell->commands->size; ++i)
+	// {
+	// 	printf("The name: %s\n", minishell->commands->cmds[i]->name);
+	// 	printf("Options: ");
+	// 	print_lt(minishell->commands->cmds[i]->options);
+	// 	printf("Args: ");
+	// 	print_lt(minishell->commands->cmds[i]->args);
+	// 	printf("Redirection_type: ");
+	// 	printf("%d\n", minishell->commands->cmds[i]->redirection);
+	// 	printf("\n\n");
+	// }
 }

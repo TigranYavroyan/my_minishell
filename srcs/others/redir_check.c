@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 16:58:11 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/16 16:55:40 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/17 20:01:50 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@ bool	is_redirect(const char *val)
 
 void	__redir_swap(t_minishell_ptr minishell, t_node_ptr curr)
 {
+	t_node_ptr	tmp;
+
 	if (find_set(minishell->quote_tracker, curr))
 		return ;
-	if (curr->next->next)
+	tmp = curr->next->next;
+	if (tmp && (!_equal(tmp->val, "|") && find_set(minishell->quote_tracker, curr->next->next)))
 	{
 		if (minishell->line->head == curr)
 			push_front_lt(minishell->line, curr->next->next->val);

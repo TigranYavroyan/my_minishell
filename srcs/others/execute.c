@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:50:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/17 16:27:50 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/11/17 21:11:53 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ static void	eval(t_cmd_matrix_ptr commands, int *fds, int i)
 
 	exec_flag = true;
 	is_btin = is_builtin(commands->cmds[i]->name);
-	if (*(commands->cmds[i]->name) == 0)
+	if (*(commands->cmds[i]->name) == 0 && !((commands->cmds[i]->redirection & redirect_heredoc) == redirect_heredoc))
 		return ;
 	if (i < commands->size - 1)
 		dup2(fds[out], STDOUT_FILENO);
 	if (commands->cmds[i]->redirection != invalid_permission)
 	{
+		// printf("cmd->name: %s\n", commands->cmds[i]->name);
+		// printf("no invalid_permission\n");
 		redir_checker(commands, i, &exec_flag);
 		if (commands->size == 1 && is_btin && exec_flag)
 			exec_builtin(commands->cmds[i]);
