@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:49:31 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/17 16:28:53 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/11/17 16:32:08 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ bool	syntax_check(t_minishell_ptr minishell)
 	{
 		__err_msg_prmt__(NULL, "syntax error near unexpected token `|\'",
 			SYNTAX_ERROR);
-		// set_status_int(SYNTAX_ERROR);
+		set_status_int(SYNTAX_ERROR);
 		return (true);
 	}
 	err = redir_check(minishell->line, minishell->quote_tracker);
@@ -40,7 +40,7 @@ bool	syntax_check(t_minishell_ptr minishell)
 	{
 		__err_msg_full_prmt__("syntax error near unexpected token `", err, "\'",
 			SYNTAX_ERROR);
-		// set_status_int(SYNTAX_ERROR);
+		set_status_int(SYNTAX_ERROR);
 		return (true);
 	}
 	return (false);
