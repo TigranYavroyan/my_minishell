@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:50:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/17 15:16:51 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/17 15:18:27 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	execute(t_minishell_ptr minishell)
 		if (pipe(fds) < 0)
 			return (__err_msg_prmt__("fork: ", HEREDOC_ERR_MSG, FORK_ERROR));
 		eval(minishell->commands, fds, i);
-		if (minishell->commands->cmds[i]->redirection == redirect_heredoc)
+		if ((minishell->commands->cmds[i]->redirection & redirect_heredoc) == redirect_heredoc)
 			unlink(HEREDOC_FILE);
 	}
 	dup2(minishell->descriptors->stdin, STDIN_FILENO);
