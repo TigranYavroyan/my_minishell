@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmds.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:51:38 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/16 16:12:11 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/17 16:54:51 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	get_cmds_names(t_minishell_ptr minishell)
 	i = 1;
 	while (curr)
 	{
-		if (_equal(curr->val, "|"))
+		if (_equal(curr->val, "|") && !find_set(minishell->quote_tracker, curr))
 		{
 			tmp = curr;
 			curr = curr->next;
@@ -56,7 +56,7 @@ t_node_ptr	execolp(t_node_ptr curr, t_minishell_ptr minishell, int i)
 {
 	while (curr)
 	{
-		if (_equal(curr->val, "|"))
+		if (_equal(curr->val, "|") && !find_set(minishell->quote_tracker, curr))
 			return (curr);
 		if (is_redirect(curr->val) && !find_set(minishell->quote_tracker, curr))
 		{
