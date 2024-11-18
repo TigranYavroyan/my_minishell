@@ -23,6 +23,8 @@
 		"__bit_reference": "c",
 		"iterator": "c",
 		"wait.h": "c",
-		"set.h": "c"
+		"set.h": "c",
+		"locale": "c",
+		"__mutex_base": "c"
 	}
 }

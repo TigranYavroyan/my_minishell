@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/15 18:23:22 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/18 21:02:01 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	_exec_util(t_command_ptr command, bool is_btin, int *fds, int i)
 	pid_t	pid;
 	int		sts;
 
+	run_signals(2);
 	pid = fork();
 	if (pid == -1)
 		return (__err_msg_prmt__("fork: ", HEREDOC_ERR_MSG, FORK_ERROR));
