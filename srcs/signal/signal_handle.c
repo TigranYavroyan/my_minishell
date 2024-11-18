@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:53:37 by healeksa          #+#    #+#             */
-/*   Updated: 2024/11/18 21:33:49 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/19 00:10:13 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	run_signals(int sig)
 
 void	restore_prompt(int sig)
 {
+	set_status_unsigned(INV_ARG);
 	write(1, "\n", 1);
 	rl_replace_line("", 0);
 	rl_on_new_line();

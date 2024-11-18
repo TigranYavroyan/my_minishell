@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/18 21:02:01 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/19 00:06:07 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,7 @@ static void	wait_and_status(pid_t pid, int *_status)
 {
 	waitpid(pid, _status, 0);
 	if (WIFSIGNALED(*_status))
-	{
-		*_status = WTERMSIG(*_status) + 128;
-		if (*_status == 131)
-			write(1, "Quit: 3\n", 9);
-		return (set_status_unsigned(*_status));
-	}
+		return (set_status_unsigned(WTERMSIG(*_status) + 128));
 	set_status_unsigned(WEXITSTATUS(*_status));
 }
 
