@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:20:42 by healeksa          #+#    #+#             */
-/*   Updated: 2024/11/18 21:34:25 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:49:59 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ bool	heredoc_handle(t_command_ptr command)
 	}
 	auto_free(&line);
 	close(fd);
+	if (get_status() == 1)
+		return (false);
 	// clear_minishell(&(command->minishell));
 	fd = open(HEREDOC_FILE, O_RDONLY, FILE_PERM);
 	dup2(fd, STDIN_FILENO);
-	// exit(EXIT_SUCCESS);
-	return (false);
+	return (true);
 }
