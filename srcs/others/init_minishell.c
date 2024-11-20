@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:00:31 by healeksa          #+#    #+#             */
-/*   Updated: 2024/11/15 20:22:12 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/20 20:53:16 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ t_minishell_ptr	init_minishell(char **env)
 	sort_env(env);
 	minishell->env = matrix_to_bst(env, '=');
 	remove_bst(minishell->env, "OLDPWD");
-	shlvl_process(minishell);
 	minishell->export = copy_bst(minishell->env);
 	insert_bst(minishell->export, "OLDPWD", NULL);
+	shlvl_process(minishell);
 	minishell->commands = NULL;
 	minishell->descriptors = make_descriptors();
 	return (minishell);
