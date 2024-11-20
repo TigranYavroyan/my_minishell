@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection_helpers.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 21:00:55 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/16 18:27:39 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/20 19:12:06 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static void	_redirect_heredoc_util(t_minishell_ptr minishell, t_node_ptr curr,
 		minishell->commands->cmds[i]->redirection = invalid_permission;
 	else
 		minishell->commands->cmds[i]->redirection |= redirect_heredoc;
+	if (minishell->commands->cmds[i]->delim)
+		free(minishell->commands->cmds[i]->delim);
 	minishell->commands->cmds[i]->delim = ft_strdup(curr->next->val);
 	close(minishell->commands->cmds[i]->descriptors->stdin);
 	minishell->commands->cmds[i]->descriptors->stdin = *fd;

@@ -6,7 +6,7 @@
 /*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:50:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/20 18:12:49 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/11/20 19:20:33 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ static void	eval(t_cmd_matrix_ptr commands, int *fds, int i)
 	if (*(commands->cmds[i]->name) == 0
 		&& !((commands->cmds[i]->redirection
 				& redirect_heredoc) == redirect_heredoc))
-		return ;
+		exec_flag = false ;
 	if (i < commands->size - 1)
 		dup2(fds[out], STDOUT_FILENO);
-	if (commands->cmds[i]->redirection != invalid_permission)
+	if (commands->cmds[i]->redirection != invalid_permission && exec_flag)
 	{
 		redir_checker(commands, i, &exec_flag, fds);
 		if (commands->size == 1 && is_btin && exec_flag)
