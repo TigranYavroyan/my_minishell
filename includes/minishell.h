@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/20 18:02:06 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/20 18:08:10 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,7 @@ void							remove_spaces(t_list_ptr line,
 									t_set_ptr quote_tracker);
 
 // quote_resolutin
-bool							remove_quotes(t_list_ptr line,
-									t_set_ptr quote_tracker);
+bool							remove_quotes(t_minishell_ptr minishell);
 void							merge_in_quotes(t_list_ptr line,
 									t_set_ptr quote_tracker);
 

@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 15:50:43 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/20 15:24:31 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/20 18:12:49 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <minishell.h>
 
@@ -62,7 +61,8 @@ static void	eval(t_cmd_matrix_ptr commands, int *fds, int i)
 	exec_flag = true;
 	is_btin = is_builtin(commands->cmds[i]->name);
 	if (*(commands->cmds[i]->name) == 0
-		&& !((commands->cmds[i]->redirection & redirect_heredoc) == redirect_heredoc))
+		&& !((commands->cmds[i]->redirection
+				& redirect_heredoc) == redirect_heredoc))
 		return ;
 	if (i < commands->size - 1)
 		dup2(fds[out], STDOUT_FILENO);
@@ -92,7 +92,8 @@ void	execute(t_minishell_ptr minishell)
 		if (pipe(fds) < 0)
 			return (__err_msg_prmt__("fork: ", HEREDOC_ERR_MSG, FORK_ERROR));
 		eval(minishell->commands, fds, i);
-		if ((minishell->commands->cmds[i]->redirection & redirect_heredoc) == redirect_heredoc)
+		if ((minishell->commands->cmds[i]->redirection
+				& redirect_heredoc) == redirect_heredoc)
 			unlink(HEREDOC_FILE);
 	}
 	dup2(minishell->descriptors->stdin, STDIN_FILENO);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:49:31 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/20 18:01:54 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/20 19:07:03 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 inline static bool	__parse(t_minishell_ptr minishell)
 {
-	if (!remove_quotes(minishell->line, minishell->quote_tracker))
+	if (!remove_quotes(minishell))
 		return (true);
 	parse_dollar(minishell);
 	merge_in_quotes(minishell->line, minishell->quote_tracker);

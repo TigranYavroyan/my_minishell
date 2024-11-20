@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 16:58:11 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/20 16:56:04 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/20 18:11:39 by tyavroya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ bool	is_redirect(const char *val)
 		|| _equal(val, "<<"));
 }
 
-static t_node_ptr	_find_last_redir (t_node_ptr curr, t_set_ptr quote_tracker)
+static t_node_ptr	_find_last_redir(t_node_ptr curr, t_set_ptr quote_tracker)
 {
 	t_node_ptr	last_redir;
 
@@ -40,7 +40,8 @@ void	__redir_swap(t_minishell_ptr minishell, t_node_ptr curr)
 		return ;
 	tmp = _find_last_redir(curr, minishell->quote_tracker);
 	tmp = tmp->next->next;
-	if (tmp && (is_mergeable_util(tmp->val) || find_set(minishell->quote_tracker, tmp)))
+	if (tmp && (is_mergeable_util(tmp->val)
+			|| find_set(minishell->quote_tracker, tmp)))
 	{
 		if (minishell->line->head == curr)
 			push_front_lt(minishell->line, tmp->val);
