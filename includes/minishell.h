@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:25:55 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/18 21:01:13 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/20 14:34:45 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,11 +248,11 @@ t_descriptors_ptr				make_descriptors(void);
 void							refresh_descriptors(t_command_ptr command);
 
 // signal
-void	run_signals(int sig);
-void	restore_prompt(int sig);
-void	ctrl_c(int sig);
-void	back_slash(int sig);
-void	sig_handler_hdoc(int sig);
+void							run_signals(int sig);
+void							restore_prompt(int sig);
+void							ctrl_c(int sig);
+void							back_slash(int sig);
+void							sig_handler_hdoc(int sig);
 
 // cd utils
 char							*get_pwd(void);
@@ -267,7 +267,8 @@ t_node_ptr						__redirect_handle(t_minishell_ptr minishell,
 									t_node_ptr curr, int i);
 
 // heredoc
-bool							heredoc_handle(t_command_ptr command);
+bool							heredoc_handle(t_command_ptr command, int *fds,
+									int i);
 
 // shlvl
 void							shlvl_process(t_minishell_ptr minishell);

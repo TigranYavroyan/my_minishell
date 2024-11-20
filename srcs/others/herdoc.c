@@ -6,19 +6,22 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:20:42 by healeksa          #+#    #+#             */
-/*   Updated: 2024/11/19 17:49:59 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:04:55 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-bool	heredoc_handle(t_command_ptr command)
+bool	heredoc_handle(t_command_ptr command, int *fds, int i)
 {
 	char			*line;
 	int				fd;
 	t_value_type	begin;
 
-	fd = command->descriptors->stdin;
+	if (i < command->minishell->commands->size - 1)
+		fd = fds[out];
+	else
+		fd = command->descriptors->stdin;
 	run_signals(4);
 	while (1)
 	{
@@ -39,7 +42,6 @@ bool	heredoc_handle(t_command_ptr command)
 	close(fd);
 	if (get_status() == 1)
 		return (false);
-	// clear_minishell(&(command->minishell));
 	fd = open(HEREDOC_FILE, O_RDONLY, FILE_PERM);
 	dup2(fd, STDIN_FILENO);
 	return (true);
