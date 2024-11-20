@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 18:41:19 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/15 18:19:25 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/18 21:45:51 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ static void	ft_minishell(t_minishell_ptr minishell)
 {
 	char	*input;
 
-	signal_handle();
+	rl_catch_signals = 0;
 	while (true)
 	{
+		run_signals(1);
 		input = readline("Minishell>$ ");
 		minishell->commands = init_cmds(minishell);
 		if (!input)

@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 20:08:30 by tyavroya          #+#    #+#             */
-/*   Updated: 2024/11/15 18:23:22 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/19 00:06:07 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,7 @@ static void	wait_and_status(pid_t pid, int *_status)
 {
 	waitpid(pid, _status, 0);
 	if (WIFSIGNALED(*_status))
-	{
-		*_status = WTERMSIG(*_status) + 128;
-		if (*_status == 131)
-			write(1, "Quit: 3\n", 9);
-		return (set_status_unsigned(*_status));
-	}
+		return (set_status_unsigned(WTERMSIG(*_status) + 128));
 	set_status_unsigned(WEXITSTATUS(*_status));
 }
 
@@ -71,6 +66,7 @@ void	_exec_util(t_command_ptr command, bool is_btin, int *fds, int i)
 	pid_t	pid;
 	int		sts;
 
+	run_signals(2);
 	pid = fork();
 	if (pid == -1)
 		return (__err_msg_prmt__("fork: ", HEREDOC_ERR_MSG, FORK_ERROR));

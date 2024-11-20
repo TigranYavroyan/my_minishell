@@ -6,51 +6,60 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:53:37 by healeksa          #+#    #+#             */
-/*   Updated: 2024/11/14 16:23:17 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:04:45 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	inp_correction(void)
+void	restore_prompt(int sig)
 {
-	struct termios	termios_p;
-
-	if (isatty(STDIN_FILENO))
-	{
-		if (tcgetattr(0, &termios_p) != 0)
-			perror("Minishell: tcgetattr");
-		termios_p.c_lflag &= ~ECHOCTL;
-		if (tcsetattr(0, 0, &termios_p) != 0)
-			perror("Minishell: tcsetattr");
-	}
-}
-
-void	sig_quit(int sig)
-{
-	(void)sig;
-	rl_redisplay();
-}
-
-void	sig_int(int sig)
-{
-	(void)sig;
-	write(STDOUT_FILENO, "\n", 1);
-	rl_on_new_line();
+	set_status_unsigned(INV_ARG);
+	write(1, "\n", 1);
 	rl_replace_line("", 0);
+	rl_on_new_line();
 	rl_redisplay();
+	(void)sig;
 }
 
-void	signal_heredoc(int sig)
+void	ctrl_c(int sig)
+{
+	write(1, "\n", 1);
+	(void)sig;
+}
+
+void	back_slash(int sig)
+{
+	ft_putendl_fd("Quit: 3", 2);
+	(void)sig;
+}
+
+void	sig_handler_hdoc(int sig)
 {
 	(void)sig;
-	write(STDOUT_FILENO, "\n", 1);
-	exit(1);
+	// write(1, "\n", 1);
+	ioctl(STDIN_FILENO, TIOCSTI, "\n");
+	rl_replace_line("", 0);
+	rl_on_new_line();
+	set_status_unsigned(1);
+	// exit(1);
 }
 
-void	signal_handle(void)
+void	run_signals(int mode)
 {
-	inp_correction();
-	signal(SIGQUIT, sig_quit);
-	signal(SIGINT, sig_int);
+	if (mode == 1)
+	{
+		signal(SIGINT, restore_prompt);
+		signal(SIGQUIT, SIG_IGN);
+	}
+	if (mode == 2)
+	{
+		signal(SIGINT, ctrl_c);
+		signal(SIGQUIT, back_slash);
+	}
+	if (mode == 4)
+	{
+		signal(SIGINT, sig_handler_hdoc);
+		signal(SIGQUIT, SIG_IGN);
+	}
 }
