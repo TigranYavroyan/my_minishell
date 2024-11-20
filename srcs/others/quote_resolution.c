@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 22:45:54 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/20 17:07:34 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/20 18:01:44 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,52 +53,28 @@ static void	parse_quotes(t_list_ptr line, t_set_ptr quote_tracker)
 	}
 }
 
-bool	remove_quotes(t_minishell_ptr minishell)
+bool	remove_quotes(t_list_ptr line, t_set_ptr quote_tracker)
 {
 	t_node_ptr	curr;
 
-	parse_quotes(minishell->line, minishell->quote_tracker);
-	if (!ft_quotes_check(minishell->line, minishell->quote_tracker))
+	parse_quotes(line, quote_tracker);
+	if (!ft_quotes_check(line, quote_tracker))
 	{
 		__err_msg_prmt__(NULL, "Unclosed quotes", SYNTAX_ERROR);
 		return (false);
 	}
-	parse_dollar(minishell);
-	curr = minishell->line->head;
+	curr = line->head;
 	while (curr)
 	{
 		if (curr->next && is_quote(*curr->val) && is_quote(*curr->next->val))
-			insert_node_lt(minishell->line, "", curr);
-		if (is_quote(*curr->val) && !find_set(minishell->quote_tracker, curr))
-			curr = remove_node_lt(minishell->line, curr);
+			insert_node_lt(line, "", curr);
+		if (is_quote(*curr->val) && !find_set(quote_tracker, curr))
+			curr = remove_node_lt(line, curr);
 		else
 			curr = curr->next;
 	}
 	return (true);
 }
-
-// bool	remove_quotes(t_list_ptr line, t_set_ptr quote_tracker)
-// {
-// 	t_node_ptr	curr;
-
-// 	parse_quotes(line, quote_tracker);
-// 	if (!ft_quotes_check(line, quote_tracker))
-// 	{
-// 		__err_msg_prmt__(NULL, "Unclosed quotes", SYNTAX_ERROR);
-// 		return (false);
-// 	}
-// 	curr = line->head;
-// 	while (curr)
-// 	{
-// 		if (curr->next && is_quote(*curr->val) && is_quote(*curr->next->val))
-// 			insert_node_lt(line, "", curr);
-// 		if (is_quote(*curr->val) && !find_set(quote_tracker, curr))
-// 			curr = remove_node_lt(line, curr);
-// 		else
-// 			curr = curr->next;
-// 	}
-// 	return (true);
-// }
 
 static bool	__is_mergeable(t_node_ptr curr, t_set_ptr quote_tracker)
 {

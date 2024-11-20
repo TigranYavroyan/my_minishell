@@ -6,7 +6,7 @@
 /*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:49:31 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/20 17:08:04 by tigran           ###   ########.fr       */
+/*   Updated: 2024/11/20 18:01:54 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 inline static bool	__parse(t_minishell_ptr minishell)
 {
-	if (!remove_quotes(minishell))
+	if (!remove_quotes(minishell->line, minishell->quote_tracker))
 		return (true);
-	// parse_dollar(minishell);
+	parse_dollar(minishell);
 	merge_in_quotes(minishell->line, minishell->quote_tracker);
 	remove_spaces(minishell->line, minishell->quote_tracker);
 	return (false);
