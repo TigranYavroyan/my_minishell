@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_handle.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 11:53:37 by healeksa          #+#    #+#             */
-/*   Updated: 2024/11/19 16:04:45 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:25:40 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,10 @@ void	back_slash(int sig)
 void	sig_handler_hdoc(int sig)
 {
 	(void)sig;
-	// write(1, "\n", 1);
 	ioctl(STDIN_FILENO, TIOCSTI, "\n");
 	rl_replace_line("", 0);
 	rl_on_new_line();
 	set_status_unsigned(1);
-	// exit(1);
 }
 
 void	run_signals(int mode)

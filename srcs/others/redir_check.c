@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 16:58:11 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/17 20:01:50 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/11/20 15:37:43 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	__redir_swap(t_minishell_ptr minishell, t_node_ptr curr)
 	if (tmp && (!_equal(tmp->val, "|") && find_set(minishell->quote_tracker, curr->next->next)))
 	{
 		if (minishell->line->head == curr)
-			push_front_lt(minishell->line, curr->next->next->val);
+			push_front_lt(minishell->line, tmp->val);
 		else
-			insert_node_lt(minishell->line, curr->next->next->val, curr->prev);
+			insert_node_lt(minishell->line, tmp->val, curr->prev);
 		remove_node_lt(minishell->line, curr->next->next);
 	}
 	else
