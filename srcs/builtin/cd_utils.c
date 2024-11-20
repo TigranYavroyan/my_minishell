@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 16:41:56 by healeksa          #+#    #+#             */
-/*   Updated: 2024/10/17 16:35:45 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/19 20:14:52 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ void	set_pwd(char *old_pwd, t_command_ptr command)
 
 	pwd = get_pwd();
 	insert_bst(command->minishell->env, "OLDPWD", old_pwd);
+	insert_bst(command->minishell->export, "OLDPWD", old_pwd);
 	insert_bst(command->minishell->env, "PWD", pwd);
+	insert_bst(command->minishell->export, "PWD", pwd);
 	free(pwd);
 }
 

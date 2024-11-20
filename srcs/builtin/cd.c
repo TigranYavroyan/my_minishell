@@ -6,7 +6,7 @@
 /*   By: healeksa <healeksa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:24:02 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/19 16:18:42 by healeksa         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:50:26 by healeksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static char	*option_check(t_command_ptr command)
 
 	if (command->options->head->val[1])
 	{
+		set_status_unsigned(INV_ARG);
 		return (printf("minishell: cd: %c%c: invalid option\n",
 				command->options->head->val[0], command->options->head->val[1]),
 			NULL);
@@ -59,15 +60,21 @@ bool	cwd_check(t_command_ptr command)
 {
 	char	*pwd_curr;
 	char	*cwd;
+	char	*old_pwd;
 
 	cwd = getcwd(NULL, 0);
 	if (cwd == NULL)
 	{
 		pwd_curr = ft_strdup(get_bst(command->minishell->env, "PWD"));
+		old_pwd = ft_strdup(get_bst(command->minishell->env, "PWD"));
 		ft_append(&pwd_curr, "/..");
+		insert_bst(command->minishell->env, "OLDPWD", old_pwd);
+		insert_bst(command->minishell->export, "OLDPWD", old_pwd);
 		insert_bst(command->minishell->env, "PWD", pwd_curr);
+		insert_bst(command->minishell->export, "PWD", pwd_curr);
 		__err_msg__("cd: ", CDERR, 0);
 		free(pwd_curr);
+		free(old_pwd);
 		return (false);
 	}
 	free(cwd);
