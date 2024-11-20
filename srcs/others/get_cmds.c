@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmds.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyavroya <tyavroya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tigran <tigran@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 18:51:38 by tigran            #+#    #+#             */
-/*   Updated: 2024/11/17 20:32:08 by tyavroya         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:56:16 by tigran           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,8 +112,8 @@ void	get_cmds(t_minishell_ptr minishell)
 	// 	print_lt(minishell->commands->cmds[i]->options);
 	// 	printf("Args: ");
 	// 	print_lt(minishell->commands->cmds[i]->args);
-	// 	printf("Redirection_type: ");
-	// 	printf("%d\n", minishell->commands->cmds[i]->redirection);
+	// 	// printf("Redirection_type: ");
+	// 	// printf("%d\n", minishell->commands->cmds[i]->redirection);
 	// 	printf("\n\n");
 	// }
 }
